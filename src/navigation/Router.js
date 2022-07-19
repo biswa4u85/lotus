@@ -10,37 +10,21 @@ import {
 import { useSelector } from 'react-redux'
 import Layouts from "../pages/Layouts";
 import Home from "../pages/Home";
+import Details from "../pages/Details";
+import Cms from "../pages/Cms";
+import Category from "../pages/Category";
 
-const RequireAuth = () => {
-  const token = useSelector((state) => state.auth.token)
-  let location = useLocation();
-  if (!token) {
-    return <Navigate to="/login" state={{ from: location }} />;
-  }
-  return <Outlet />;
-};
 
 function Routers() {
   return (
     <HashRouter>
       <Routes>
-
-        {/* Without token and Without Layout */}
-        {/* <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Home />} /> */}
-
         <Route element={<Layouts />}>
-
-          {/* Without token */}
           <Route path="/" element={<Home />} />
-
-          <Route element={<RequireAuth />}>
-            {/* With token */}
-            {/* <Route path="/new" element={<Home />} /> */}
-          </Route>
-
+          <Route path="/details/:pId" element={<Details />} />
+          <Route path="/cms/:Id" element={<Cms />} />
+          <Route path="/cat/:Id" element={<Category />} />
         </Route>
-
       </Routes>
     </HashRouter>
   );
