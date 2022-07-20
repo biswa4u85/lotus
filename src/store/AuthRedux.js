@@ -50,8 +50,10 @@ export const getNewsCategory = createAsyncThunk(
 
 export const getNewsList = createAsyncThunk(
   'auth/getNewsList',
+  // 'limit_start':0,
+  //  'limit_page_length': 10
   async (params, { rejectWithValue }) => {
-    let urls = `doctype=Blog+Post&limit_page_length=None&fields=${JSON.stringify(["name", "title", "news_category", "category_description", "blog_intro", "meta_image", "modified"])}&cmd=frappe.client.get_list`;
+    let urls = `doctype=Blog+Post&limit_page_length=None&order_by=published_on desc&filters=${JSON.stringify([["Blog Post", "lotus", "like", 1]])}&fields=${JSON.stringify(["name", "title", "news_category", "category_description", "blog_intro", "meta_image", "modified"])}&cmd=frappe.client.get_list`;
     let response = await apiPostCall('/', urls)
     if (response) {
       return response
@@ -62,7 +64,7 @@ export const getNewsList = createAsyncThunk(
 export const getNewsListByCat = createAsyncThunk(
   'auth/getNewsListByCat',
   async (params, { rejectWithValue }) => {
-    let urls = `doctype=Blog+Post&limit_page_length=None&filters=${JSON.stringify([["Blog Post", "news_category", "like", params]])}&fields=${JSON.stringify(["name", "title", "news_category", "category_description", "blog_intro", "meta_image", "modified"])}&cmd=frappe.client.get_list`;
+    let urls = `doctype=Blog+Post&limit_page_length=None&order_by=published_on desc&filters=${JSON.stringify([["Blog Post", "news_category", "like", params], ["Blog Post", "lotus", "like", 1]])}&fields=${JSON.stringify(["name", "title", "news_category", "category_description", "blog_intro", "meta_image", "modified"])}&cmd=frappe.client.get_list`;
     let response = await apiPostCall('/', urls)
     if (response) {
       return response
