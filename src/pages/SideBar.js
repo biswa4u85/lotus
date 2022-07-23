@@ -32,11 +32,11 @@ function SideBar(props) {
                     </div>
                 </div>)}
             </div>
-            <TwitterTimelineEmbed
+            {/* <TwitterTimelineEmbed
                 sourceType="profile"
                 screenName="CriczoneN"
                 options={{ height: 400 }}
-            />
+            /> */}
             {/* <div className="video-card">
             <img src="https://tpc.googlesyndication.com/simgad/14556471411178073418?" width="250" height="250" alt="Advertiser" border="0" />
         </div> */}
