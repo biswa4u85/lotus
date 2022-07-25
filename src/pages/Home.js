@@ -62,7 +62,7 @@ function Home() {
                 <meta name="description" content={homeSettings?.meta_description} />
             </Helmet>
             <div className="nvbanner-area">
-                <div style={{ textAlign: "center", marginBottom: 20 }}>
+                {/* <div style={{ textAlign: "center", marginBottom: 20 }}> */}
                     {/* <ins class="adsbygoogle"
                         style={{ display: 'inline-block', width: 728, height: 90 }}
                         data-ad-client="ca-pub-1234567890123456"
@@ -70,8 +70,8 @@ function Home() {
                     <script>
                         (adsbygoogle = window.adsbygoogle || []).push({ });
                     </script> */}
-                    <img src="https://tpc.googlesyndication.com/simgad/14556471411178073418?" width="900" height="120" alt="Advertiser" border="0" />
-                </div>
+                    {/* <img src="https://tpc.googlesyndication.com/simgad/14556471411178073418?" width="900" height="120" alt="Advertiser" border="0" /> */}
+                {/* </div> */}
                 <div style={{ display: 'none' }} className="rpt-wrapper" data-aos="fade-up">
                     <button className="prev-one"><i className="icofont-simple-left"></i></button>
                     <button className="next-one"><i className="icofont-simple-right"></i></button>

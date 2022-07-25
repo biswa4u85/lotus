@@ -69,7 +69,7 @@ function Details(props) {
                                 </div>
                                 <h2>{newsDetails?.title}</h2>
                                 <div dangerouslySetInnerHTML={{ __html: newsDetails?.content }}></div>
-                                <div className="reaction">
+                                {/* <div className="reaction">
                                     <h3>Your Reaction on this post</h3>
                                     <ul>
                                         <li><a href="single-post-details.html#"><img src={rect1} alt="icon" /><span>45</span></a></li>
@@ -78,7 +78,7 @@ function Details(props) {
                                         <li><a href="single-post-details.html#"><img src={rect4} alt="icon" /></a></li>
                                         <li><a href="single-post-details.html#"><img src={rect5} alt="icon" /><span>25</span></a></li>
                                     </ul>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                         <div className="col-lg-4">
@@ -101,14 +101,15 @@ function Details(props) {
                                             </div>
                                         </div>)}
                                     </div>
-                                    <div className="video-card">
+                                    {/* <div className="video-card">
                                         <img src="https://tpc.googlesyndication.com/simgad/14556471411178073418?" width="250" height="250" alt="Advertiser" border="0" />
-                                    </div>
+                                    </div> */}
                                 </aside>
-                                <div className="promo-add">
+                                <br />
+                                {/* <div className="promo-add">
                                     <img src={promoAdd} alt="image" />
                                     <button className="btn btn-white-outline">Promotional Ad</button>
-                                </div>
+                                </div> */}
                                 <div className="related-news">
                                     <aside className="header-aside">
                                         <h4>Related News</h4>
@@ -134,7 +135,7 @@ function Details(props) {
                         </div>
                     </div>
                     <div className="author-wrap">
-                        <div className="author-pro">
+                        {/* <div className="author-pro">
                             <div className="author-img">
                                 <img src={authorPro} alt="image" />
                             </div>
@@ -147,15 +148,15 @@ function Details(props) {
                                     <li><a href="single-post-details.html#"><i className="icofont-instagram"></i></a></li>
                                 </ul>
                             </div>
-                        </div>
-                        <a href="single-post-details.html#">See all Post this Author <span><i className="icofont-long-arrow-right"></i></span></a>
+                        </div> */}
+                        {/* <a href="single-post-details.html#">See all Post this Author <span><i className="icofont-long-arrow-right"></i></span></a> */}
                         <div className="ath-social">
                             <h3>Share This Post</h3>
                             <ul className="social-icon social-outline-gray">
-                                <li><a href="single-post-details.html#"><i className="icofont-facebook"></i></a></li>
-                                <li><a href="single-post-details.html#"><i className="icofont-youtube-play"></i></a></li>
-                                <li><a href="single-post-details.html#"><i className="icofont-twitter"></i></a></li>
-                                <li><a href="single-post-details.html#"><i className="icofont-instagram"></i></a></li>
+                                <li><a href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`} target="_blank"><i className="icofont-facebook"></i></a></li>
+                                <li><a href={`https://www.youtube.com/sharer/sharer.php?u=${window.location.href}`} target="_blank"><i className="icofont-youtube-play"></i></a></li>
+                                <li><a href={`https://twitter.com/sharer/sharer.php?u=${window.location.href}`} target="_blank"><i className="icofont-twitter"></i></a></li>
+                                <li><a href={`https://www.instagram.com/sharer/sharer.php?u=${window.location.href}`} target="_blank"><i className="icofont-instagram"></i></a></li>
                             </ul>
                         </div>
                     </div>

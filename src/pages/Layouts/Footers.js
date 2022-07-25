@@ -15,10 +15,10 @@ function Footers() {
     const [error, setError] = useState(null)
     const homeSettings = useSelector((state) => state.auth.homeSettings)
     const cmsData = useSelector((state) => state.auth.cms)
-    const cms = cmsData['about-us']
+    const cms = cmsData['about-us-l']
 
     useEffect(() => {
-        dispatch(getCmsDetails('about-us'))
+        dispatch(getCmsDetails('about-us-l'))
     }, []);
 
     const sendNewsletter = () => {
@@ -69,8 +69,8 @@ function Footers() {
                                     <div className="footer-social">
                                         <h6>Follow Us</h6>
                                         <ul className="social-icon social-bg-red">
-                                            <li><a href="https://www.facebook.com/profile.php" target="_blank"><i className="icofont-facebook"></i></a></li>
-                                            <li><a href="https://www.instagram.com/lotus_news247/" target="_blank"><i className="icofont-instagram"></i></a></li>
+                                            <li><a href="https://www.facebook.com/Lotusnews247-105292842265621" target="_blank"><i className="icofont-facebook"></i></a></li>
+                                            <li><a href="https://www.instagram.com/lotus_news247" target="_blank"><i className="icofont-instagram"></i></a></li>
                                             {/* <li><a href="https://telegram.org" target="_blank"><i className="icofont-telegram"></i></a></li> */}
                                             <li><a href="https://twitter.com/Lotusnews2" target="_blank"><i className="icofont-twitter"></i></a></li>
                                         </ul>
@@ -111,13 +111,13 @@ function Footers() {
                                 <div className="ftr-link">
                                     <h3 className="title-line-shape">Useful Link</h3>
                                     <ul>
-                                        <li><NavLink to="/cms/dcma">DCMA</NavLink></li>
-                                        <li><NavLink to="/cms/disclaimer">DISCLAIMER</NavLink></li>
-                                        <li><NavLink to="/cms/copyright-notice">COPYRIGHT NOTICE</NavLink></li>
+                                        <li><NavLink to="/cms/dcma-l">DCMA</NavLink></li>
+                                        <li><NavLink to="/cms/disclaimer-l">DISCLAIMER</NavLink></li>
+                                        <li><NavLink to="/cms/copyright-notice-l">COPYRIGHT NOTICE</NavLink></li>
                                         <li><NavLink to="/cat/Review Zone">REVIEW</NavLink></li>
                                         <li><NavLink to="/cat/Fantasy Tips">FANTASY</NavLink></li>
-                                        <li><NavLink to="/cms/about-us">ABOUT US</NavLink></li>
-                                        <li><NavLink to="/cms/contact-us">CONTACT US</NavLink></li>
+                                        <li><NavLink to="/cms/about-us-l">ABOUT US</NavLink></li>
+                                        <li><NavLink to="/cms/contact-us-l">CONTACT US</NavLink></li>
                                     </ul>
                                 </div>
                             </div>
@@ -140,8 +140,8 @@ function Footers() {
                         <div className="ftr-dtls-wrapper">
                             <p>Copyright © 2022 criczone All Rights Reserved.</p>
                             <ul>
-                                <li><NavLink to="/cms/terms-conditions">Term & Condition</NavLink></li>
-                                <li><NavLink to="/cms/privacy">Privacy</NavLink></li>
+                                <li><NavLink to="/cms/terms-conditions-l">Term & Condition</NavLink></li>
+                                <li><NavLink to="/cms/privacy-l">Privacy</NavLink></li>
                             </ul>
                         </div>
                     </div>

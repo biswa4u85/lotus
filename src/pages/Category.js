@@ -20,7 +20,7 @@ function Category(props) {
 
     useEffect(() => {
         let ID = categorys.find(item => item.description == Id)
-        dispatch(getNewsListByCat(ID.name))
+        dispatch(getNewsListByCat(ID?.name))
     }, [Id]);
 
     // console.log(newsListByCat)
