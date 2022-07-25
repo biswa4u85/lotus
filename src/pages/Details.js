@@ -68,7 +68,7 @@ function Details(props) {
                                     <span>{moment.utc(newsDetails?.modified).format('Do MMM YYYY')}</span>
                                 </div>
                                 <h2>{newsDetails?.title}</h2>
-                                <div dangerouslySetInnerHTML={{ __html: newsDetails?.content }}></div>
+                                <div dangerouslySetInnerHTML={{ __html: newsDetails?.content_html ? newsDetails?.content_html : newsDetails?.content }}></div>
                                 {/* <div className="reaction">
                                     <h3>Your Reaction on this post</h3>
                                     <ul>
