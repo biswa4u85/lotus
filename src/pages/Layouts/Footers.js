@@ -78,33 +78,17 @@ function Footers() {
                                 </div>
                             </div>
                             <div className="col-xl-3 col-md-4 ft-order-2 mb-sm-30">
-                                <div className="ftr-category">
+                                <div className="ftr-link">
                                     <h3 className="title-line-shape">Category</h3>
-                                    <div className="ftr-category-menu">
-                                        <ul className="round-shape">
-                                            <li><NavLink to="/cat/Trending News">Trending News</NavLink></li>
-                                            <li><NavLink to="/cat/Press Release">Press Release</NavLink></li>
-                                            <li><NavLink to="/cat/Previews">Previews</NavLink></li>
-                                        </ul>
-                                        <ul className="round-shape">
-                                            <li><NavLink to="/cat/Review Zone">Reviews</NavLink></li>
-                                            <li><NavLink to="/cat/On this day">On this Day</NavLink></li>
-                                            <li><NavLink to="/cat/Match Prediction">Match Prediction</NavLink></li>
-                                        </ul>
-                                    </div>
-                                    <h3 className="title-line-shape">Key Series</h3>
-                                    <div className="ftr-category-menu">
-                                        <ul className="round-shape">
-                                            <li><NavLink to="/cat/Trending News">Trending News</NavLink></li>
-                                            <li><NavLink to="/cat/Press Release">Press Release</NavLink></li>
-                                            <li><NavLink to="/cat/Previews">Previews</NavLink></li>
-                                        </ul>
-                                        <ul className="round-shape">
-                                            <li><NavLink to="/cat/Review Zone">Reviews</NavLink></li>
-                                            <li><NavLink to="/cat/On this day">On this Day</NavLink></li>
-                                            <li><NavLink to="/cat/Match Prediction">Match Prediction</NavLink></li>
-                                        </ul>
-                                    </div>
+                                    <ul>
+                                        <li><NavLink to="/cat/Trending News">Trending News</NavLink></li>
+                                        <li><NavLink to="/cat/Press Release">Press Release</NavLink></li>
+                                        <li><NavLink to="/cat/Previews">Previews</NavLink></li>
+                                        <li><NavLink to="/cat/Review Zone">Reviews</NavLink></li>
+                                        <li><NavLink to="/cat/On this day">On this Day</NavLink></li>
+                                        <li><NavLink to="/cat/Men">Men</NavLink></li>
+                                        <li><NavLink to="/cat/Women">Women</NavLink></li>
+                                    </ul>
                                 </div>
                             </div>
                             <div className="col-xl-2 col-md-4 ft-order-3 mb-sm-30">

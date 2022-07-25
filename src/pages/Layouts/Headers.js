@@ -434,8 +434,8 @@ function Headers() {
                                             <li><NavLink to="/cat/Fantasy Tips">Fantasy Tips</NavLink></li>
                                         </ul>
                                     </li>
-                                    <li><NavLink to="/cat/Review Zone">REVIEW ZONE</NavLink></li>
-                                    <li><NavLink to="/cat/Video">VIDEO</NavLink></li>
+                                    {/* <li><NavLink to="/cat/Review Zone">REVIEW ZONE</NavLink></li>
+                                    <li><NavLink to="/cat/Video">VIDEO</NavLink></li> */}
 
                                 </ul>
                             </nav>
