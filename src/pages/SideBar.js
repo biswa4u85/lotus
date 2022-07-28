@@ -11,7 +11,7 @@ function SideBar(props) {
 
     // Latest News
     let latestNews = newsList.filter(item => item.news_category === 'NC-007 (News)');
-    latestNews.length = 4
+    latestNews.length = 6
 
     return (
         <aside className="header-aside" data-aos="fade-up">

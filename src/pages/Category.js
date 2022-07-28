@@ -43,6 +43,7 @@ function Category(props) {
                                 <div className="news-vcard-title">
                                     <span>{moment.utc(item.modified).format('hh:mm A')}</span>
                                     <span>{moment.utc(item.modified).format('Do MMM YYYY')}</span>
+                                    <span>{item.blogger}</span>
                                 </div>
                                 <h3><NavLink to={`/details/${item.name}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
                             </div>

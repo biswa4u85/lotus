@@ -174,6 +174,7 @@ function Home() {
                                                         <div className="btcl-content-status">
                                                             <span>{moment.utc(newsList[0].modified).format('hh:mm A')}</span>
                                                             <span>{moment.utc(newsList[0].modified).format('Do MMM YYYY')}</span>
+                                                            <span>{newsList[0].blogger}</span>
                                                         </div>
                                                         <h3><NavLink to={`/details/${newsList[0].name}`}>{Config.trunCate(newsList[0].title, 40, '. . .')}</NavLink></h3>
                                                     </div>
@@ -194,6 +195,7 @@ function Home() {
                                                             <div className="btcl-content-status">
                                                                 <span>{moment.utc(newsList[1].modified).format('hh:mm A')}</span>
                                                                 <span>{moment.utc(newsList[1].modified).format('Do MMM YYYY')}</span>
+                                                                <span>{newsList[1].blogger}</span>
                                                             </div>
                                                             <h3><NavLink to={`/details/${newsList[1].name}`}>{Config.trunCate(newsList[1].title, 40, '. . .')}</NavLink></h3>
                                                         </div>
@@ -211,6 +213,7 @@ function Home() {
                                                             <div className="btcl-content-status">
                                                                 <span>{moment.utc(newsList[2].modified).format('hh:mm A')}</span>
                                                                 <span>{moment.utc(newsList[2].modified).format('Do MMM YYYY')}</span>
+                                                                <span>{newsList[2].blogger}</span>
                                                             </div>
                                                             <h3><NavLink to={`/details/${newsList[2].name}`}>{Config.trunCate(newsList[2].title, 40, '. . .')}</NavLink></h3>
                                                         </div>
@@ -349,11 +352,11 @@ function Home() {
                     <div className="weekly-tab-wrapper">
                         <ul className="nav" role="tablist" data-aos="fade-up" data-aos-delay="100">
                             <li className="nav-item" role="presentation">
-                                <button className="nav-link" data-bs-toggle="pill" data-bs-target="#travel" role="tab"
+                                <button className="nav-link active" data-bs-toggle="pill" data-bs-target="#travel" role="tab"
                                     aria-selected="true">Women</button>
                             </li>
                             <li className="nav-item" role="presentation">
-                                <button className="nav-link active" data-bs-toggle="pill" data-bs-target="#food" role="tab"
+                                <button className="nav-link" data-bs-toggle="pill" data-bs-target="#food" role="tab"
                                     aria-selected="false">Domestic Matches</button>
                             </li>
                             <li className="nav-item" role="presentation">
@@ -370,7 +373,7 @@ function Home() {
                             </li>
                         </ul>
                         <div className="tab-content" id="pills-tabContent" data-aos="fade-up" data-aos-delay="150">
-                            <div className="tab-pane fade" id="travel" role="tabpanel">
+                            <div className="tab-pane fade  show active" id="travel" role="tabpanel">
                                 <div className="weekly-list-item">
 
                                     {filterByWeek('NC-012 (Women)', 4).map((item, key) => <div key={key} className="news-vcard-single">
@@ -389,7 +392,7 @@ function Home() {
 
                                 </div>
                             </div>
-                            <div className="tab-pane fade show active" id="food" role="tabpanel">
+                            <div className="tab-pane fade" id="food" role="tabpanel">
                                 <div className="weekly-list-item">
 
                                     {filterByWeek('NC-022 (Domestic)', 4).map((item, key) => <div key={key} className="news-vcard-single">
