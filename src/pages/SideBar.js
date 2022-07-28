@@ -11,7 +11,7 @@ function SideBar(props) {
 
     // Latest News
     let latestNews = newsList.filter(item => item.news_category === 'NC-007 (News)');
-    latestNews.length = 6
+    latestNews.length = 4
 
     return (
         <aside className="header-aside" data-aos="fade-up">
@@ -32,11 +32,11 @@ function SideBar(props) {
                     </div>
                 </div>)}
             </div>
-            {/* <TwitterTimelineEmbed
+            <TwitterTimelineEmbed
                 sourceType="profile"
-                screenName="CriczoneN"
+                screenName="Lotusnews2"
                 options={{ height: 400 }}
-            /> */}
+            />
             {/* <div className="video-card">
             <img src="https://tpc.googlesyndication.com/simgad/14556471411178073418?" width="250" height="250" alt="Advertiser" border="0" />
         </div> */}

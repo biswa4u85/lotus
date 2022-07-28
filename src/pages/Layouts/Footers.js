@@ -83,7 +83,7 @@ function Footers() {
                                     <ul>
                                         <li><NavLink to="/cat/Trending News">Trending News</NavLink></li>
                                         <li><NavLink to="/cat/Press Release">Press Release</NavLink></li>
-                                        <li><NavLink to="/cat/Previews">Previews</NavLink></li>
+                                        {/* <li><NavLink to="/cat/Previews">Previews</NavLink></li> */}
                                         <li><NavLink to="/cat/Review Zone">Reviews</NavLink></li>
                                         <li><NavLink to="/cat/On this day">On this Day</NavLink></li>
                                         <li><NavLink to="/cat/Men">Men</NavLink></li>
@@ -98,8 +98,8 @@ function Footers() {
                                         <li><NavLink to="/cms/dcma-l">DCMA</NavLink></li>
                                         <li><NavLink to="/cms/disclaimer-l">DISCLAIMER</NavLink></li>
                                         <li><NavLink to="/cms/copyright-notice-l">COPYRIGHT NOTICE</NavLink></li>
-                                        <li><NavLink to="/cat/Review Zone">REVIEW</NavLink></li>
-                                        <li><NavLink to="/cat/Fantasy Tips">FANTASY</NavLink></li>
+                                        {/* <li><NavLink to="/cat/Review Zone">REVIEW</NavLink></li> */}
+                                        {/* <li><NavLink to="/cat/Fantasy Tips">FANTASY</NavLink></li> */}
                                         <li><NavLink to="/cms/about-us-l">ABOUT US</NavLink></li>
                                         <li><NavLink to="/cms/contact-us-l">CONTACT US</NavLink></li>
                                     </ul>
