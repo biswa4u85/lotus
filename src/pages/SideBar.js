@@ -10,7 +10,7 @@ function SideBar(props) {
     const newsList = useSelector((state) => state.auth.newsList)
 
     // Latest News
-    let latestNews = newsList.filter(item => item.news_category === 'NC-007 (News)');
+    let latestNews = newsList.filter(item => item.blog_category === 'news');
     latestNews.length = 4
 
     return (

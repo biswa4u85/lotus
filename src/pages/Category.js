@@ -15,12 +15,10 @@ function Category(props) {
     let { Id } = useParams();
     const dispatch = useDispatch()
     const { t } = useTranslation();
-    const categorys = useSelector((state) => state.auth.categorys)
     const newsListByCat = useSelector((state) => state.auth.newsListByCat)
 
     useEffect(() => {
-        let ID = categorys.find(item => item.description == Id)
-        dispatch(getNewsListByCat(ID?.name))
+        dispatch(getNewsListByCat(Id))
     }, [Id]);
 
     // console.log(newsListByCat)

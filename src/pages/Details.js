@@ -33,11 +33,11 @@ function Details(props) {
 
 
     // Latest News
-    let latestNews = newsList.filter(item => item.news_category === 'NC-007 (News)');
+    let latestNews = newsList.filter(item => item.blog_category === 'news');
     latestNews.length = 5
 
     // Related News
-    let relatedNews = newsList.filter(item => item.news_category === 'NC-007 (News)');
+    let relatedNews = newsList.filter(item => item.blog_category === 'news');
     relatedNews.length = 5
 
     useEffect(() => {

@@ -2994,6 +2994,8 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
 
 .bnr-lft-title .news-slider .elepse {
     max-width: calc(100% - 150px);
+    font-weight: bold;
+    white-space: nowrap;
     color: var(--color-secondary);
 }
 

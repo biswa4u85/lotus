@@ -5,13 +5,14 @@ import { useSelector, useDispatch } from 'react-redux'
 import moment from "moment";
 import Config from "../../common/Config";
 
+
 function Headers() {
     let navigate = useNavigate();
     const newsList = useSelector((state) => state.auth.newsList)
 
     // Filter News
-    let menNews = newsList.filter(item => item.news_category === 'NC-011 (Men)');
-    let wpmenNews = newsList.filter(item => item.news_category === 'NC-012 (Women)');
+    let menNews = newsList.filter(item => item.blog_category === 'men');
+    let wpmenNews = newsList.filter(item => item.blog_category === 'women');
 
 
     return (
@@ -418,24 +419,24 @@ function Headers() {
                                             </div>
                                         </div>
                                     </li>
-                                    <li className="dropdown"><NavLink to="/cat/News">NEWS</NavLink>
+                                    <li className="dropdown"><NavLink to="/cat/news">NEWS</NavLink>
                                         <ul>
-                                            <li><NavLink to="/cat/Trending News">Trending News</NavLink></li>
-                                            <li><NavLink to="/cat/Editor's Pick">Editor's Pick</NavLink></li>
-                                            <li><NavLink to="/cat/Featured Post">Featured Post</NavLink></li>
-                                            <li><NavLink to="/cat/On this day">On this day</NavLink></li>
+                                            <li><NavLink to="/cat/trending-news">Trending News</NavLink></li>
+                                            <li><NavLink to="/cat/editors-pick">Editor's Pick</NavLink></li>
+                                            <li><NavLink to="/cat/featured-post">Featured Post</NavLink></li>
+                                            <li><NavLink to="/cat/on-this-day">On this day</NavLink></li>
                                         </ul>
                                     </li>
-                                    <li className="dropdown"><NavLink to="/cat/Match Prediction">MATCH PREDICTION</NavLink>
+                                    <li className="dropdown"><NavLink to="/cat/match-prediction">MATCH PREDICTION</NavLink>
                                         <ul>
-                                            <li><NavLink to="/cat/Match Review">Match Review</NavLink></li>
-                                            <li><NavLink to="/cat/Match Prediction">Match Prediction</NavLink></li>
-                                            <li><NavLink to="/cat/Match Analysis">Match Analysis</NavLink></li>
-                                            <li><NavLink to="/cat/Fantasy Tips">Fantasy Tips</NavLink></li>
+                                            <li><NavLink to="/cat/match-review">Match Review</NavLink></li>
+                                            <li><NavLink to="/cat/match-prediction">Match Prediction</NavLink></li>
+                                            <li><NavLink to="/cat/match-analysis">Match Analysis</NavLink></li>
+                                            <li><NavLink to="/cat/fantasy-tips">Fantasy Tips</NavLink></li>
                                         </ul>
                                     </li>
-                                    {/* <li><NavLink to="/cat/Review Zone">REVIEW ZONE</NavLink></li>
-                                    <li><NavLink to="/cat/Video">VIDEO</NavLink></li> */}
+                                    {/* <li><NavLink to="/cat/review-zone">REVIEW ZONE</NavLink></li>
+                                    <li><NavLink to="/cat/video">VIDEO</NavLink></li> */}
 
                                 </ul>
                             </nav>

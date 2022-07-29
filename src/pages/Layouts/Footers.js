@@ -81,13 +81,13 @@ function Footers() {
                                 <div className="ftr-link">
                                     <h3 className="title-line-shape">Category</h3>
                                     <ul>
-                                        <li><NavLink to="/cat/Trending News">Trending News</NavLink></li>
-                                        <li><NavLink to="/cat/Press Release">Press Release</NavLink></li>
+                                        <li><NavLink to="/cat/trending-news">Trending News</NavLink></li>
+                                        <li><NavLink to="/cat/match-prediction">Match Prediction</NavLink></li>
                                         {/* <li><NavLink to="/cat/Previews">Previews</NavLink></li> */}
-                                        <li><NavLink to="/cat/Review Zone">Reviews</NavLink></li>
-                                        <li><NavLink to="/cat/On this day">On this Day</NavLink></li>
-                                        <li><NavLink to="/cat/Men">Men</NavLink></li>
-                                        <li><NavLink to="/cat/Women">Women</NavLink></li>
+                                        <li><NavLink to="/cat/review-zone">Reviews</NavLink></li>
+                                        <li><NavLink to="/cat/on-this-day">On this Day</NavLink></li>
+                                        <li><NavLink to="/cat/men">Men</NavLink></li>
+                                        <li><NavLink to="/cat/women">Women</NavLink></li>
                                     </ul>
                                 </div>
                             </div>
@@ -122,7 +122,7 @@ function Footers() {
                 <div className="ftr-dtls theme-bg">
                     <div className="container">
                         <div className="ftr-dtls-wrapper">
-                            <p>Copyright © 2022 criczone All Rights Reserved.</p>
+                            <p>Copyright © 2022 lotusnews247 All Rights Reserved.</p>
                             <ul>
                                 <li><NavLink to="/cms/terms-conditions-l">Term & Condition</NavLink></li>
                                 <li><NavLink to="/cms/privacy-l">Privacy</NavLink></li>
