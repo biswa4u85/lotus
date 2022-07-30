@@ -1,4 +1,3 @@
-
 .trending_news {
     display: flex !important;
 }
@@ -13,7 +12,7 @@
 }
 
 .ipsum {
-    background: url(../src/assets//image/player.png);
+    background: url('../image/player.png');
     background-size: cover;
     height: 442px;
     padding: 20px;
@@ -191,7 +190,7 @@
 }
 
 .whoare {
-    background: url(../src/assets//image/blackimg.png);
+    background: url(../image/blackimg.png);
     background-color: rgb(18, 16, 16);
     background-size: cover;
     padding: 20px;
@@ -286,27 +285,34 @@
 @media screen and (max-width: 768px) {
     .player_img {
         width: 100%;
-    }   
+    }
+
     .lanka {
         width: 31%;
     }
+
     .ipsum h1 {
         bottom: 20%;
     }
-    .ipsum p{
+
+    .ipsum p {
         margin: 0;
     }
+
     .cricket {
         margin-top: 5%;
     }
-    .adipisicing{
+
+    .adipisicing {
         padding: 11px;
     }
+
     .galle {
         width: 100%;
         margin: 3% 0;
     }
-    .previews{
+
+    .previews {
         margin-left: 39px;
     }
 }
