@@ -1,13 +1,13 @@
-.trending_news {
+/* .trending_news {
     display: flex !important;
-}
+} */
 
 .lanka {
     background-color: white;
     border-radius: 10px;
     box-shadow: 0px 0px 20px rgba(96, 174, 246, 0.4);
     padding: 10px;
-    width: 27%;
+
     margin: 0 7px;
 }
 
@@ -100,9 +100,7 @@
     list-style: none;
 }
 
-.srilanka {
-    margin: 7px 0;
-}
+
 
 .player {
     margin-bottom: 30px;
@@ -148,11 +146,31 @@
     width: 9% !important;
 }
 
+.srilanka {
+    margin: 14px 0;
+    display: flex;
+}
+
+.lanka-border {
+    border: 1px solid #918f8f;
+    margin: 8px 0;
+}
+
+.lanka ul li {
+    display: inline-block;
+    padding-right: 20px;
+}
+
+.owl-carousel.owl-drag .owl-item {
+    width: 0;
+}
+
 .srilanka span {
     font-size: 12px;
     color: black;
     font-weight: 600;
     padding-left: 7px;
+    text-transform: uppercase
 }
 
 .dolor span {
@@ -280,6 +298,60 @@
 .report span {
     color: red !important;
 }
+
+
+/* papu */
+
+.tab-sec .ant-tabs>.ant-tabs-nav,
+.ant-tabs>div>.ant-tabs-nav {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding: 20px;
+}
+.live{
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding: 20px;
+}
+.live-tab {
+    display: flex;
+}
+.zimbabww{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+.live-border{
+    border: 1px solid #918f8f59;
+    margin: 0 10px;
+}
+.zimbabww img{
+    width: 25%;
+}
+
+.evevts h5{
+ color: red;
+}
+
+.evevts p{
+    font-size: 12px;
+}
+
+.evevts p a {
+    text-decoration: underline;
+    cursor: pointer;
+    color: #908d8df5;; 
+}
+
+.evevts p a:hover{
+    color: #60AEF6;
+}
+
+.evevts ul li{
+    display: inline-block;
+    padding-right: 20px;
+}
+
 
 
 @media screen and (max-width: 768px) {
