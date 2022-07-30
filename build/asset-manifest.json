@@ -1,16 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.dec8e102.css",
-    "main.js": "/static/js/main.96a4f2f1.js",
+    "main.css": "/static/css/main.f17a9006.css",
+    "main.js": "/static/js/main.e07d24da.js",
     "static/css/98.63eeb566.chunk.css": "/static/css/98.63eeb566.chunk.css",
     "static/js/98.f626aac7.chunk.js": "/static/js/98.f626aac7.chunk.js",
     "static/css/57.0c665cd1.chunk.css": "/static/css/57.0c665cd1.chunk.css",
     "static/js/57.24a5d41a.chunk.js": "/static/js/57.24a5d41a.chunk.js",
     "static/js/787.10238c6d.chunk.js": "/static/js/787.10238c6d.chunk.js",
+    "static/media/player.png": "/static/media/player.87cd8372fd7f10a5acd8.png",
     "static/media/icofont.woff": "/static/media/icofont.dad3accba068281878f1.woff",
     "static/media/icofont.woff2": "/static/media/icofont.9c33516aab48c61e3081.woff2",
+    "static/media/players.png": "/static/media/players.1fce93064d12c412f9f8.png",
     "static/media/search-bg.jpg": "/static/media/search-bg.e75a1441b861135e1ca5.jpg",
+    "static/media/cricketer.png": "/static/media/cricketer.2505513a47d6cd923919.png",
+    "static/media/cricketplayer.png": "/static/media/cricketplayer.4bb926c59d91d0354c73.png",
+    "static/media/Rectangle.png": "/static/media/Rectangle.15cc9d7f2d48ac43be92.png",
+    "static/media/hardikpandia.png": "/static/media/hardikpandia.7608de52672ee09a2602.png",
     "static/media/sign-up.jpg": "/static/media/sign-up.98be8e1c9ddc2dfad1d6.jpg",
+    "static/media/core.png": "/static/media/core.f6309c7675b12f5104d8.png",
     "static/media/signin-bg.jpg": "/static/media/signin-bg.683012ee61419a28f89b.jpg",
     "static/media/promo-add.png": "/static/media/promo-add.9e43cc35abfda66b5060.png",
     "static/media/video-card.png": "/static/media/video-card.abd53c3502b5e9b1e341.png",
@@ -21,8 +28,8 @@
     "static/media/ftr-bg.svg": "/static/media/ftr-bg.d60b70dd01f0dee86e8f197add211454.svg",
     "static/media/email.svg": "/static/media/email.688a4d0d3541449113cead7b3f832ef9.svg",
     "static/media/play-btn.svg": "/static/media/play-btn.f5fbbff88fccffab534986f6e5912ba8.svg",
-    "main.dec8e102.css.map": "/static/css/main.dec8e102.css.map",
-    "main.96a4f2f1.js.map": "/static/js/main.96a4f2f1.js.map",
+    "main.f17a9006.css.map": "/static/css/main.f17a9006.css.map",
+    "main.e07d24da.js.map": "/static/js/main.e07d24da.js.map",
     "98.63eeb566.chunk.css.map": "/static/css/98.63eeb566.chunk.css.map",
     "98.f626aac7.chunk.js.map": "/static/js/98.f626aac7.chunk.js.map",
     "57.0c665cd1.chunk.css.map": "/static/css/57.0c665cd1.chunk.css.map",
@@ -30,7 +37,7 @@
     "787.10238c6d.chunk.js.map": "/static/js/787.10238c6d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.dec8e102.css",
-    "static/js/main.96a4f2f1.js"
+    "static/css/main.f17a9006.css",
+    "static/js/main.e07d24da.js"
   ]
 }
