@@ -5,7 +5,7 @@ import moment from "moment";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "../theme/use-theme";
-import { getNewsDetails } from '../store/AuthRedux'
+import { getNewsDetails } from '../store/MainRedux'
 import Config from "../common/Config";
 import { Helmet } from "react-helmet";
 
@@ -28,6 +28,7 @@ function Details(props) {
     let { pId } = useParams();
     const dispatch = useDispatch()
     const { t } = useTranslation();
+    const token = useSelector((state) => state.auth.token)
     const newsList = useSelector((state) => state.auth.newsList)
     const newsDetails = useSelector((state) => state.auth.newsDetails)
 
@@ -41,7 +42,7 @@ function Details(props) {
     relatedNews.length = 5
 
     useEffect(() => {
-        dispatch(getNewsDetails(pId))
+        dispatch(getNewsDetails({ token, pId }))
     }, [pId]);
 
 

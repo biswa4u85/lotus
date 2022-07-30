@@ -10,24 +10,18 @@ import Config from "../common/Config";
 import { Helmet } from "react-helmet";
 
 
-function Cms(props) {
+function LiveScore(props) {
     let navigate = useNavigate();
     let { Id } = useParams();
     const dispatch = useDispatch()
     const { t } = useTranslation();
     const token = useSelector((state) => state.auth.token)
-    const cmsData = useSelector((state) => state.auth.cms)
-    const cms = cmsData[Id]
-
-    useEffect(() => {
-        dispatch(getCmsDetails({token, Id}))
-    }, [Id]);
 
     return (
         <>
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>{cms?.meta_title}</title>
+                <title>{'Live Score'}</title>
                 <link rel="canonical" href="#" />
             </Helmet>
             <section className="single-post-area">
@@ -35,8 +29,8 @@ function Cms(props) {
                     <div className="row">
                         <div className="col-lg-12">
                             <div className="single-post-content">
-                                <h2>{cms?.title}</h2>
-                                <div dangerouslySetInnerHTML={{ __html: cms?.main_section_html ? cms?.main_section_html : cms?.main_section }}></div>
+                                <h2>{'Live Score'}</h2>
+                                fff
                             </div>
                         </div>
                     </div>
@@ -47,4 +41,4 @@ function Cms(props) {
     );
 }
 
-export default Cms;
+export default LiveScore;

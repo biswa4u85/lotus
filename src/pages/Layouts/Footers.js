@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from 'react-redux'
 import ftrBg from "../../assets/img/svg/ftr-bg.svg";
 import FormValidate from "../../common/FormValidate";
-import { subscribeEmail, getCmsDetails } from '../../store/AuthRedux'
+import { subscribeEmail, getCmsDetails } from '../../store/MainRedux'
 
 function Footers() {
     let navigate = useNavigate();
@@ -13,12 +13,13 @@ function Footers() {
     const emailInput = useRef(null);
     const [email, setEmail] = useState('')
     const [error, setError] = useState(null)
+    const token = useSelector((state) => state.auth.token)
     const homeSettings = useSelector((state) => state.auth.homeSettings)
     const cmsData = useSelector((state) => state.auth.cms)
     const cms = cmsData['about-us-l']
 
     useEffect(() => {
-        dispatch(getCmsDetails('about-us-l'))
+        dispatch(getCmsDetails({ token, Id: 'about-us-l' }))
     }, []);
 
     const sendNewsletter = () => {
@@ -32,7 +33,7 @@ function Footers() {
             emailInput.current.focus();
             return
         }
-        dispatch(subscribeEmail({ email }))
+        dispatch(subscribeEmail({ token, email }))
         setEmail('')
     }
 
@@ -96,12 +97,12 @@ function Footers() {
                                     <h3 className="title-line-shape">Useful Link</h3>
                                     <ul>
                                         <li><NavLink to="/cms/dcma-l">DCMA</NavLink></li>
-                                        <li><NavLink to="/cms/disclaimer-l">DISCLAIMER</NavLink></li>
-                                        <li><NavLink to="/cms/copyright-notice-l">COPYRIGHT NOTICE</NavLink></li>
+                                        <li><NavLink to="/cms/disclaimer-l">Disclaimer</NavLink></li>
+                                        <li><NavLink to="/cms/copyright-notice-l">Copyright Notice</NavLink></li>
                                         {/* <li><NavLink to="/cat/Review Zone">REVIEW</NavLink></li> */}
                                         {/* <li><NavLink to="/cat/Fantasy Tips">FANTASY</NavLink></li> */}
-                                        <li><NavLink to="/cms/about-us-l">ABOUT US</NavLink></li>
-                                        <li><NavLink to="/cms/contact-us-l">CONTACT US</NavLink></li>
+                                        <li><NavLink to="/cms/about-us-l">About Us</NavLink></li>
+                                        <li><NavLink to="/cms/contact-us-l">Contact Us</NavLink></li>
                                     </ul>
                                 </div>
                             </div>

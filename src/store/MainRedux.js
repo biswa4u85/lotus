@@ -1,10 +1,29 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { apiPostCall, fileUpload } from '../utility/site-apis'
+import { getAllDataApi, getAllSingleDataApi, postCmdApi } from '../utility/site-apis'
 import { toast } from 'react-toastify';
+import Config from "../common/Config";
+
+const siteName = 'lotus'
+
+const doctypeNewsHomePage = 'News Home Page'
+const fieldsNewsHomePage = ["meta_title", "meta_description", "left_category_one", "left_category_two", "center_category", "right_category_one", "right_category_two", "bottom_category"]
+
+const doctypeWebPage = 'Web Page'
+const fieldsWebPage = ["*"]
+
+const doctypeNewsHeadlines = 'News Headlines'
+const fieldsNewsHeadlines = ["name", "description"]
+
+const doctypeBlogCategory = 'Blog Category'
+const fieldsBlogCategory = ["name", "title", "status"]
+
+const doctypeBlogPost = 'Blog Post'
+const fieldsBlogPost = ["name", "title", "blog_category", "category_description", "blog_intro", "meta_image", "modified", "blogger"]
 
 const initialState = {
   isFetching: false,
   error: null,
+  token: Config.token,
   homeSettings: {},
   headlines: [],
   cms: {},
@@ -18,93 +37,90 @@ const initialState = {
 export const getHomeSettings = createAsyncThunk(
   'auth/getHomeSettings',
   async (params, { rejectWithValue }) => {
-    let urls = `doctype=News+Home+Page&fieldname=${JSON.stringify(["key_series_footer", "meta_title", "meta_description", "left_category_one", "left_category_two", "center_category", "right_category_one", "right_category_two", "bottom_category"])}&cmd=frappe.client.get_value`;
-    let response = await apiPostCall('/', urls)
-    if (response) {
-      return response
+    const response = await getAllSingleDataApi({ doctype: doctypeNewsHomePage, fields: fieldsNewsHomePage, ...params })
+    if (response.status === 'error') {
+      return rejectWithValue(response.data)
     }
+    return response
   }
 )
 
 export const getHeadlineList = createAsyncThunk(
   'auth/getHeadlineList',
   async (params, { rejectWithValue }) => {
-    let urls = `doctype=News+Headlines&limit_page_length=None&filters=${JSON.stringify([["News Headlines", "lotus", "like", 1]])}&fields=${JSON.stringify(["name", "description"])}&cmd=frappe.client.get_list`;
-    let response = await apiPostCall('/', urls)
-    if (response) {
-      return response
+    const response = await getAllDataApi({ doctype: doctypeNewsHeadlines, fields: fieldsNewsHeadlines, search: { [siteName]: 1 }, ...params })
+    if (response.status === 'error') {
+      return rejectWithValue(response.data)
     }
+    return response
   }
 )
 
 export const getNewsCategory = createAsyncThunk(
   'auth/getNewsCategory',
   async (params, { rejectWithValue }) => {
-    let urls = `doctype=Blog+Category&limit_page_length=None&fields=${JSON.stringify(["name", "title", "status"])}&cmd=frappe.client.get_list`;
-    let response = await apiPostCall('/', urls)
-    if (response) {
-      return response
+    const response = await getAllDataApi({ doctype: doctypeBlogCategory, fields: fieldsBlogCategory, ...params })
+    if (response.status === 'error') {
+      return rejectWithValue(response.data)
     }
+    return response
   }
 )
 
 export const getNewsList = createAsyncThunk(
   'auth/getNewsList',
-  // 'limit_start':0,
-  //  'limit_page_length': 10
   async (params, { rejectWithValue }) => {
-    let urls = `doctype=Blog+Post&limit_page_length=None&order_by=published_on desc&filters=${JSON.stringify([["Blog Post", "lotus", "like", 1]])}&fields=${JSON.stringify(["name", "title", "blog_category", "category_description", "blog_intro", "meta_image", "modified", "blogger"])}&cmd=frappe.client.get_list`;
-    let response = await apiPostCall('/', urls)
-    if (response) {
-      return response
+    const response = await getAllDataApi({ doctype: doctypeBlogPost, fields: fieldsBlogPost, search: { [siteName]: 1 }, orderBy: 'published_on desc', ...params })
+    if (response.status === 'error') {
+      return rejectWithValue(response.data)
     }
+    return response
   }
 )
 
 export const getNewsListByCat = createAsyncThunk(
   'auth/getNewsListByCat',
   async (params, { rejectWithValue }) => {
-    let urls = `doctype=Blog+Post&limit_page_length=None&order_by=published_on desc&filters=${JSON.stringify([["Blog Post", "blog_category", "like", params], ["Blog Post", "lotus", "like", 1]])}&fields=${JSON.stringify(["name", "title", "blog_category", "category_description", "blog_intro", "meta_image", "modified", "blogger"])}&cmd=frappe.client.get_list`;
-    let response = await apiPostCall('/', urls)
-    if (response) {
-      return response
+    const response = await getAllDataApi({ doctype: doctypeBlogPost, fields: fieldsBlogPost, search: { [siteName]: 1, blog_category: params.Id }, orderBy: 'published_on desc', ...params })
+    if (response.status === 'error') {
+      return rejectWithValue(response.data)
     }
+    return response
   }
 )
 
 export const getNewsDetails = createAsyncThunk(
   'auth/getNewsDetails',
   async (params, { rejectWithValue }) => {
-    let urls = `doctype=Blog+Post&fields=${JSON.stringify(["*"])}&filters=${JSON.stringify([["Blog Post", "name", "like", params]])}&cmd=frappe.client.get_list`;
-    let response = await apiPostCall('/', urls)
-    if (response) {
-      return response[0]
+    const response = await getAllDataApi({ doctype: doctypeBlogPost, fields: ["*"], search: { name: params.pId }, ...params })
+    if (response.status === 'error') {
+      return rejectWithValue(response.data)
     }
+    return response[0]
   }
 )
 
 export const getCmsDetails = createAsyncThunk(
   'auth/getCmsDetails',
   async (params, { rejectWithValue }) => {
-    let urls = `doctype=Web+Page&fields=${JSON.stringify(["*"])}&filters=${JSON.stringify([["Web Page", "route", "like", params]])}&cmd=frappe.client.get_list`;
-    let response = await apiPostCall('/', urls)
-    if (response) {
-      return { name: params, data: response[0] }
+    const response = await getAllDataApi({ doctype: doctypeWebPage, fields: fieldsWebPage, search: { route: params.Id }, ...params })
+    if (response.status === 'error') {
+      return rejectWithValue(response.data)
     }
+    return { name: params.Id, data: response[0] }
   }
 )
 
 export const subscribeEmail = createAsyncThunk(
   'auth/subscribeEmail',
   async (params, { rejectWithValue }) => {
-    let urls = `email=${params.email}&cmd=frappe.email.doctype.newsletter.newsletter.subscribe`;
-    let response = await apiPostCall('/', urls)
-    if (response) {
-      return response
+    const response = await postCmdApi({ cmd: 'frappe.email.doctype.newsletter.newsletter.subscribe', ...params })
+    if (response.status === 'error') {
+      return rejectWithValue(response.data)
     }
+    return response
   }
 )
-
 
 export const counterSlice = createSlice({
   name: 'auth',

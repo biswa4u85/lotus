@@ -5,7 +5,7 @@ import moment from "moment";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "../theme/use-theme";
-import { getNewsListByCat } from '../store/AuthRedux'
+import { getNewsListByCat } from '../store/MainRedux'
 import Config from "../common/Config";
 import { Helmet } from "react-helmet";
 
@@ -15,10 +15,11 @@ function Category(props) {
     let { Id } = useParams();
     const dispatch = useDispatch()
     const { t } = useTranslation();
+    const token = useSelector((state) => state.auth.token)
     const newsListByCat = useSelector((state) => state.auth.newsListByCat)
 
     useEffect(() => {
-        dispatch(getNewsListByCat(Id))
+        dispatch(getNewsListByCat({ token, Id }))
     }, [Id]);
 
     // console.log(newsListByCat)
