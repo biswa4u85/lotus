@@ -5,7 +5,7 @@ import Config from "../common/Config";
 
 const siteName = 'lotus'
 
-const doctypeNewsHomePage = 'News Home Page'
+const doctypeNewsHomePage = 'News Home Page Lotus'
 const fieldsNewsHomePage = ["meta_title", "meta_description", "left_category_one", "left_category_two", "center_category", "right_category_one", "right_category_two", "bottom_category"]
 
 const doctypeWebPage = 'Web Page'
@@ -18,7 +18,7 @@ const doctypeBlogCategory = 'Blog Category'
 const fieldsBlogCategory = ["name", "title", "status"]
 
 const doctypeBlogPost = 'Blog Post'
-const fieldsBlogPost = ["name", "title", "blog_category", "category_description", "blog_intro", "meta_image", "modified", "blogger"]
+const fieldsBlogPost = ["name", "title", "blog_category", "category_description", "blog_intro", "meta_image", "published_on", "blogger"]
 
 const initialState = {
   isFetching: false,

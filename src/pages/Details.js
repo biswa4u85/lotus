@@ -65,8 +65,8 @@ function Details(props) {
                                     <button className="btn btn-theme">{newsDetails?.category_description}</button>
                                 </div>
                                 <div className="timeline">
-                                    <span>{moment.utc(newsDetails?.modified).format('hh:mm A')}</span>
-                                    <span>{moment.utc(newsDetails?.modified).format('Do MMM YYYY')}</span>
+                                    <span>{moment.utc(newsDetails?.published_on).format('hh:mm A')}</span>
+                                    <span>{moment.utc(newsDetails?.published_on).format('Do MMM YYYY')}</span>
                                 </div>
                                 <h2>{newsDetails?.title}</h2>
                                 <div dangerouslySetInnerHTML={{ __html: newsDetails?.content_html ? newsDetails?.content_html : newsDetails?.content }}></div>
@@ -93,8 +93,8 @@ function Details(props) {
                                             </div>
                                             <div className="card-list-cont">
                                                 <div className="card-list-discript">
-                                                    <span>{moment.utc(item.modified).format('hh:mm A')}</span>
-                                                    <span>{moment.utc(item.modified).format('Do MMM YYYY')}</span>
+                                                    <span>{moment.utc(item.published_on).format('hh:mm A')}</span>
+                                                    <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                                 </div>
                                                 <div className="card-list-heading">
                                                     <h6><NavLink to={`/details/${item.name}`}>{Config.trunCate(item.title, 60, '. . .')}</NavLink></h6>
@@ -121,8 +121,8 @@ function Details(props) {
                                                 </div>
                                                 <div className="card-list-cont">
                                                     <div className="card-list-discript">
-                                                        <span>{moment.utc(item.modified).format('hh:mm A')}</span>
-                                                        <span>{moment.utc(item.modified).format('Do MMM YYYY')}</span>
+                                                        <span>{moment.utc(item.published_on).format('hh:mm A')}</span>
+                                                        <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                                     </div>
                                                     <div className="card-list-heading">
                                                         <h6><NavLink to={`/details/${item.name}`}>{Config.trunCate(item.title, 60, '. . .')}</NavLink></h6>

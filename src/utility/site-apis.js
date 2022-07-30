@@ -1,3 +1,5 @@
+// https://github.com/frappe/frappe-client/blob/master/frappeclient/frappeclient.py
+
 import Config from "../common/Config";
 import { toast } from 'react-toastify';
 import axios from 'axios';
@@ -71,7 +73,7 @@ export function getAllSingleDataApi(params) {
     body = body + `&fieldname=${JSON.stringify(params.fields)}`
   }
   if (params.orderBy) {
-    body = body + `&order_by=${JSON.stringify(params.orderBy)}`
+    body = body + `&order_by=${params.orderBy}`
   }
   if (params.search) {
     let filters = []
@@ -126,7 +128,7 @@ export function getAllDataApi(params) {
   }
   if (params.limit_page_length) {
     body = body + `&limit_page_length=${params.limit_page_length}`
-  }else{
+  } else {
     body = body + `&limit_page_length=None`
   }
   delete params.token
