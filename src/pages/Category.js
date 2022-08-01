@@ -16,6 +16,7 @@ function Category(props) {
     const dispatch = useDispatch()
     const { t } = useTranslation();
     const token = useSelector((state) => state.auth.token)
+    const homeSettings = useSelector((state) => state.auth.homeSettings)
     const newsListByCat = useSelector((state) => state.auth.newsListByCat)
 
     useEffect(() => {
@@ -26,10 +27,10 @@ function Category(props) {
 
     return (
         <>
-            <Helmet>
+           <Helmet>
                 <meta charSet="utf-8" />
-                {/* <title>{cms?.meta_title}</title> */}
-                <link rel="canonical" href="#" />
+                <title>{homeSettings?.meta_title}</title>
+                <meta name="description" content={homeSettings?.meta_description} />
             </Helmet>
             <section className="single-post-area">
                 <div className="container">
