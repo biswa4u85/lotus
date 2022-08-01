@@ -18,6 +18,7 @@ function LiveScore(props) {
     let { Id } = useParams();
     const dispatch = useDispatch()
     const { t } = useTranslation();
+    const homeSettings = useSelector((state) => state.auth.homeSettings)
     const token = useSelector((state) => state.auth.token)
     const { TabPane } = Tabs;
 
@@ -27,9 +28,8 @@ function LiveScore(props) {
     return (
         <>
             <Helmet>
-                <meta charSet="utf-8" />
-                <title>{'Live Score'}</title>
-                <link rel="canonical" href="#" />
+                <title>{homeSettings?.meta_title}</title>
+                <meta name="description" content={homeSettings?.meta_description} />
             </Helmet>
             <div className="tab-sec">
                 <Tabs defaultActiveKey="1" centered onChange={onChange} >
