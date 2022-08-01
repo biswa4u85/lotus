@@ -28,7 +28,7 @@ function Cms(props) {
             <Helmet>
                 <meta charSet="utf-8" />
                 <title>{cms?.meta_title}</title>
-                <link rel="canonical" href="#" />
+                <meta name="description" content={cms?.meta_description} />
             </Helmet>
             <section className="single-post-area">
                 <div className="container">

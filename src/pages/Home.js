@@ -58,7 +58,6 @@ function Home() {
     return (
         <>
             <Helmet>
-                <meta charSet="utf-8" />
                 <title>{homeSettings?.meta_title}</title>
                 <meta name="description" content={homeSettings?.meta_description} />
             </Helmet>

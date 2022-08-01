@@ -1,19 +1,21 @@
 import React, { useEffect } from "react";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux'
 import noData from "../assets/img/nodata.jpg";
 import { Helmet } from "react-helmet";
 
 
 function Page404(props) {
     let navigate = useNavigate();
+    const homeSettings = useSelector((state) => state.auth.homeSettings)
 
 
     return (
         <>
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>{'Page 404'}</title>
-                <link rel="canonical" href="#" />
+                <title>{homeSettings?.meta_title}</title>
+                <meta name="description" content={homeSettings?.meta_description} />
             </Helmet>
             <section className="single-post-area">
                 <div className="container">

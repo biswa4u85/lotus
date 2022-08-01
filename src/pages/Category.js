@@ -16,20 +16,20 @@ function Category(props) {
     const dispatch = useDispatch()
     const { t } = useTranslation();
     const token = useSelector((state) => state.auth.token)
+    const categorys = useSelector((state) => state.auth.categorys)
     const newsListByCat = useSelector((state) => state.auth.newsListByCat)
+    const category = categorys.find((x)=>x.name == Id)
 
     useEffect(() => {
         dispatch(getNewsListByCat({ token, Id }))
     }, [Id]);
 
-    // console.log(newsListByCat)
-
     return (
         <>
-            <Helmet>
+           <Helmet>
                 <meta charSet="utf-8" />
-                {/* <title>{cms?.meta_title}</title> */}
-                <link rel="canonical" href="#" />
+                <title>{category?.meta_title}</title>
+                <meta name="description" content={category?.meta_description} />
             </Helmet>
             <section className="single-post-area">
                 <div className="container">
