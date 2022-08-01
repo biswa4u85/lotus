@@ -2,12 +2,12 @@
     display: flex !important;
 } */
 
+
 .lanka {
     background-color: white;
     border-radius: 10px;
     box-shadow: 0px 0px 20px rgba(96, 174, 246, 0.4);
     padding: 10px;
-
     margin: 0 7px;
 }
 
@@ -147,13 +147,13 @@
 }
 
 .srilanka {
-    margin: 14px 0;
+    margin: 0;
     display: flex;
 }
 
 .lanka-border {
-    border: 1px solid #918f8f;
-    margin: 8px 0;
+    border: 1px solid #b4b4b45c;
+    margin: 5px 0;
 }
 
 .lanka ul li {
@@ -161,15 +161,16 @@
     padding-right: 20px;
 }
 
-.owl-carousel.owl-drag .owl-item {
-    width: 0;
+.owl-theme.owl-carousel.owl-drag .owl-item {
+    width: 418.333px !important;
+    margin-right: 0 !important;
 }
 
 .srilanka span {
     font-size: 12px;
     color: black;
     font-weight: 600;
-    padding-left: 7px;
+    padding: 7px 5px;
     text-transform: uppercase
 }
 
@@ -308,46 +309,84 @@
     border-radius: 10px;
     padding: 20px;
 }
-.live{
+
+.trending_news h6{
+    font-size: 14px;
+}
+.trending_news p{
+    font-size: 14px;
+    margin: 3px 0;
+}
+
+.live {
     background-color: #FFFFFF;
     border-radius: 10px;
-    padding: 20px;
+    padding: 10px;
+    border: 1px solid #dfdfdf;
 }
+
+.live h4 {
+    text-transform: capitalize;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.live h4 a{
+    color: #60AEF6;  
+}
+
+.live h4 a:hover{
+    text-decoration: underline;
+
+}
+
 .live-tab {
     display: flex;
 }
-.zimbabww{
+
+.zimbabww {
     display: flex;
     justify-content: space-between;
-    margin: 10px 0;
 }
-.live-border{
+
+.live-border {
     border: 1px solid #918f8f59;
     margin: 0 10px;
 }
-.zimbabww img{
-    width: 25%;
+
+.zimbabww img {
+    width: 10%;
 }
 
-.evevts h5{
- color: red;
+.evevts h5 {
+    color: red;
+    margin-top: 7px;
 }
 
-.evevts p{
+.evevts p {
     font-size: 12px;
 }
 
 .evevts p a {
     text-decoration: underline;
     cursor: pointer;
-    color: #908d8df5;; 
+    color: #908d8df5;
 }
 
-.evevts p a:hover{
+.lanka ul{
+    margin: 0;
+}
+
+.border-box {
+    border: 1px solid #b4b4b45c;
+}
+
+.evevts p a:hover {
     color: #60AEF6;
 }
 
-.evevts ul li{
+.evevts ul li {
     display: inline-block;
     padding-right: 20px;
 }
@@ -387,4 +426,9 @@
     .previews {
         margin-left: 39px;
     }
+
+    .live-tab {
+        display: block;
+    }
+
 }
