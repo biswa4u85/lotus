@@ -18,67 +18,252 @@ function Live() {
                 <div className="lanka">
                     <h5>Today At 2:30 PM . <span> 2nd ODI .</span> <span>Pallekele</span></h5>
                     <div className='srilanka'>
-                        <img src={lk} className="flagimg" /> <span> Sri Lanka</span>
+                        <img src={lk} className="flagimg" /> <span> Sri Lanka Women</span>
                     </div>
                     <div className='srilanka'>
-                        <img src={flag} className="flagimg" /> <span>Australia</span>
+                        <img src={flag} className="flagimg" /> <span>New Zealans Women</span>
                     </div>
-                    <h6>Match starts in <span>3hrs 30min</span></h6>
+                    <div>Match starts in <span>3hrs 30min</span></div>
+                    <div className="lanka-border"></div>
+                    <ul>
+                        <li>Schedule</li>
+                        <li>Table</li>
+                        <li>Fantasy</li>
+                    </ul>
                 </div>
-                <div className="lanka">
-                    <h4>LIVE . <span>1st semi final .</span> <span> FC . Alur </span></h4>
-                    <div className='srilanka'>
-                        <img src={lk} className="flagimg" /> <span> Sri Lanka</span>
-                    </div>
-                    <div className='srilanka'>
-                        <img src={flag} className="flagimg" /> <span>Australia</span>
-                    </div>
-                    <h6>Match starts in <span>3hrs 30min</span></h6>
-                </div>
-                <div className=" lanka">
-                    <h4>Innings Break . <span>1st semi final .</span> <span> FC . Alur  </span></h4>
-                    <div className='srilanka'>
-                        <img src={lk} className="flagimg" /> <span> Sri Lanka</span>
-                    </div>
-                    <div className='srilanka'>
-                        <img src={flag} className="flagimg" /> <span>Australia</span>
-                    </div>
-                    <h6>Match starts in <span>3hrs 30min</span></h6>
-                </div>
+
             </div>
         </div>
         <div className='item'>
-            <h4>2</h4>
+            <div className="trending_news">
+                <div className="lanka">
+                    <h5>Today At 2:30 PM . <span> 2nd ODI .</span> <span>Pallekele</span></h5>
+                    <div className='srilanka'>
+                        <img src={lk} className="flagimg" /> <span> Sri Lanka Women</span>
+                    </div>
+                    <div className='srilanka'>
+                        <img src={flag} className="flagimg" /> <span>New Zealans Women</span>
+                    </div>
+                    <div>Match starts in <span>3hrs 30min</span></div>
+                    <div className="lanka-border"></div>
+                    <ul>
+                        <li>Schedule</li>
+                        <li>Table</li>
+                        <li>Fantasy</li>
+                    </ul>
+                </div>
+
+            </div>
         </div>
         <div className='item'>
-            <h4>3</h4>
+            <div className="trending_news">
+                <div className="lanka">
+                    <h5>Today At 2:30 PM . <span> 2nd ODI .</span> <span>Pallekele</span></h5>
+                    <div className='srilanka'>
+                        <img src={lk} className="flagimg" /> <span> Sri Lanka Women</span>
+                    </div>
+                    <div className='srilanka'>
+                        <img src={flag} className="flagimg" /> <span>New Zealans Women</span>
+                    </div>
+                    <div>Match starts in <span>3hrs 30min</span></div>
+                    <div className="lanka-border"></div>
+                    <ul>
+                        <li>Schedule</li>
+                        <li>Table</li>
+                        <li>Fantasy</li>
+                    </ul>
+                </div>
+
+            </div>
         </div>
         <div className='item'>
-            <h4>4</h4>
+            <div className="trending_news">
+                <div className="lanka">
+                    <h5>Today At 2:30 PM . <span> 2nd ODI .</span> <span>Pallekele</span></h5>
+                    <div className='srilanka'>
+                        <img src={lk} className="flagimg" /> <span> Sri Lanka Women</span>
+                    </div>
+                    <div className='srilanka'>
+                        <img src={flag} className="flagimg" /> <span>New Zealans Women</span>
+                    </div>
+                    <div>Match starts in <span>3hrs 30min</span></div>
+                    <div className="lanka-border"></div>
+                    <ul>
+                        <li>Schedule</li>
+                        <li>Table</li>
+                        <li>Fantasy</li>
+                    </ul>
+                </div>
+
+            </div>
         </div>
         <div className='item'>
-            <h4>5</h4>
+            <div className="trending_news">
+                <div className="lanka">
+                    <h5>Today At 2:30 PM . <span> 2nd ODI .</span> <span>Pallekele</span></h5>
+                    <div className='srilanka'>
+                        <img src={lk} className="flagimg" /> <span> Sri Lanka Women</span>
+                    </div>
+                    <div className='srilanka'>
+                        <img src={flag} className="flagimg" /> <span>New Zealans Women</span>
+                    </div>
+                    <div>Match starts in <span>3hrs 30min</span></div>
+                    <div className="lanka-border"></div>
+                    <ul>
+                        <li>Schedule</li>
+                        <li>Table</li>
+                        <li>Fantasy</li>
+                    </ul>
+                </div>
+
+            </div>
         </div>
         <div className='item'>
-            <h4>6</h4>
+            <div className="trending_news">
+                <div className="lanka">
+                    <h5>Today At 2:30 PM . <span> 2nd ODI .</span> <span>Pallekele</span></h5>
+                    <div className='srilanka'>
+                        <img src={lk} className="flagimg" /> <span> Sri Lanka Women</span>
+                    </div>
+                    <div className='srilanka'>
+                        <img src={flag} className="flagimg" /> <span>New Zealans Women</span>
+                    </div>
+                    <div>Match starts in <span>3hrs 30min</span></div>
+                    <div className="lanka-border"></div>
+                    <ul>
+                        <li>Schedule</li>
+                        <li>Table</li>
+                        <li>Fantasy</li>
+                    </ul>
+                </div>
+
+            </div>
         </div>
         <div className='item'>
-            <h4>7</h4>
+            <div className="trending_news">
+                <div className="lanka">
+                    <h5>Today At 2:30 PM . <span> 2nd ODI .</span> <span>Pallekele</span></h5>
+                    <div className='srilanka'>
+                        <img src={lk} className="flagimg" /> <span> Sri Lanka Women</span>
+                    </div>
+                    <div className='srilanka'>
+                        <img src={flag} className="flagimg" /> <span>New Zealans Women</span>
+                    </div>
+                    <div>Match starts in <span>3hrs 30min</span></div>
+                    <div className="lanka-border"></div>
+                    <ul>
+                        <li>Schedule</li>
+                        <li>Table</li>
+                        <li>Fantasy</li>
+                    </ul>
+                </div>
+
+            </div>
         </div>
         <div className='item'>
-            <h4>8</h4>
+            <div className="trending_news">
+                <div className="lanka">
+                    <h5>Today At 2:30 PM . <span> 2nd ODI .</span> <span>Pallekele</span></h5>
+                    <div className='srilanka'>
+                        <img src={lk} className="flagimg" /> <span> Sri Lanka Women</span>
+                    </div>
+                    <div className='srilanka'>
+                        <img src={flag} className="flagimg" /> <span>New Zealans Women</span>
+                    </div>
+                    <div>Match starts in <span>3hrs 30min</span></div>
+                    <div className="lanka-border"></div>
+                    <ul>
+                        <li>Schedule</li>
+                        <li>Table</li>
+                        <li>Fantasy</li>
+                    </ul>
+                </div>
+
+            </div>
         </div>
         <div className='item'>
-            <h4>9</h4>
+            <div className="trending_news">
+                <div className="lanka">
+                    <h5>Today At 2:30 PM . <span> 2nd ODI .</span> <span>Pallekele</span></h5>
+                    <div className='srilanka'>
+                        <img src={lk} className="flagimg" /> <span> Sri Lanka Women</span>
+                    </div>
+                    <div className='srilanka'>
+                        <img src={flag} className="flagimg" /> <span>New Zealans Women</span>
+                    </div>
+                    <div>Match starts in <span>3hrs 30min</span></div>
+                    <div className="lanka-border"></div>
+                    <ul>
+                        <li>Schedule</li>
+                        <li>Table</li>
+                        <li>Fantasy</li>
+                    </ul>
+                </div>
+
+            </div>
         </div>
         <div className='item'>
-            <h4>10</h4>
+            <div className="trending_news">
+                <div className="lanka">
+                    <h5>Today At 2:30 PM . <span> 2nd ODI .</span> <span>Pallekele</span></h5>
+                    <div className='srilanka'>
+                        <img src={lk} className="flagimg" /> <span> Sri Lanka Women</span>
+                    </div>
+                    <div className='srilanka'>
+                        <img src={flag} className="flagimg" /> <span>New Zealans Women</span>
+                    </div>
+                    <div>Match starts in <span>3hrs 30min</span></div>
+                    <div className="lanka-border"></div>
+                    <ul>
+                        <li>Schedule</li>
+                        <li>Table</li>
+                        <li>Fantasy</li>
+                    </ul>
+                </div>
+
+            </div>
         </div>
         <div className='item'>
-            <h4>11</h4>
+            <div className="trending_news">
+                <div className="lanka">
+                    <h5>Today At 2:30 PM . <span> 2nd ODI .</span> <span>Pallekele</span></h5>
+                    <div className='srilanka'>
+                        <img src={lk} className="flagimg" /> <span> Sri Lanka Women</span>
+                    </div>
+                    <div className='srilanka'>
+                        <img src={flag} className="flagimg" /> <span>New Zealans Women</span>
+                    </div>
+                    <div>Match starts in <span>3hrs 30min</span></div>
+                    <div className="lanka-border"></div>
+                    <ul>
+                        <li>Schedule</li>
+                        <li>Table</li>
+                        <li>Fantasy</li>
+                    </ul>
+                </div>
+
+            </div>
         </div>
         <div className='item'>
-            <h4>12</h4>
+            <div className="trending_news">
+                <div className="lanka">
+                    <h5>Today At 2:30 PM . <span> 2nd ODI .</span> <span>Pallekele</span></h5>
+                    <div className='srilanka'>
+                        <img src={lk} className="flagimg" /> <span> Sri Lanka Women</span>
+                    </div>
+                    <div className='srilanka'>
+                        <img src={flag} className="flagimg" /> <span>New Zealans Women</span>
+                    </div>
+                    <div>Match starts in <span>3hrs 30min</span></div>
+                    <div className="lanka-border"></div>
+                    <ul>
+                        <li>Schedule</li>
+                        <li>Table</li>
+                        <li>Fantasy</li>
+                    </ul>
+                </div>
+
+            </div>
         </div>
     </OwlCarousel>);
 }
