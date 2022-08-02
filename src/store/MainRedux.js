@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { getAllDataApi, getAllSingleDataApi, postCmdApi } from '../utility/site-apis'
+import { getAllDataApi, getAllSingleDataApi, postCmdApi, apiPostCall } from '../utility/site-apis'
 import { toast } from 'react-toastify';
 import Config from "../common/Config";
 

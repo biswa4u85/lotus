@@ -72,7 +72,7 @@ function Home() {
                     </script> */}
                 {/* <img src="https://tpc.googlesyndication.com/simgad/14556471411178073418?" width="900" height="120" alt="Advertiser" border="0" /> */}
                 {/* </div> */}
-                <Live />
+                {/* <Live /> */}
                 <div className="container">
 
                     <div className="row">

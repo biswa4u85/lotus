@@ -8,6 +8,7 @@ const axiosAPI = axios.create({
   baseURL: Config.frappe_url,
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+    'Authorization': Config.token
   }
 });
 
@@ -112,7 +113,7 @@ export function getAllDataApi(params) {
     body = body + `&fields=${JSON.stringify(params.fields)}`
   }
   if (params.orderBy) {
-    body = body + `&order_by=${JSON.stringify(params.orderBy)}`
+    body = body + `&order_by=${params.orderBy}`
   }
   if (params.search) {
     let filters = []
