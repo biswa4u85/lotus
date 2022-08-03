@@ -65,7 +65,7 @@ function Details(props) {
                                     <button className="btn btn-theme">{newsDetails?.category_description}</button>
                                 </div>
                                 <div className="timeline">
-                                    <span>{moment.utc(newsDetails?.published_on).format('hh:mm A')}</span>
+                                    <span>{moment.utc(newsDetails?.published_time).format('hh:mm A')}</span>
                                     <span>{moment.utc(newsDetails?.published_on).format('Do MMM YYYY')}</span>
                                 </div>
                                 <h2>{newsDetails?.title}</h2>
@@ -93,7 +93,7 @@ function Details(props) {
                                             </div>
                                             <div className="card-list-cont">
                                                 <div className="card-list-discript">
-                                                    <span>{moment.utc(item.published_on).format('hh:mm A')}</span>
+                                                    <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
                                                     <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                                 </div>
                                                 <div className="card-list-heading">
@@ -121,7 +121,7 @@ function Details(props) {
                                                 </div>
                                                 <div className="card-list-cont">
                                                     <div className="card-list-discript">
-                                                        <span>{moment.utc(item.published_on).format('hh:mm A')}</span>
+                                                        <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
                                                         <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                                     </div>
                                                     <div className="card-list-heading">

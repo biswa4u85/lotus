@@ -102,12 +102,12 @@ function Home() {
                                                     </div>
                                                     <div className="btlc-content">
                                                         <div className="btcl-content-status">
-                                                            <span>{moment.utc(newsList[0].published_on).format('hh:mm A')}</span>
+                                                            <span>{moment.utc(newsList[0].published_time).format('hh:mm A')}</span>
                                                             <span>{moment.utc(newsList[0].published_on).format('Do MMM YYYY')}</span>
                                                             <span>{newsList[0].blogger}</span>
                                                         </div>
                                                         <h3><NavLink to={`/details/${newsList[0].name}`}>{Config.trunCate(newsList[0].title, 40, '. . .')}</NavLink></h3>
-                                                    </div>
+                                                    </div>  
                                                 </div>
                                             </div>)}
                                         </div>
@@ -123,7 +123,7 @@ function Home() {
                                                         </div>
                                                         <div className="btlc-content">
                                                             <div className="btcl-content-status">
-                                                                <span>{moment.utc(newsList[1].published_on).format('hh:mm A')}</span>
+                                                                <span>{moment.utc(newsList[1].published_time).format('hh:mm A')}</span>
                                                                 <span>{moment.utc(newsList[1].published_on).format('Do MMM YYYY')}</span>
                                                                 <span>{newsList[1].blogger}</span>
                                                             </div>
@@ -141,7 +141,7 @@ function Home() {
                                                         </div>
                                                         <div className="btlc-content">
                                                             <div className="btcl-content-status">
-                                                                <span>{moment.utc(newsList[2].published_on).format('hh:mm A')}</span>
+                                                                <span>{moment.utc(newsList[2].published_time).format('hh:mm A')}</span>
                                                                 <span>{moment.utc(newsList[2].published_on).format('Do MMM YYYY')}</span>
                                                                 <span>{newsList[2].blogger}</span>
                                                             </div>
@@ -178,7 +178,7 @@ function Home() {
                                                 <span className="btn">{item.category_description}</span>
                                                 <div className="btlc-content">
                                                     <div className="btcl-content-status">
-                                                        <span>{moment.utc(item.published_on).format('hh:mm A')}</span>
+                                                        <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
                                                         <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                                     </div>
                                                     <h3>{Config.trunCate(item.title, 40, '. . .')}</h3>
@@ -191,7 +191,7 @@ function Home() {
                                                 <span className="btn">{item.category_description}</span>
                                                 <div className="btlc-content">
                                                     <div className="btcl-content-status">
-                                                        <span>{moment.utc(item.published_on).format('hh:mm A')}</span>
+                                                        <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
                                                         <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                                     </div>
                                                     <h3>{Config.trunCate(item.title, 40, '. . .')}</h3>
@@ -207,7 +207,7 @@ function Home() {
                                             <span className="btn btn-red">{item.category_description}</span>
                                             <div className="btlc-content">
                                                 <div className="btcl-content-status">
-                                                    <span>{moment.utc(item.published_on).format('hh:mm A')}</span>
+                                                    <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
                                                     <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                                 </div>
                                                 <h3>{Config.trunCate(item.title, 60, '. . .')}</h3>
@@ -224,7 +224,7 @@ function Home() {
                                         </div>
                                         <div className="nsc-list-content">
                                             <div className="nsc-list-title">
-                                                <span>{moment.utc(item.published_on).format('hh:mm A')}</span>
+                                                <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
                                                 <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                             </div>
                                             <h3>{Config.trunCate(item.title, 40, '. . .')}
@@ -245,7 +245,7 @@ function Home() {
                                     </div>
                                     <div className="news-vcard-content">
                                         <div className="news-vcard-title">
-                                            <span>{moment.utc(item.published_on).format('hh:mm A')}</span>
+                                            <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
                                             <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                         </div>
                                         <h3>{Config.trunCate(item.title, 40, '. . .')}</h3>
@@ -259,7 +259,7 @@ function Home() {
                                     </div>
                                     <div className="news-vcard-content">
                                         <div className="news-vcard-title">
-                                            <span>{moment.utc(item.published_on).format('hh:mm A')}</span>
+                                            <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
                                             <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                         </div>
                                         <h3>{Config.trunCate(item.title, 40, '. . .')}</h3>
@@ -312,7 +312,7 @@ function Home() {
                                         </div>
                                         <div className="news-vcard-content">
                                             <div className="news-vcard-title">
-                                                <span>{moment.utc(item.published_on).format('hh:mm A')}</span>
+                                                <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
                                                 <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                             </div>
                                             <h3><NavLink to={`/details/${item.name}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
@@ -331,7 +331,7 @@ function Home() {
                                         </div>
                                         <div className="news-vcard-content">
                                             <div className="news-vcard-title">
-                                                <span>{moment.utc(item.published_on).format('hh:mm A')}</span>
+                                                <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
                                                 <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                             </div>
                                             <h3><NavLink to={`/details/${item.name}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
@@ -348,7 +348,7 @@ function Home() {
                                         </div>
                                         <div className="news-vcard-content">
                                             <div className="news-vcard-title">
-                                                <span>{moment.utc(item.published_on).format('hh:mm A')}</span>
+                                                <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
                                                 <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                             </div>
                                             <h3><NavLink to={`/details/${item.name}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
@@ -365,7 +365,7 @@ function Home() {
                                         </div>
                                         <div className="news-vcard-content">
                                             <div className="news-vcard-title">
-                                                <span>{moment.utc(item.published_on).format('hh:mm A')}</span>
+                                                <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
                                                 <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                             </div>
                                             <h3><NavLink to={`/details/${item.name}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
@@ -382,7 +382,7 @@ function Home() {
                                         </div>
                                         <div className="news-vcard-content">
                                             <div className="news-vcard-title">
-                                                <span>{moment.utc(item.published_on).format('hh:mm A')}</span>
+                                                <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
                                                 <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                             </div>
                                             <h3><NavLink to={`/details/${item.name}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
@@ -404,7 +404,7 @@ function Home() {
                             </div>
                             <div className="fdc-content">
                                 <div className="fdc-title">
-                                    <span>{moment.utc(item.published_on).format('hh:mm A')}</span>
+                                    <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
                                     <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                 </div>
                                 <h3><NavLink to={`/details/${item.name}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>

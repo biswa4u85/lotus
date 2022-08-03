@@ -40,7 +40,7 @@ function Category(props) {
                             </div>
                             <div className="news-vcard-content">
                                 <div className="news-vcard-title">
-                                    <span>{moment.utc(item.published_on).format('hh:mm A')}</span>
+                                    <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
                                     <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                     <span>{item.blogger}</span>
                                 </div>

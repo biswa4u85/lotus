@@ -60,7 +60,7 @@ function Headers() {
                                                                     </div>
                                                                     <div className="carousel-card-content">
                                                                         <div className="post-date-time">
-                                                                            <span>{moment.utc(item.published_on).format('hh:mm A')}</span>
+                                                                            <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
                                                                             <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                                                         </div>
                                                                         <h4>{Config.trunCate(item.title, 40, '. . .')}</h4>
@@ -86,7 +86,7 @@ function Headers() {
                                                                     </div>
                                                                     <div className="carousel-card-content">
                                                                         <div className="post-date-time">
-                                                                            <span>{moment.utc(item.published_on).format('hh:mm A')}</span>
+                                                                            <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
                                                                             <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                                                         </div>
                                                                         <h4>{Config.trunCate(item.title, 40, '. . .')}</h4>
