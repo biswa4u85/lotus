@@ -9319,7 +9319,9 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before {
     grid-template-columns: 1fr 1fr;
     margin: 0 auto
 }
-
+.ant-form-item-explain-error{
+    text-align: left;
+}
 .single-post-form {
     text-align: center
 }

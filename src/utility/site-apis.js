@@ -64,6 +64,32 @@ export function postCmdApi(params) {
     });
 }
 
+export function postMethodApi(params) {
+  let token = params.token
+  let method = params.method
+  delete params.token
+  delete params.method
+
+  let headers = {}
+  if (token) {
+    headers.Authorization = token
+  }
+
+  let body = ``;
+  for (let key in params) {
+    if (params[key]) {
+      body = body + `${key}=${params[key]}&`
+    }
+  }
+  return axiosAPI.post(`api/method/${method}`, body, { headers: headers })
+    .then((response) => {
+      return response
+    })
+    .catch((error) => {
+      return handleResponse(error);
+    });
+}
+
 export function getAllSingleDataApi(params) {
   let headers = {}
   if (params.token) {
