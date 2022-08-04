@@ -22,7 +22,7 @@ function Home() {
         dispatch(getHomeSettings({ token }))
         dispatch(getHeadlineList({ token }))
         dispatch(getNewsCategory({ token }))
-        dispatch(getNewsList({ token }))
+        dispatch(getNewsList({ page: 1, size: 100, token }))
     }, []);
 
 
@@ -107,7 +107,7 @@ function Home() {
                                                             <span>{newsList[0].blogger}</span>
                                                         </div>
                                                         <h3><NavLink to={`/details/${newsList[0].name}`}>{Config.trunCate(newsList[0].title, 40, '. . .')}</NavLink></h3>
-                                                    </div>  
+                                                    </div>
                                                 </div>
                                             </div>)}
                                         </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { Button, Breadcrumb, Form, Row, Col, Input, Space, Select, Radio } from 'antd';
 import moment from "moment";
+import $ from 'jquery';
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { getNewsDetails, addComments } from '../store/MainRedux'
@@ -21,7 +22,8 @@ function Details(props) {
     const newsList = useSelector((state) => state.auth.newsList)
     const newsDetails = useSelector((state) => state.auth.newsDetails)
     const isAddComment = useSelector((state) => state.auth.isAddComment)
-
+    const userToken = useSelector((state) => state.user.token)
+    const user = useSelector((state) => state.user.user)
 
     // Latest News
     let latestNews = newsList.filter(item => item.blog_category === 'news');
@@ -39,7 +41,7 @@ function Details(props) {
 
 
     const onFinish = (values) => {
-        dispatch(addComments({ ...values, reference_name: newsDetails.name, comment_by: values.name, comment_email: values.email, content: values.message, token }))
+        dispatch(addComments({ ...values, reference_name: newsDetails.name, comment_by: user.first_name, comment_email: user.email, content: values.message, token: userToken }))
         pageActive.current = true
     };
 
@@ -171,9 +173,13 @@ function Details(props) {
                             </h2>
                         </div>
                         <div className="single-post-form">
-                            <Form
+                            {userToken ? <Form
                                 form={form}
                                 onFinish={onFinish}
+                                initialValues={{
+                                    name: user?.first_name,
+                                    email: user?.email,
+                                }}
                             >
                                 <div className="spf-group">
                                     <Form.Item
@@ -186,10 +192,9 @@ function Details(props) {
                                                 message: 'Add your Full Name',
                                             },
                                         ]}>
-                                        <Input placeholder={'Enter your Full Name'} />
+                                        <Input readOnly placeholder={'Enter your Full Name'} />
                                     </Form.Item>
                                     <Form.Item
-
                                         name='email'
                                         label='Your e-mail'
                                         getValueFromEvent={e => (e.target.value).trimStart()}
@@ -199,7 +204,7 @@ function Details(props) {
                                                 message: 'Please input your Email Address!',
                                             },
                                         ]}>
-                                        <Input placeholder={'Enter your e-mail'} />
+                                        <Input readOnly placeholder={'Enter your e-mail'} />
                                     </Form.Item>
                                 </div>
                                 <Form.Item
@@ -215,10 +220,14 @@ function Details(props) {
                                     ]}>
                                     <TextArea placeholder={'Enter Messages'} rows={4} />
                                 </Form.Item>
-                                <Form.Item >
+                                <Form.Item>
                                     <Button className="btn btn-theme" type='primary' htmlType='submit'>{'Submit Comment'}</Button>
                                 </Form.Item>
-                            </Form>
+                            </Form> : <Button onClick={() => {
+                                $(".signin, .signin-bg, .header-area").addClass("active");
+                                $("body").addClass("overlay");
+                                $(".sign-option").removeClass("active");
+                            }} className="btn btn-theme" type='primary'>{'Login to add a comment'}</Button>}
                         </div>
                     </div>
                 </div>

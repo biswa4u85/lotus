@@ -19,8 +19,6 @@ function handleResponse(error) {
 
 export function loginApi(path, params) {
   let headers = { 'Content-Type': 'application/json' }
-  delete params.token
-  delete params.razorPaySignature
   return axiosAPI.post(path, params, { headers: headers })
     .then((response) => {
       return response.data.message
@@ -150,11 +148,12 @@ export function getAllDataApi(params) {
     }
     body = body + `&filters=${JSON.stringify(filters)}`
   }
-  if (params.limit_start) {
-    body = body + `&limit_start=${params.limit_start}`
+  if (params.page) {
+    let limitStart = (params.page == 1) ? 0 : String(Number(params.page) - 1) + "0"
+    body = body + `&limit_start=${limitStart}`
   }
-  if (params.limit_page_length) {
-    body = body + `&limit_page_length=${params.limit_page_length}`
+  if (params.size) {
+    body = body + `&limit_page_length=${params.size}`
   } else {
     body = body + `&limit_page_length=None`
   }
@@ -163,7 +162,7 @@ export function getAllDataApi(params) {
   delete params.search
   return axiosAPI.post('', body, { headers: headers })
     .then((response) => {
-      return response.data.message
+      return { data: response.data.message, count: 18 }
     })
     .catch((error) => {
       return handleResponse(error);
