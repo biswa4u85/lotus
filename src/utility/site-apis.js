@@ -127,23 +127,30 @@ export function getAllSingleDataApi(params) {
     });
 }
 
-export function getAllDataApi(params) {
+export async function getAllDataApi(params) {
+  let doctype = params.doctype
+  let token = params.token
+  let search = params.search
+  delete params.token
+  delete params.doctype
+  delete params.search
+
   let headers = {}
-  if (params.token) {
-    headers.Authorization = params.token
+  if (token) {
+    headers.Authorization = token
   }
-  let body = `doctype=${params.doctype}&cmd=frappe.client.get_list`;
+  let body = `doctype=${doctype}&cmd=frappe.client.get_list`;
   if (params.fields) {
     body = body + `&fields=${JSON.stringify(params.fields)}`
   }
   if (params.orderBy) {
     body = body + `&order_by=${params.orderBy}`
   }
-  if (params.search) {
+  if (search) {
     let filters = []
-    for (let key in params.search) {
-      if (params.search[key]) {
-        filters.push([params.doctype, key, "like", params.search[key]])
+    for (let key in search) {
+      if (search[key]) {
+        filters.push([doctype, key, "like", search[key]])
       }
     }
     body = body + `&filters=${JSON.stringify(filters)}`
@@ -157,12 +164,26 @@ export function getAllDataApi(params) {
   } else {
     body = body + `&limit_page_length=None`
   }
-  delete params.token
-  delete params.doctype
-  delete params.search
+
+
+  // Get Counts
+  let count = 0
+  let countHeaders = { 'Content-Type': 'application/json' }
+  let searchBy = {}
+  if (search) {
+    for (let key in search) {
+      if (search[key]) {
+        searchBy[key] = search[key]
+      }
+    }
+  }
+  let counts = await axiosAPI.post('api/method/erp_custom_auth.authentication.getDataDB', { doctype: doctype, search: searchBy }, { headers: countHeaders })
+  if (counts) {
+    count = counts?.data?.message ? counts.data.message : 0
+  }
   return axiosAPI.post('', body, { headers: headers })
     .then((response) => {
-      return { data: response.data.message, count: 18 }
+      return { data: response.data.message, count }
     })
     .catch((error) => {
       return handleResponse(error);

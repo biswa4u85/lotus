@@ -53,7 +53,7 @@ function Category(props) {
                             </div>
                         </div>) : null}
                     </div>
-                    <div style={{ marginTop: 10, textAlign: 'right' }}><Pagination onChange={handlePageChange} defaultCurrent={1} pageSize={6} total={newsListByCatCount} /></div>
+                    <div style={{ marginTop: 10, textAlign: 'right' }}><Pagination onChange={handlePageChange} defaultCurrent={1} pageSize={12} total={newsListByCatCount} /></div>
                 </div>
             </section>
 
