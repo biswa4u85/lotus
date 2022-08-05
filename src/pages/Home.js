@@ -19,10 +19,11 @@ function Home() {
     const newsList = useSelector((state) => state.auth.newsList)
 
     useEffect(() => {
+        window.scrollTo(0, 0)
         dispatch(getHomeSettings({ token }))
         dispatch(getHeadlineList({ token }))
         dispatch(getNewsCategory({ token }))
-        dispatch(getNewsList({ page: 1, size: 100, token }))
+        dispatch(getNewsList({ page: 1, size: 500, token }))
     }, []);
 
 

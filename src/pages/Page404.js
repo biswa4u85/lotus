@@ -9,6 +9,9 @@ function Page404(props) {
     let navigate = useNavigate();
     const homeSettings = useSelector((state) => state.auth.homeSettings)
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, []);
 
     return (
         <>

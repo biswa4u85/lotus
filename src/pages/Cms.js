@@ -20,6 +20,10 @@ function Cms(props) {
     const cms = cmsData[Id]
 
     useEffect(() => {
+        window.scrollTo(0, 0)
+    }, []);
+    
+    useEffect(() => {
         dispatch(getCmsDetails({token, Id}))
     }, [Id]);
 

@@ -21,6 +21,10 @@ function Category(props) {
     const category = categorys.find((x) => x.name == Id)
 
     useEffect(() => {
+        window.scrollTo(0, 0)
+    }, []);
+    
+    useEffect(() => {
         handlePageChange()
     }, [Id]);
 

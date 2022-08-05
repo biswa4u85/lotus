@@ -1,4 +1,4 @@
-import React, { } from "react";
+import React, { useEffect } from "react";
 import { Tabs, Row, Col } from 'antd';
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate, useParams } from "react-router-dom";
@@ -30,6 +30,10 @@ function LiveScore(props) {
     const homeSettings = useSelector((state) => state.auth.homeSettings)
     const token = useSelector((state) => state.auth.token)
     const { TabPane } = Tabs;
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, []);
 
     const onChange = (key) => {
         console.log(key);

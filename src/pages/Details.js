@@ -25,6 +25,10 @@ function Details(props) {
     const userToken = useSelector((state) => state.user.token)
     const user = useSelector((state) => state.user.user)
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, []);
+    
     // Latest News
     let latestNews = newsList.filter(item => item.blog_category === 'news');
     latestNews.length = 5
