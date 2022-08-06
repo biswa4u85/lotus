@@ -27,7 +27,8 @@ function Details(props) {
 
     useEffect(() => {
         window.scrollTo(0, 0)
-    }, []);
+        dispatch(getNewsDetails({ token, pId }))
+    }, [pId]);
     
     // Latest News
     let latestNews = newsList.filter(item => item.blog_category === 'news');
@@ -36,10 +37,6 @@ function Details(props) {
     // Related News
     let relatedNews = newsList.filter(item => item.blog_category === 'news');
     relatedNews.length = 5
-
-    useEffect(() => {
-        dispatch(getNewsDetails({ token, pId }))
-    }, [pId]);
 
     let comments = newsDetails._comments ? JSON.parse(newsDetails._comments) : []
 

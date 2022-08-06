@@ -19,12 +19,9 @@ function Category(props) {
     const newsListByCat = useSelector((state) => state.auth.newsListByCat.data)
     const newsListByCatCount = useSelector((state) => state.auth.newsListByCat.count)
     const category = categorys.find((x) => x.name == Id)
-
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, []);
     
     useEffect(() => {
+        window.scrollTo(0, 0)
         handlePageChange()
     }, [Id]);
 

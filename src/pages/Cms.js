@@ -18,12 +18,9 @@ function Cms(props) {
     const token = useSelector((state) => state.auth.token)
     const cmsData = useSelector((state) => state.auth.cms)
     const cms = cmsData[Id]
-
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, []);
     
     useEffect(() => {
+        window.scrollTo(0, 0)
         dispatch(getCmsDetails({token, Id}))
     }, [Id]);
 

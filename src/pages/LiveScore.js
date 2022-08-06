@@ -20,8 +20,6 @@ import Flag13 from "../assets/image/Flag13.webp";
 import Flag14 from "../assets/image/Flag14.webp";
 import Flag15 from "../assets/image/Flag15.webp";
 
-
-
 function LiveScore(props) {
     let navigate = useNavigate();
     let { Id } = useParams();
@@ -38,6 +36,7 @@ function LiveScore(props) {
     const onChange = (key) => {
         console.log(key);
     };
+
     return (
         <>
             <Helmet>

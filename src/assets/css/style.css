@@ -158,6 +158,24 @@
     }
 }
 
+.ant-layout {
+    background: #f0f2f5 url('../img/bg.png') repeat !important
+}
+
+.viewAllMatch {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.viewAllMatch button {
+    padding: 15px 30px;
+    font-size: var(--text-16);
+    font-weight: var(--medium);
+    color: var(--white);
+    background-color: var(--color-primary);
+    height: 100%;
+}
+
 .social-icon {
     display: flex;
     align-items: center
@@ -2956,7 +2974,9 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
 }
 
 .nvbanner-area {
-    padding: 15px 0px 35px 0px
+    padding: 15px 0px;
+    margin-bottom: 20px;
+    background: #f2e3c4;
 }
 
 .bnr-lft {
@@ -9321,9 +9341,11 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before {
     grid-template-columns: 1fr 1fr;
     margin: 0 auto
 }
-.ant-form-item-explain-error{
+
+.ant-form-item-explain-error {
     text-align: left;
 }
+
 .single-post-form {
     text-align: center
 }
@@ -11461,6 +11483,10 @@ body.demo {
     }
 }
 
+.footerMobile {
+    display: none;
+}
+
 @media screen and (max-width: 767px) {
     .error-right h5 {
         font-size: 18px
@@ -11468,5 +11494,61 @@ body.demo {
 
     .error-right h6 {
         font-size: 45px
+    }
+
+    .header-logo {
+        width: 285px !important;
+        background-position: left center !important;
+    }
+
+    .sign-option {
+        width: 100px;
+    }
+
+    .toggle-bar:before,
+    .toggle-bar:after,
+    .toggle-bar span {
+        background-color: var(--color-blue);
+    }
+
+    .footer-area .footer-logo {
+        background-position: center !important;
+    }
+
+    .ftr-contact,
+    .ftr-link {
+        text-align: center;
+    }
+
+    .footerMobile {
+        display: block;
+        position: fixed;
+        width: 100%;
+        background-color: #f2e2c4;
+        z-index: 99999;
+        bottom: 0;
+    }
+
+    .footerMobile ul {
+        display: flex;
+        justify-content: space-between;
+        margin: 0;
+    }
+
+    .footerMobile li a.active {
+        background-color: var(--color-blue);
+        color: var(--color-white);
+    }
+
+    .footerMobile li a {
+        text-align: center;
+        display: block;
+        font-size: 15px;
+        padding: 10px 20px;
+        color: var(--color-black);
+    }
+
+    .footerMobile li i {
+        display: block;
     }
 }

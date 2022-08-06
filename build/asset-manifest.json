@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.8dce5e9b.css",
-    "main.js": "/static/js/main.bf9a52ab.js",
+    "main.css": "/static/css/main.af749de2.css",
+    "main.js": "/static/js/main.3ec0f5a1.js",
     "static/css/98.63eeb566.chunk.css": "/static/css/98.63eeb566.chunk.css",
     "static/js/98.f626aac7.chunk.js": "/static/js/98.f626aac7.chunk.js",
     "static/css/57.0c665cd1.chunk.css": "/static/css/57.0c665cd1.chunk.css",
@@ -13,6 +13,7 @@
     "static/media/search-bg.jpg": "/static/media/search-bg.e75a1441b861135e1ca5.jpg",
     "static/media/sign-up.jpg": "/static/media/sign-up.98be8e1c9ddc2dfad1d6.jpg",
     "static/media/signin-bg.jpg": "/static/media/signin-bg.683012ee61419a28f89b.jpg",
+    "static/media/bg.png": "/static/media/bg.c026467d130960237b8f.png",
     "static/media/nodata.jpg": "/static/media/nodata.cb9d93ff7f4e4ae337ef.jpg",
     "static/media/logo-light.png": "/static/media/logo-light.cf54cf11fce28b1874c3.png",
     "static/media/Flag13.webp": "/static/media/Flag13.bfa2deaa5555ae836969.webp",
@@ -33,8 +34,8 @@
     "static/media/ftr-bg.svg": "/static/media/ftr-bg.d60b70dd01f0dee86e8f197add211454.svg",
     "static/media/Flag4.webp": "/static/media/Flag4.1ed24f4178cc9300f607.webp",
     "static/media/play-btn.svg": "/static/media/play-btn.f5fbbff88fccffab534986f6e5912ba8.svg",
-    "main.8dce5e9b.css.map": "/static/css/main.8dce5e9b.css.map",
-    "main.bf9a52ab.js.map": "/static/js/main.bf9a52ab.js.map",
+    "main.af749de2.css.map": "/static/css/main.af749de2.css.map",
+    "main.3ec0f5a1.js.map": "/static/js/main.3ec0f5a1.js.map",
     "98.63eeb566.chunk.css.map": "/static/css/98.63eeb566.chunk.css.map",
     "98.f626aac7.chunk.js.map": "/static/js/98.f626aac7.chunk.js.map",
     "57.0c665cd1.chunk.css.map": "/static/css/57.0c665cd1.chunk.css.map",
@@ -42,7 +43,7 @@
     "787.10238c6d.chunk.js.map": "/static/js/787.10238c6d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8dce5e9b.css",
-    "static/js/main.bf9a52ab.js"
+    "static/css/main.af749de2.css",
+    "static/js/main.3ec0f5a1.js"
   ]
 }

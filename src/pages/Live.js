@@ -1,4 +1,4 @@
-import React, {  } from "react";
+import React, { } from "react";
 import OwlCarousel from 'react-owl-carousel';
 import Flag1 from "../assets/image/Flag1.webp";
 import Flag2 from "../assets/image/Flag2.webp";
@@ -14,10 +14,20 @@ import Flag12 from "../assets/image/Flag12.webp";
 import Flag13 from "../assets/image/Flag13.webp";
 import Flag14 from "../assets/image/Flag14.webp";
 
-
+const responsive = {
+    0: {
+        items: 1,
+    },
+    480: {
+        items: 1,
+    },
+    768: {
+        items: 3,
+    }
+}
 
 function Live() {
-    return (<OwlCarousel className='owl-theme' loop margin={10} nav>
+    return (<OwlCarousel className='owl-theme' responsive={responsive} loop margin={10} nav={false}>
         <div className='item'>
             <div className="trending_news">
                 <div className="lanka">
@@ -39,7 +49,7 @@ function Live() {
             </div>
         </div>
         <div className='item'>
-        <div className="trending_news">
+            <div className="trending_news">
                 <div className="lanka">
                     <h6>Today At 2:30 PM . <span> 2nd ODI .</span> <span>Pallekele</span></h6>
                     <div className='srilanka'>

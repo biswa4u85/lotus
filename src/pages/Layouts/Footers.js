@@ -132,6 +132,14 @@ function Footers() {
                     </div>
                 </div>
             </footer>
+            <div className="footerMobile">
+                <ul>
+                    <li><NavLink to="/"><i className="icofont-home"></i> Home</NavLink></li>
+                    <li><NavLink to="/live-score"><i className="icofont-score-board"></i>  Live score</NavLink></li>
+                    <li><a><i className="icofont-ssl-security"></i>  Series</a></li>
+                    <li><a><i className="icofont-navigation-menu"></i> More</a></li>
+                </ul>
+            </div>
         </>
     );
 }

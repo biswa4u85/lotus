@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import moment from "moment";
 import { useSelector, useDispatch } from 'react-redux'
-import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { NavLink, useNavigate } from "react-router-dom";
 import { getHomeSettings, getHeadlineList, getNewsCategory, getNewsList } from '../store/MainRedux'
 import { Helmet } from "react-helmet";
 import Config from "../common/Config";
@@ -11,6 +11,7 @@ import Live from './Live';
 
 function Home() {
     const dispatch = useDispatch()
+    let navigate = useNavigate();
     const { t } = useTranslation();
     const liveData = [{}, {}, {}, {}, {}, {}, {}, {}, {}]
     const token = useSelector((state) => state.auth.token)
@@ -54,8 +55,6 @@ function Home() {
         return dataList
     }
 
-    // console.log(categorys)
-
     return (
         <>
             <Helmet>
@@ -63,105 +62,97 @@ function Home() {
                 <meta name="description" content={homeSettings?.meta_description} />
             </Helmet>
             <div className="nvbanner-area">
-                {/* <div style={{ textAlign: "center", marginBottom: 20 }}> */}
-                {/* <ins className="adsbygoogle"
-                        style={{ display: 'inline-block', width: 728, height: 90 }}
-                        data-ad-client="ca-pub-1234567890123456"
-                        data-ad-slot="1234567890"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({ });
-                    </script> */}
-                {/* <img src="https://tpc.googlesyndication.com/simgad/14556471411178073418?" width="900" height="120" alt="Advertiser" border="0" /> */}
-                {/* </div> */}
-                {/* <Live /> */}
-                <div className="container">
+                <Live />
+                <div className="viewAllMatch"><button onClick={() => navigate('/live-score')}>View all Matches</button></div>
+            </div>
+            <div className="container">
 
-                    <div className="row">
-                        <div className="col-xl-8">
-                            <div className="bnr-lft">
-                                <div className="bnr-lft-title" data-aos="fade-up">
-                                    <div className="news-heading">
-                                        <h5>Headline</h5>
-                                    </div>
-                                    <div className="news-slider owl-carousel" data-carousel-loop="true" data-carousel-items="1"
-                                        data-carousel-nav="false" data-carousel-dots="false" data-carousel-autoplay="true"
-                                        data-carousel-mousedrag="true" data-carousel-animateout="null">
-                                        {headlines ? headlines.map((item, key) => <div key={key} className="elepse">
-                                            {item.description}
-                                        </div>) : null}
-                                    </div>
+                <div className="row">
+                    <div className="col-xl-8">
+                        <div className="bnr-lft">
+                            <div className="bnr-lft-title" data-aos="fade-up">
+                                <div className="news-heading">
+                                    <h5>Headline</h5>
                                 </div>
-                                <div className="bnr-lft-cnt">
-                                    <div className="row">
-                                        <div className="col-md-7" data-aos="fade-up" data-aos-delay="50">
-                                            {newsList[0] && (<div className="btl-simple-card">
-                                                {Config.randerImage(newsList[0].meta_image, 600, 740)}
+                                <div className="news-slider owl-carousel" data-carousel-loop="true" data-carousel-items="1"
+                                    data-carousel-nav="false" data-carousel-dots="false" data-carousel-autoplay="true"
+                                    data-carousel-mousedrag="true" data-carousel-animateout="null">
+                                    {headlines ? headlines.map((item, key) => <div key={key} className="elepse">
+                                        {item.description}
+                                    </div>) : null}
+                                </div>
+                            </div>
+                            <div className="bnr-lft-cnt">
+                                <div className="row">
+                                    <div className="col-md-7" data-aos="fade-up" data-aos-delay="50">
+                                        {newsList[0] && (<div className="btl-simple-card">
+                                            {Config.randerImage(newsList[0].meta_image, 600, 740)}
+                                            <div className="btlc-content-wrapper">
+                                                <NavLink to={`/details/${newsList[0].name}`}><span className="btn">{newsList[0].category_description}</span></NavLink>
+                                                <div className="btlc-marking">
+                                                    <span className="icofont-star"></span>
+                                                </div>
+                                                <div className="btlc-content">
+                                                    <div className="btcl-content-status">
+                                                        <span>{moment.utc(newsList[0].published_time).format('hh:mm A')}</span>
+                                                        <span>{moment.utc(newsList[0].published_on).format('Do MMM YYYY')}</span>
+                                                        <span>{newsList[0].blogger}</span>
+                                                    </div>
+                                                    <h3><NavLink to={`/details/${newsList[0].name}`}>{Config.trunCate(newsList[0].title, 40, '. . .')}</NavLink></h3>
+                                                </div>
+                                            </div>
+                                        </div>)}
+                                    </div>
+                                    <div className="col-md-5">
+                                        <div className="bnr-lft-cnt-rgt">
+                                            {newsList[1] && (<div className="btl-simple-card" data-aos="fade-up"
+                                                data-aos-delay="100">
+                                                {Config.randerImage(newsList[1].meta_image, 300, 355)}
                                                 <div className="btlc-content-wrapper">
-                                                    <NavLink to={`/details/${newsList[0].name}`}><span className="btn">{newsList[0].category_description}</span></NavLink>
+                                                    <NavLink to={`/details/${newsList[1].name}`}><span className="btn">{newsList[1].category_description}</span></NavLink>
                                                     <div className="btlc-marking">
                                                         <span className="icofont-star"></span>
                                                     </div>
                                                     <div className="btlc-content">
                                                         <div className="btcl-content-status">
-                                                            <span>{moment.utc(newsList[0].published_time).format('hh:mm A')}</span>
-                                                            <span>{moment.utc(newsList[0].published_on).format('Do MMM YYYY')}</span>
-                                                            <span>{newsList[0].blogger}</span>
+                                                            <span>{moment.utc(newsList[1].published_time).format('hh:mm A')}</span>
+                                                            <span>{moment.utc(newsList[1].published_on).format('Do MMM YYYY')}</span>
+                                                            <span>{newsList[1].blogger}</span>
                                                         </div>
-                                                        <h3><NavLink to={`/details/${newsList[0].name}`}>{Config.trunCate(newsList[0].title, 40, '. . .')}</NavLink></h3>
+                                                        <h3><NavLink to={`/details/${newsList[1].name}`}>{Config.trunCate(newsList[1].title, 40, '. . .')}</NavLink></h3>
                                                     </div>
                                                 </div>
                                             </div>)}
-                                        </div>
-                                        <div className="col-md-5">
-                                            <div className="bnr-lft-cnt-rgt">
-                                                {newsList[1] && (<div className="btl-simple-card" data-aos="fade-up"
-                                                    data-aos-delay="100">
-                                                    {Config.randerImage(newsList[1].meta_image, 300, 355)}
-                                                    <div className="btlc-content-wrapper">
-                                                        <NavLink to={`/details/${newsList[1].name}`}><span className="btn">{newsList[1].category_description}</span></NavLink>
-                                                        <div className="btlc-marking">
-                                                            <span className="icofont-star"></span>
-                                                        </div>
-                                                        <div className="btlc-content">
-                                                            <div className="btcl-content-status">
-                                                                <span>{moment.utc(newsList[1].published_time).format('hh:mm A')}</span>
-                                                                <span>{moment.utc(newsList[1].published_on).format('Do MMM YYYY')}</span>
-                                                                <span>{newsList[1].blogger}</span>
-                                                            </div>
-                                                            <h3><NavLink to={`/details/${newsList[1].name}`}>{Config.trunCate(newsList[1].title, 40, '. . .')}</NavLink></h3>
-                                                        </div>
+                                            {newsList[2] && (<div className="btl-simple-card" data-aos="fade-up"
+                                                data-aos-delay="100">
+                                                {Config.randerImage(newsList[2].meta_image, 300, 355)}
+                                                <div className="btlc-content-wrapper">
+                                                    <NavLink to={`/details/${newsList[2].name}`}><span className="btn">{newsList[2].category_description}</span></NavLink>
+                                                    <div className="btlc-marking">
+                                                        <span className="icofont-star"></span>
                                                     </div>
-                                                </div>)}
-                                                {newsList[2] && (<div className="btl-simple-card" data-aos="fade-up"
-                                                    data-aos-delay="100">
-                                                    {Config.randerImage(newsList[2].meta_image, 300, 355)}
-                                                    <div className="btlc-content-wrapper">
-                                                        <NavLink to={`/details/${newsList[2].name}`}><span className="btn">{newsList[2].category_description}</span></NavLink>
-                                                        <div className="btlc-marking">
-                                                            <span className="icofont-star"></span>
+                                                    <div className="btlc-content">
+                                                        <div className="btcl-content-status">
+                                                            <span>{moment.utc(newsList[2].published_time).format('hh:mm A')}</span>
+                                                            <span>{moment.utc(newsList[2].published_on).format('Do MMM YYYY')}</span>
+                                                            <span>{newsList[2].blogger}</span>
                                                         </div>
-                                                        <div className="btlc-content">
-                                                            <div className="btcl-content-status">
-                                                                <span>{moment.utc(newsList[2].published_time).format('hh:mm A')}</span>
-                                                                <span>{moment.utc(newsList[2].published_on).format('Do MMM YYYY')}</span>
-                                                                <span>{newsList[2].blogger}</span>
-                                                            </div>
-                                                            <h3><NavLink to={`/details/${newsList[2].name}`}>{Config.trunCate(newsList[2].title, 40, '. . .')}</NavLink></h3>
-                                                        </div>
+                                                        <h3><NavLink to={`/details/${newsList[2].name}`}>{Config.trunCate(newsList[2].title, 40, '. . .')}</NavLink></h3>
                                                     </div>
-                                                </div>)}
-                                            </div>
+                                                </div>
+                                            </div>)}
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-xl-4">
-                            <SideBar />
-                        </div>
+                    </div>
+                    <div className="col-xl-4">
+                        <SideBar />
                     </div>
                 </div>
             </div>
+
 
             <section className="newsupdate-area">
                 <div className="container">
