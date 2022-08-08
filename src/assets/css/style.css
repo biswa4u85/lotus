@@ -1673,7 +1673,7 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
     content: "";
     height: 2px;
     width: 45%;
-    background-color: var(--color-secondary);
+    background-color: var(--color-blue);
     transition: var(--ease-in)
 }
 
@@ -1691,7 +1691,7 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
     display: block;
     height: 2px;
     width: 100%;
-    background-color: var(--color-secondary);
+    background-color: var(--color-blue);
     transition: var(--ease-in)
 }
 

@@ -13,6 +13,7 @@ function Footers() {
     const emailInput = useRef(null);
     const [email, setEmail] = useState('')
     const [error, setError] = useState(null)
+    const [submenu, setSubmenu] = useState(false)
     const token = useSelector((state) => state.auth.token)
     const homeSettings = useSelector((state) => state.auth.homeSettings)
     const cmsData = useSelector((state) => state.auth.cms)
@@ -133,11 +134,16 @@ function Footers() {
                 </div>
             </footer>
             <div className="footerMobile">
+                {submenu && (<ul>
+                    <li><NavLink to="/cat/men">Mens</NavLink></li>
+                    <li><NavLink to="/cat/women">Women</NavLink></li>
+                    <li><NavLink to="/cat/international">International</NavLink></li>
+                </ul>)}
                 <ul>
-                    <li><NavLink to="/"><i className="icofont-home"></i> Home</NavLink></li>
-                    <li><NavLink to="/live-score"><i className="icofont-score-board"></i>  Live score</NavLink></li>
-                    <li><a><i className="icofont-ssl-security"></i>  Series</a></li>
-                    <li><a><i className="icofont-navigation-menu"></i> More</a></li>
+                    <li onClick={() => setSubmenu(false)}><NavLink to="/"><i className="icofont-home"></i> Home</NavLink></li>
+                    <li onClick={() => setSubmenu(false)}><NavLink to="/live-score"><i className="icofont-score-board"></i>  Live score</NavLink></li>
+                    <li onClick={() => setSubmenu(false)}><NavLink to="/cat/trending-news"><i className="icofont-ssl-security"></i>  Trending</NavLink></li>
+                    <li onClick={() => setSubmenu(!submenu)}><a className={submenu ? 'active' : ''}><i className="icofont-navigation-menu"></i> More</a></li>
                 </ul>
             </div>
         </>

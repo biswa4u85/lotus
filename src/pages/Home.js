@@ -8,6 +8,8 @@ import { Helmet } from "react-helmet";
 import Config from "../common/Config";
 import SideBar from "./SideBar";
 import Live from './Live';
+import dailyUpdate from '../assets/img/dailyUpdate.png'
+import thisWeek from '../assets/img/thisWeek.png'
 
 function Home() {
     const dispatch = useDispatch()
@@ -154,6 +156,18 @@ function Home() {
             </div>
 
 
+            <div className="pro-area" data-aos="fade-up">
+                <div className="container">
+                    <div className="row">
+                        <div className="pro-wrapper">
+                            <br />
+                            <br />
+                            <img src={thisWeek} alt="Advertiser" border="0" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <section className="newsupdate-area">
                 <div className="container">
                     <div className="title-heading" data-title="Daily Update" data-aos="zoom-in">
@@ -264,6 +278,18 @@ function Home() {
                     </div>
                 </div>
             </section>
+
+            <div className="pro-area" data-aos="fade-up">
+                <div className="container">
+                    <div className="row">
+                        <div className="pro-wrapper">
+                            <br />
+                            <br />
+                            <img src={dailyUpdate} alt="Advertiser" border="0" />
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <section className="weekly-update-area">
                 <div className="container">
@@ -410,7 +436,7 @@ function Home() {
                 <div className="container">
                     <div className="row">
                         <div className="pro-wrapper">
-                            <img src="https://tpc.googlesyndication.com/simgad/14556471411178073418?" width="900" height="120" alt="Advertiser" border="0" />
+                            <img src={dailyUpdate} width="900" height="120" alt="Advertiser" border="0" />
                         </div>
                     </div>
                 </div>
