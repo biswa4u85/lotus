@@ -302,3 +302,20 @@ export function uploadVideoApi(file, token) {
       return handleResponse(error);
     });
 }
+
+export function apiScoreCalls(path) {
+  const options = {
+    method: 'GET',
+    url: `${Config.rapidAPIUrl}/${path}`,
+    headers: {
+      'X-RapidAPI-Key': Config.rapidAPIKey,
+      'X-RapidAPI-Host': Config.rapidAPIHost
+    }
+  };
+  return axios.request(options).then((response) => {
+    return response.data
+  }).catch((error) => {
+    toast.error(error?.message);
+    return { 'status': "error", 'data': error?.message }
+  });
+}

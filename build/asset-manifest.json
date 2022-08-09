@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.5cf6b5c1.css",
-    "main.js": "/static/js/main.44a0882e.js",
+    "main.css": "/static/css/main.129972fc.css",
+    "main.js": "/static/js/main.b40b2a49.js",
     "static/css/98.63eeb566.chunk.css": "/static/css/98.63eeb566.chunk.css",
     "static/js/98.f626aac7.chunk.js": "/static/js/98.f626aac7.chunk.js",
     "static/css/57.0c665cd1.chunk.css": "/static/css/57.0c665cd1.chunk.css",
@@ -17,6 +17,7 @@
     "static/media/signin-bg.jpg": "/static/media/signin-bg.683012ee61419a28f89b.jpg",
     "static/media/bg.png": "/static/media/bg.c026467d130960237b8f.png",
     "static/media/nodata.jpg": "/static/media/nodata.cb9d93ff7f4e4ae337ef.jpg",
+    "static/media/Flag of Afghanistan.gif": "/static/media/Flag of Afghanistan.8d8fdd896f15dfe94718.gif",
     "static/media/logo-light.png": "/static/media/logo-light.cf54cf11fce28b1874c3.png",
     "static/media/Flag13.webp": "/static/media/Flag13.bfa2deaa5555ae836969.webp",
     "static/media/Flag1.webp": "/static/media/Flag1.6ead31031c899408631e.webp",
@@ -36,8 +37,8 @@
     "static/media/ftr-bg.svg": "/static/media/ftr-bg.d60b70dd01f0dee86e8f197add211454.svg",
     "static/media/Flag4.webp": "/static/media/Flag4.1ed24f4178cc9300f607.webp",
     "static/media/play-btn.svg": "/static/media/play-btn.f5fbbff88fccffab534986f6e5912ba8.svg",
-    "main.5cf6b5c1.css.map": "/static/css/main.5cf6b5c1.css.map",
-    "main.44a0882e.js.map": "/static/js/main.44a0882e.js.map",
+    "main.129972fc.css.map": "/static/css/main.129972fc.css.map",
+    "main.b40b2a49.js.map": "/static/js/main.b40b2a49.js.map",
     "98.63eeb566.chunk.css.map": "/static/css/98.63eeb566.chunk.css.map",
     "98.f626aac7.chunk.js.map": "/static/js/98.f626aac7.chunk.js.map",
     "57.0c665cd1.chunk.css.map": "/static/css/57.0c665cd1.chunk.css.map",
@@ -45,7 +46,7 @@
     "787.10238c6d.chunk.js.map": "/static/js/787.10238c6d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5cf6b5c1.css",
-    "static/js/main.44a0882e.js"
+    "static/css/main.129972fc.css",
+    "static/js/main.b40b2a49.js"
   ]
 }

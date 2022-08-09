@@ -1,18 +1,8 @@
-import React, { } from "react";
+import React, { useEffect } from "react";
 import OwlCarousel from 'react-owl-carousel';
-import Flag1 from "../assets/image/Flag1.webp";
-import Flag2 from "../assets/image/Flag2.webp";
-import Flag3 from "../assets/image/Flag3.webp";
-import Flag4 from "../assets/image/Flag4.webp";
-import Flag5 from "../assets/image/Flag5.webp";
-import Flag7 from "../assets/image/Flag7.webp";
-import Flag8 from "../assets/image/Flag8.webp";
-import Flag9 from "../assets/image/Flag9.webp";
-import Flag10 from "../assets/image/Flag10.webp";
-import Flag11 from "../assets/image/Flag11.webp";
-import Flag12 from "../assets/image/Flag12.webp";
-import Flag13 from "../assets/image/Flag13.webp";
-import Flag14 from "../assets/image/Flag14.webp";
+import moment from "moment";
+import { useSelector, useDispatch } from 'react-redux'
+import { getFixtures } from "../store/ScoreRedux";
 
 const responsive = {
     0: {
@@ -27,148 +17,32 @@ const responsive = {
 }
 
 function Live() {
-    return (<OwlCarousel className='owl-theme' responsive={responsive} loop margin={10} nav={false}>
-        <div className='item'>
-            <div className="trending_news">
-                <div className="lanka">
-                    <h6>Today At 2:30 PM . <span> 2nd ODI .</span> <span>Pallekele</span></h6>
-                    <div className='srilanka'>
-                        <img src={Flag1} className="flagimg" /> <span> Sri Lanka Women</span>
-                    </div>
-                    <div className='srilanka'>
-                        <img src={Flag2} className="flagimg" /> <span>New Zealans Women</span>
-                    </div>
-                    <p>Match starts in <span>3hrs 30min</span></p>
-                    <div className="lanka-border"></div>
-                    <ul>
-                        <li>Schedule</li>
-                        <li>Table</li>
-                        <li>Fantasy</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div className='item'>
-            <div className="trending_news">
-                <div className="lanka">
-                    <h6>Today At 2:30 PM . <span> 2nd ODI .</span> <span>Pallekele</span></h6>
-                    <div className='srilanka'>
-                        <img src={Flag3} className="flagimg" /> <span> Sri Lanka Women</span>
-                    </div>
-                    <div className='srilanka'>
-                        <img src={Flag4} className="flagimg" /> <span>New Zealans Women</span>
-                    </div>
-                    <p>Match starts in <span>3hrs 30min</span></p>
-                    <div className="lanka-border"></div>
-                    <ul>
-                        <li>Schedule</li>
-                        <li>Table</li>
-                        <li>Fantasy</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div className='item'>
-            <div className="trending_news">
-                <div className="lanka">
-                    <h6>Today At 2:30 PM . <span> 2nd ODI .</span> <span>Pallekele</span></h6>
-                    <div className='srilanka'>
-                        <img src={Flag5} className="flagimg" /> <span> Sri Lanka Women</span>
-                    </div>
-                    <div className='srilanka'>
-                        <img src={Flag2} className="flagimg" /> <span>New Zealans Women</span>
-                    </div>
-                    <p>Match starts in <span>3hrs 30min</span></p>
-                    <div className="lanka-border"></div>
-                    <ul>
-                        <li>Schedule</li>
-                        <li>Table</li>
-                        <li>Fantasy</li>
-                    </ul>
-                </div>
+    const dispatch = useDispatch()
+    const fixtures = useSelector((state) => state.score.fixtures)
 
-            </div>
-        </div>
-        <div className='item'>
+    useEffect(() => {
+        dispatch(getFixtures())
+    }, []);
+
+    return (<OwlCarousel className='owl-theme' responsive={responsive} loop margin={10} nav={false}>
+        {fixtures.map((item, key) => <div key={key} className='item'>
             <div className="trending_news">
                 <div className="lanka">
-                    <h6>Today At 2:30 PM . <span> 2nd ODI .</span> <span>Pallekele</span></h6>
+                    <h6>Today. {moment.utc(item.date).format('hh:mm A')} . <span> {item.match_subtitle} .</span> {item.status}</h6>
                     <div className='srilanka'>
-                        <img src={Flag7} className="flagimg" /> <span> Sri Lanka Women</span>
+                        <img src={require(`../assets/flags/Flag of Afghanistan.gif`)} className="flagimg" /> <span> {item?.home?.name}</span>
                     </div>
                     <div className='srilanka'>
-                        <img src={Flag8} className="flagimg" /> <span>New Zealans Women</span>
+                        <img src={require(`../assets/flags/Flag of Afghanistan.gif`)} className="flagimg" /> <span>{item?.away?.name}</span>
                     </div>
-                    <p>Match starts in <span>3hrs 30min</span></p>
+                    <p>Match starts in <span>{moment.utc(item.date).format('Do MMM YYYY hh:mm A')}</span></p>
                     <div className="lanka-border"></div>
                     <ul>
-                        <li>Schedule</li>
-                        <li>Table</li>
-                        <li>Fantasy</li>
+                        <li>{item.venue}</li>
                     </ul>
                 </div>
             </div>
-        </div>
-        <div className='item'>
-            <div className="trending_news">
-                <div className="lanka">
-                    <h6>Today At 2:30 PM . <span> 2nd ODI .</span> <span>Pallekele</span></h6>
-                    <div className='srilanka'>
-                        <img src={Flag9} className="flagimg" /> <span> Sri Lanka Women</span>
-                    </div>
-                    <div className='srilanka'>
-                        <img src={Flag10} className="flagimg" /> <span>New Zealans Women</span>
-                    </div>
-                    <p>Match starts in <span>3hrs 30min</span></p>
-                    <div className="lanka-border"></div>
-                    <ul>
-                        <li>Schedule</li>
-                        <li>Table</li>
-                        <li>Fantasy</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div className='item'>
-            <div className="trending_news">
-                <div className="lanka">
-                    <h6>Today At 2:30 PM . <span> 2nd ODI .</span> <span>Pallekele</span></h6>
-                    <div className='srilanka'>
-                        <img src={Flag11} className="flagimg" /> <span> Sri Lanka Women</span>
-                    </div>
-                    <div className='srilanka'>
-                        <img src={Flag12} className="flagimg" /> <span>New Zealans Women</span>
-                    </div>
-                    <p>Match starts in <span>3hrs 30min</span></p>
-                    <div className="lanka-border"></div>
-                    <ul>
-                        <li>Schedule</li>
-                        <li>Table</li>
-                        <li>Fantasy</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div className='item'>
-            <div className="trending_news">
-                <div className="lanka">
-                    <h6>Today At 2:30 PM . <span> 2nd ODI .</span> <span>Pallekele</span></h6>
-                    <div className='srilanka'>
-                        <img src={Flag13} className="flagimg" /> <span> Sri Lanka Women</span>
-                    </div>
-                    <div className='srilanka'>
-                        <img src={Flag14} className="flagimg" /> <span>New Zealans Women</span>
-                    </div>
-                    <p>Match starts in <span>3hrs 30min</span></p>
-                    <div className="lanka-border"></div>
-                    <ul>
-                        <li>Schedule</li>
-                        <li>Table</li>
-                        <li>Fantasy</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        </div>)}
     </OwlCarousel>);
 }
 
