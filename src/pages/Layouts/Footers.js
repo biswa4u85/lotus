@@ -60,7 +60,7 @@ function Footers() {
                 <div className="main-footer transparent-bg">
                     <div className="container">
                         <div className="row">
-                            <div className="col-xl-4 ft-order-1 mb-lg-50">
+                            <div className="col-xl-5 ft-order-1 mb-lg-50">
                                 <div className="ftr-drpt">
                                     <div className="footer-logo">
                                         <NavLink to="/">
@@ -70,7 +70,7 @@ function Footers() {
                                     <p>{cms?.header}</p>
                                 </div>
                             </div>
-                            <div className="col-xl-3 col-md-4 ft-order-2 mb-sm-30">
+                            <div className="col-xl-2 col-md-4 ft-order-2 mb-sm-30">
                                 <div className="ftr-link">
                                     <h3 className="title-line-shape">Category</h3>
                                     <ul>

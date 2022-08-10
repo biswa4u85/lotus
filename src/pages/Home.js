@@ -8,6 +8,7 @@ import { Helmet } from "react-helmet";
 import Config from "../common/Config";
 import SideBar from "./SideBar";
 import Live from './Live';
+import topBanner from '../assets/img/topBanner.png'
 import dailyUpdate from '../assets/img/dailyUpdate.png'
 import thisWeek from '../assets/img/thisWeek.png'
 
@@ -67,6 +68,19 @@ function Home() {
                 <Live />
                 <div className="viewAllMatch"><button onClick={() => navigate('/live-score')}>View all Matches</button></div>
             </div>
+
+            <div className="pro-area" data-aos="fade-up">
+                <div className="container">
+                    <div className="row">
+                        <div className="pro-wrapper">
+                            <a href="https://thelotusexch.com/offerpromotions/" target={'_blank'}><img src={topBanner} alt="Advertiser" border="0" /></a>
+                            <br />
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div className="container">
 
                 <div className="row">
@@ -285,7 +299,7 @@ function Home() {
                         <div className="pro-wrapper">
                             <br />
                             <br />
-                            <img src={dailyUpdate} alt="Advertiser" border="0" />
+                            <NavLink to={`/live-score`}><img src={dailyUpdate} alt="Advertiser" border="0" /></NavLink>
                         </div>
                     </div>
                 </div>
