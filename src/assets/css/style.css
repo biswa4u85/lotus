@@ -2699,7 +2699,7 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
 
 .main-footer {
     background-color: var(--search-bg);
-    padding: 50px 0px
+    padding: 20px 0px
 }
 
 .main-footer.transparent-bg {
@@ -2719,11 +2719,16 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
 .main-footer h6 {
     color: var(--white);
 }
-
-
+.main-footer .ftr-link ul {
+    margin-left: 10px;
+}
+.main-footer .ftr-link ul li{
+    list-style-type: disc;
+    color: var(--white);
+}
 .main-footer .ftr-category ul li a,
 .main-footer .ftr-link ul li a {
-    padding: 10px 15px;
+    padding: 5px 15px;
     color: var(--white);
     transition: var(--ease-in);
     display: block
