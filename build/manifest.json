@@ -4,9 +4,9 @@
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
-  "name": "DEMO APP",
-  "short_name": "DEMO",
-  "description": "Meet your favorite celebrity",
+  "name": "Lotus News247",
+  "short_name": "Lotus",
+  "description": "Lotus News247",
   "icons": [
       {
           "src": "/icons/icon-192x192.png",

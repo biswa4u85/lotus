@@ -28,7 +28,7 @@ function Live() {
         {fixtures.map((item, key) => <div key={key} className='item'>
             <div className="trending_news">
                 <div className="lanka">
-                    <h6>Today. {moment.utc(item.date).format('hh:mm A')} . <span> {item.match_subtitle} .</span> {item.status}</h6>
+                    <h6>Today At {moment.utc(item.date).format('hh:mm A')} . <span> {item.match_subtitle} .</span> {item.status}</h6>
                     <div className='srilanka'>
                         <img src={require(`../assets/flags/Flag of Afghanistan.gif`)} className="flagimg" /> <span> {item?.home?.name}</span>
                     </div>

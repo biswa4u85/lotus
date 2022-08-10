@@ -68,15 +68,6 @@ function Footers() {
                                         </NavLink>
                                     </div>
                                     <p>{cms?.header}</p>
-                                    <div className="footer-social">
-                                        <h6>Follow Us</h6>
-                                        <ul className="social-icon social-bg-red">
-                                            <li><a href="https://www.facebook.com/Lotusnews247-105292842265621" target="_blank"><i className="icofont-facebook"></i></a></li>
-                                            <li><a href="https://www.instagram.com/lotus_news247" target="_blank"><i className="icofont-instagram"></i></a></li>
-                                            {/* <li><a href="https://telegram.org" target="_blank"><i className="icofont-telegram"></i></a></li> */}
-                                            <li><a href="https://twitter.com/Lotusnews2" target="_blank"><i className="icofont-twitter"></i></a></li>
-                                        </ul>
-                                    </div>
                                 </div>
                             </div>
                             <div className="col-xl-3 col-md-4 ft-order-2 mb-sm-30">
@@ -100,8 +91,6 @@ function Footers() {
                                         <li><NavLink to="/cms/dcma-l">DCMA</NavLink></li>
                                         <li><NavLink to="/cms/disclaimer-l">Disclaimer</NavLink></li>
                                         <li><NavLink to="/cms/copyright-notice-l">Copyright Notice</NavLink></li>
-                                        {/* <li><NavLink to="/cat/Review Zone">REVIEW</NavLink></li> */}
-                                        {/* <li><NavLink to="/cat/Fantasy Tips">FANTASY</NavLink></li> */}
                                         <li><NavLink to="/cms/about-us-l">About Us</NavLink></li>
                                         <li><NavLink to="/cms/contact-us-l">Contact Us</NavLink></li>
                                     </ul>
@@ -111,8 +100,15 @@ function Footers() {
                                 <div className="ftr-contact">
                                     <h3 className="title-line-shape">Contact Us</h3>
                                     <p><a href="mailto:info@lotusnews247.com">info@lotusnews247.com</a></p>
-                                    {/* <p><a href="callto:+00 0000000000">+00 0000000000</a></p> */}
-                                    {/* <p>ICON BLISS, Opp. Zensar IT Park <span>Kharadi, Pune - 411014</span></p> */}
+                                    <br />
+                                </div>
+                                <div className="footer-social">
+                                    <h6>Follow Us</h6>
+                                    <ul className="social-icon social-bg-red">
+                                        <li><a href="https://www.facebook.com/Lotusnews247-105292842265621" target="_blank"><i className="icofont-facebook"></i></a></li>
+                                        <li><a href="https://www.instagram.com/lotus_news247" target="_blank"><i className="icofont-instagram"></i></a></li>
+                                        <li><a href="https://twitter.com/Lotusnews2" target="_blank"><i className="icofont-twitter"></i></a></li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
