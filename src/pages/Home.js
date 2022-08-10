@@ -43,8 +43,6 @@ function Home() {
     let latestVedios = JSON.parse(JSON.stringify(newsList))
     latestVedios.length = 1
 
-
-
     const filterByDay = (filter, number) => {
         let cat = (homeSettings && homeSettings[filter]) ? homeSettings[filter] : null
         let dataList = newsList.filter(item => item.blog_category === cat);
@@ -73,7 +71,7 @@ function Home() {
                 <div className="container">
                     <div className="row">
                         <div className="pro-wrapper">
-                            <a href="https://thelotusexch.com/offerpromotions/" target={'_blank'}><img src={topBanner} alt="Advertiser" border="0" /></a>
+                            <a href="https://thelotusexch.com/offerpromotions/" target={'_blank'}><img src={topBanner} height="150"  alt="Advertiser" border="0" /></a>
                             <br />
                             <br />
                         </div>
@@ -176,7 +174,7 @@ function Home() {
                         <div className="pro-wrapper">
                             <br />
                             <br />
-                            <img src={thisWeek} alt="Advertiser" border="0" />
+                            <img src={thisWeek} height="150" alt="Advertiser" border="0" />
                         </div>
                     </div>
                 </div>
@@ -293,17 +291,17 @@ function Home() {
                 </div>
             </section>
 
-            <div className="pro-area" data-aos="fade-up">
+            {/* <div className="pro-area" data-aos="fade-up">
                 <div className="container">
                     <div className="row">
                         <div className="pro-wrapper">
                             <br />
                             <br />
-                            <NavLink to={`/live-score`}><img src={dailyUpdate} alt="Advertiser" border="0" /></NavLink>
+                            <NavLink to={`/live-score`}><img src={dailyUpdate} height="150" alt="Advertiser" border="0" /></NavLink>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             <section className="weekly-update-area">
                 <div className="container">
