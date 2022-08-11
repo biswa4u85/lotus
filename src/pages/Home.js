@@ -7,7 +7,7 @@ import { getHomeSettings, getHeadlineList, getNewsCategory, getNewsList } from '
 import { Helmet } from "react-helmet";
 import Config from "../common/Config";
 import SideBar from "./SideBar";
-import Live from './Live';
+import HomeSlider from './Scores/HomeSlider';
 import topBanner from '../assets/img/topBanner.png'
 import dailyUpdate from '../assets/img/dailyUpdate.png'
 import thisWeek from '../assets/img/thisWeek.png'
@@ -16,7 +16,6 @@ function Home() {
     const dispatch = useDispatch()
     let navigate = useNavigate();
     const { t } = useTranslation();
-    const liveData = [{}, {}, {}, {}, {}, {}, {}, {}, {}]
     const token = useSelector((state) => state.auth.token)
     const homeSettings = useSelector((state) => state.auth.homeSettings)
     const headlines = useSelector((state) => state.auth.headlines)
@@ -63,7 +62,7 @@ function Home() {
                 <meta name="description" content={homeSettings?.meta_description} />
             </Helmet>
             <div className="nvbanner-area">
-                <Live />
+                <HomeSlider />
                 <div className="viewAllMatch"><button onClick={() => navigate('/live-score')}>View all Matches</button></div>
             </div>
 
@@ -71,7 +70,7 @@ function Home() {
                 <div className="container">
                     <div className="row">
                         <div className="pro-wrapper">
-                            <a href="https://thelotusexch.com/offerpromotions/" target={'_blank'}><img src={topBanner} height="150"  alt="Advertiser" border="0" /></a>
+                            <a href="https://thelotusexch.com/offerpromotions/" target={'_blank'}><img src={topBanner} height="150" alt="Advertiser" border="0" /></a>
                             <br />
                             <br />
                         </div>
