@@ -430,4 +430,22 @@
         list-style-type: none;
     }
 
+   
+.tab-sec .ant-col-offset-5 {
+        margin-left: 0 !important;
+    }
+
+    .tab-sec .ant-col-13 {
+        flex: 14 0 54.16666667% !important;
+        max-width: 100.166667% !important;
+
+    }
+
+.live-border{
+        margin: 0;
+    }
+
+.live-tab .evevts {
+    width: 100%;
+}
 }
