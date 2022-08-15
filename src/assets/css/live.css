@@ -429,5 +429,8 @@
     .main-footer .ftr-link ul li {
         list-style-type: none;
     }
-
+    .live-tab .evevts {
+        width: 100%;
+        margin: 0px;
+    }
 }

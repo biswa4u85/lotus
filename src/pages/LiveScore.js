@@ -36,21 +36,21 @@ function LiveScore(props) {
                 <Tabs defaultActiveKey="1" centered onChange={onChange} >
                     <TabPane tab="Live" key="1">
                         <Row>
-                            <Col span={13} offset={5}>
+                            <Col xs={{ span: 22, offset: 1 }} lg={{ span: 13, offset: 5 }}>
                                 <Live data={liveData} />
                             </Col>
                         </Row>
                     </TabPane>
                     <TabPane tab="Upcoming" key="2">
                         <Row>
-                            <Col span={13} offset={5}>
+                            <Col xs={{ span: 22, offset: 1 }} lg={{ span: 13, offset: 5 }}>
                                 <Upcoming data={liveData} />
                             </Col>
                         </Row>
                     </TabPane>
                     <TabPane tab="Result" key="3">
                         <Row>
-                            <Col span={13} offset={5}>
+                            <Col xs={{ span: 22, offset: 1 }} lg={{ span: 13, offset: 5 }}>
                                 <Result data={liveData} />
                             </Col>
                         </Row>

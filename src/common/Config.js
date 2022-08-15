@@ -3,7 +3,7 @@ import playBtn from "../assets/img/svg/play-btn.svg";
 export default {
     frappe_url: 'https://news.techwizards.io',
     frappe_custom_app: 'erp_custom_auth',
-    token: 'token 8013775618bd3a7:8fa905e93b04d2b',
+    token: 'token 8013775618bd3a7:99fa9ff03295aa8',
     rapidAPIHost: 'cricket-live-data.p.rapidapi.com',
     rapidAPIKey: 'ceff4f9011mshb4a79448651b42dp119c71jsn663c2e90ee8a',
     rapidAPIUrl: 'https://cricket-live-data.p.rapidapi.com',

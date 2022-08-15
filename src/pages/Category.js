@@ -34,8 +34,8 @@ function Category(props) {
         <>
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>{category?.meta_title}</title>
-                <meta name="description" content={category?.meta_description} />
+                <title>{category?.meta_title_lotus}</title>
+                <meta name="description" content={category?.meta_description_lotus} />
             </Helmet>
             <section className="single-post-area">
                 <div className="container">
