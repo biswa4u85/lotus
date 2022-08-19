@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import OwlCarousel from 'react-owl-carousel';
 import moment from "moment";
+import Flags from "../../common/Flags";
 import { useSelector, useDispatch } from 'react-redux'
 import { getFixtures } from "../../store/ScoreRedux";
 
@@ -16,6 +17,8 @@ const responsive = {
     }
 }
 
+
+
 function HomeSlider() {
     const dispatch = useDispatch()
     const fixtures = useSelector((state) => state.score.fixtures)
@@ -24,16 +27,21 @@ function HomeSlider() {
         dispatch(getFixtures())
     }, []);
 
+    const checkImg = (name) => {
+        console.log(name)
+        return <img src={Flags[name] ? Flags[name] : Flags['NoImg']} className="flagimg" />
+    }
+
     return (<OwlCarousel className='owl-theme' responsive={responsive} loop margin={10} nav={false}>
         {fixtures.map((item, key) => <div key={key} className='item'>
             <div className="trending_news">
                 <div className="lanka">
                     <h6>Today At {moment.utc(item.date).format('hh:mm A')} . <span> {item.match_subtitle} .</span> {item.status}</h6>
                     <div className='srilanka'>
-                        <img src={require(`../../assets/flags/Flag of Afghanistan.gif`)} className="flagimg" /> <span> {item?.home?.name}</span>
+                        {checkImg(item?.home?.name)} <span> {item?.home?.name}</span>
                     </div>
                     <div className='srilanka'>
-                        <img src={require(`../../assets/flags/Flag of Afghanistan.gif`)} className="flagimg" /> <span>{item?.away?.name}</span>
+                        {checkImg(item?.away?.name)}  <span>{item?.away?.name}</span>
                     </div>
                     <p>Match starts in <span>{moment.utc(item.date).format('Do MMM YYYY hh:mm A')}</span></p>
                     <div className="lanka-border"></div>

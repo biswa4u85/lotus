@@ -28,6 +28,7 @@
     "react-twitter-embed": "^4.0.4",
     "react-web-vector-icons": "^1.0.2",
     "redux": "^4.1.2",
+    "socket.io-client": "^4.5.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

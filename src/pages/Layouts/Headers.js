@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Button, Form, Input } from 'antd';
 import $ from 'jquery';
@@ -6,12 +6,20 @@ import moment from "moment";
 import Config from "../../common/Config";
 import { useSelector, useDispatch } from 'react-redux'
 import { signUpUser, siteLogin, logout } from "../../store/UserRedux";
+import SocketApis from '../../utility/socket-apis'
 
 function Headers() {
     const dispatch = useDispatch()
     let navigate = useNavigate();
     const newsList = useSelector((state) => state.auth.newsList)
     const token = useSelector((state) => state.user.token)
+
+    useEffect(() => {
+        SocketApis.getSocketData('message', (data) => {
+            // console.log(data)
+        });
+    }, []);
+
 
     // Filter News
     let menNews = newsList.filter(item => item.blog_category === 'men');
@@ -450,7 +458,7 @@ function Headers() {
                                         </ul>
                                     </li>
                                 </ul>
-                                
+
                             </nav>
                         </div>
                         <div className="options-area">

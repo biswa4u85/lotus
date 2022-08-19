@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.7150ffbd.css",
-    "main.js": "/static/js/main.ab9e181f.js",
+    "main.css": "/static/css/main.fd062e50.css",
+    "main.js": "/static/js/main.afce7aea.js",
     "static/css/98.63eeb566.chunk.css": "/static/css/98.63eeb566.chunk.css",
     "static/js/98.f626aac7.chunk.js": "/static/js/98.f626aac7.chunk.js",
     "static/css/57.0c665cd1.chunk.css": "/static/css/57.0c665cd1.chunk.css",
@@ -18,13 +18,13 @@
     "static/media/signin-bg.jpg": "/static/media/signin-bg.683012ee61419a28f89b.jpg",
     "static/media/bg.png": "/static/media/bg.c026467d130960237b8f.png",
     "static/media/nodata.jpg": "/static/media/nodata.cb9d93ff7f4e4ae337ef.jpg",
-    "static/media/Flag of Afghanistan.gif": "/static/media/Flag of Afghanistan.8d8fdd896f15dfe94718.gif",
+    "static/media/AFGHANISTAN.gif": "/static/media/AFGHANISTAN.8d8fdd896f15dfe94718.gif",
     "static/media/logo-light.png": "/static/media/logo-light.cf54cf11fce28b1874c3.png",
     "index.html": "/index.html",
     "static/media/ftr-bg.svg": "/static/media/ftr-bg.d60b70dd01f0dee86e8f197add211454.svg",
     "static/media/play-btn.svg": "/static/media/play-btn.f5fbbff88fccffab534986f6e5912ba8.svg",
-    "main.7150ffbd.css.map": "/static/css/main.7150ffbd.css.map",
-    "main.ab9e181f.js.map": "/static/js/main.ab9e181f.js.map",
+    "main.fd062e50.css.map": "/static/css/main.fd062e50.css.map",
+    "main.afce7aea.js.map": "/static/js/main.afce7aea.js.map",
     "98.63eeb566.chunk.css.map": "/static/css/98.63eeb566.chunk.css.map",
     "98.f626aac7.chunk.js.map": "/static/js/98.f626aac7.chunk.js.map",
     "57.0c665cd1.chunk.css.map": "/static/css/57.0c665cd1.chunk.css.map",
@@ -32,7 +32,7 @@
     "787.10238c6d.chunk.js.map": "/static/js/787.10238c6d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7150ffbd.css",
-    "static/js/main.ab9e181f.js"
+    "static/css/main.fd062e50.css",
+    "static/js/main.afce7aea.js"
   ]
 }

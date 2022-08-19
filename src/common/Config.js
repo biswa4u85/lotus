@@ -1,6 +1,7 @@
 import noData from "../assets/img/nodata.jpg";
 import playBtn from "../assets/img/svg/play-btn.svg";
 export default {
+    apiSocketUrl: 'http://localhost:3001',
     frappe_url: 'https://news.techwizards.io',
     frappe_custom_app: 'erp_custom_auth',
     token: 'token 8013775618bd3a7:99fa9ff03295aa8',
