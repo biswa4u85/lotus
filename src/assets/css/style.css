@@ -2378,7 +2378,28 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
     transition: var(--ease-6ms);
     opacity: 0;
+    width: 40%;
     z-index: 99
+}
+
+.newMega {
+    padding: 15px;
+}
+
+.newMega h3 {
+    margin: 0;
+    padding: 5px;
+}
+
+.newMega ul {
+    margin: 0;
+    padding: 0;
+    margin-left: 20px;
+}
+
+.newMega li {
+    margin: 3px;
+    padding: 0;
 }
 
 .mega-dropdown .mega-fullwidth {
@@ -2719,13 +2740,16 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
 .main-footer h6 {
     color: var(--white);
 }
+
 .main-footer .ftr-link ul {
     margin-left: 10px;
 }
-.main-footer .ftr-link ul li{
+
+.main-footer .ftr-link ul li {
     list-style-type: disc;
     color: var(--white);
 }
+
 .main-footer .ftr-category ul li a,
 .main-footer .ftr-link ul li a {
     padding: 5px 15px;
