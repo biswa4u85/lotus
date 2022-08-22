@@ -131,9 +131,11 @@ export async function getAllDataApi(params) {
   let doctype = params.doctype
   let token = params.token
   let search = params.search
+  let searchEqual = params.searchEqual
   delete params.token
   delete params.doctype
   delete params.search
+  delete params.searchEqual
 
   let headers = {}
   if (token) {
@@ -151,6 +153,15 @@ export async function getAllDataApi(params) {
     for (let key in search) {
       if (search[key]) {
         filters.push([doctype, key, "like", search[key]])
+      }
+    }
+    body = body + `&filters=${JSON.stringify(filters)}`
+  }
+  if (searchEqual) {
+    let filters = []
+    for (let key in searchEqual) {
+      if (searchEqual[key]) {
+        filters.push([doctype, key, "=", searchEqual[key]])
       }
     }
     body = body + `&filters=${JSON.stringify(filters)}`
@@ -301,21 +312,4 @@ export function uploadVideoApi(file, token) {
     }).catch(error => {
       return handleResponse(error);
     });
-}
-
-export function apiScoreCalls(path) {
-  const options = {
-    method: 'GET',
-    url: `${Config.rapidAPIUrl}/${path}`,
-    headers: {
-      'X-RapidAPI-Key': Config.rapidAPIKey,
-      'X-RapidAPI-Host': Config.rapidAPIHost
-    }
-  };
-  return axios.request(options).then((response) => {
-    return response.data
-  }).catch((error) => {
-    toast.error(error?.message);
-    return { 'status': "error", 'data': error?.message }
-  });
 }

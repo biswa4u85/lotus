@@ -11517,6 +11517,36 @@ body.demo {
 }
 
 @media screen and (max-width: 767px) {
+    .main-header{
+        padding: 0px;
+    }
+    .header-logo{
+        height: 45px!important;
+    }
+    .options-area{
+        padding: 0;
+    }
+    .nvbanner-area{
+        padding: 5px 0px;
+        margin-bottom: 10px;
+    }
+    .viewAllMatch button{
+        padding: 5px 20px;
+    }
+   
+    .pro-area{
+        padding: 0;
+    }
+    .pro-wrapper{
+        padding: 0;
+    }
+    .pro-wrapper img{
+        height: 60px;
+        width: auto;
+    }
+    .bnr-lft-title .news-heading{
+        padding: 10px 50px 0px 10px;
+    }
     .error-right h5 {
         font-size: 18px
     }
@@ -11580,4 +11610,5 @@ body.demo {
     .footerMobile li i {
         display: block;
     }
+
 }
