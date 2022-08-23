@@ -6,7 +6,7 @@ export default {
     frappe_custom_app: 'erp_custom_auth',
     token: 'token 8013775618bd3a7:99fa9ff03295aa8',
     randerImage: (src, height, imgHeight) => {
-        let imageURL = src ? (String(src).includes('https://') ? src : 'http://localhost:8000' + src) : noData
+        let imageURL = src ? (String(src).includes('https://') ? src : 'https://news.techwizards.io' + src) : noData
         return <div style={{ textAlign: "center", objectFit: 'cover', height: height }}>
             <img style={{ height: (imgHeight ? imgHeight : 'inherit') }} src={imageURL} alt="image" />
             {/* <div className="news-vcard-play">
