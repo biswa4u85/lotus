@@ -2386,9 +2386,11 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
     padding: 15px;
 }
 
-.newMega h3 {
+.newMega h3 a {
     margin: 0;
     padding: 5px;
+    font-weight: bold;
+    border-bottom: solid 1px var(--color-blue);
 }
 
 .newMega ul {
@@ -2396,7 +2398,12 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
     padding: 0;
     margin-left: 20px;
 }
-
+.newMega ul>li>a{
+    color: #000;
+}
+.newMega ul>li>ul>li>a{
+    color: var(--color-blue);
+}
 .newMega li {
     margin: 3px;
     padding: 0;
