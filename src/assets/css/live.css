@@ -510,4 +510,17 @@
         margin: 1px 5px;
         font-size: 12px;
     }
+    .trending_news h6{
+        font-size: 11px;
+    }
+    .srilanka span{
+        font-size: 11px;
+    }
+    .trending_news p{
+        font-size: 11px;
+    }
+    .lanka ul li{
+        padding: 0;
+        font-size: 11px;
+    }
 }

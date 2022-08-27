@@ -11538,9 +11538,8 @@ body.demo {
         margin-bottom: 10px;
     }
     .viewAllMatch button{
-        padding: 5px 20px;
+        padding: 0px 10px;
     }
-   
     .pro-area{
         padding: 0;
     }
@@ -11551,8 +11550,21 @@ body.demo {
         height: 60px;
         width: auto;
     }
+    .viewAllMatch{
+        margin-top: 5px;
+    }
     .bnr-lft-title .news-heading{
-        padding: 10px 50px 0px 10px;
+        padding: 5px 50px 5px 10px;
+    }
+    .bnr-lft-title .news-heading h5{
+        font-size: 12px;
+        margin: 0;
+    }
+    .bnr-lft-title .news-slider .elepse{
+        font-size: 12px;
+    }
+    .btl-simple-card span.btn{
+        background-color: var(--color-blue);
     }
     .error-right h5 {
         font-size: 18px
@@ -11617,5 +11629,18 @@ body.demo {
     .footerMobile li i {
         display: block;
     }
-
+    .owl-theme .owl-dots{
+        display: none;
+    }
+    .bnr-lft-cnt-rgt{
+        margin-top: 10px;
+    }
+    .bnr-lft-title{
+        margin-bottom: 10px;
+    }
+    .news-card-wrapper,
+    .ns-mini-card,
+    .bnr-lft-cnt-rgt{
+        grid-gap: 10px;
+    }
 }
