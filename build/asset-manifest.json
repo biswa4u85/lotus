@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.124d7a1d.css",
-    "main.js": "/static/js/main.bea56f2e.js",
+    "main.css": "/static/css/main.5f4aba50.css",
+    "main.js": "/static/js/main.755a7102.js",
     "static/css/98.63eeb566.chunk.css": "/static/css/98.63eeb566.chunk.css",
     "static/js/98.f626aac7.chunk.js": "/static/js/98.f626aac7.chunk.js",
     "static/css/57.0c665cd1.chunk.css": "/static/css/57.0c665cd1.chunk.css",
@@ -17,14 +17,16 @@
     "static/media/sign-up.jpg": "/static/media/sign-up.98be8e1c9ddc2dfad1d6.jpg",
     "static/media/signin-bg.jpg": "/static/media/signin-bg.683012ee61419a28f89b.jpg",
     "static/media/bg.png": "/static/media/bg.c026467d130960237b8f.png",
+    "static/media/instagram.png": "/static/media/instagram.e719d8b29f452a16302d.png",
     "static/media/nodata.jpg": "/static/media/nodata.cb9d93ff7f4e4ae337ef.jpg",
     "static/media/AFGHANISTAN.gif": "/static/media/AFGHANISTAN.8d8fdd896f15dfe94718.gif",
+    "static/media/twitter.png": "/static/media/twitter.112d93100806a70e5d28.png",
     "static/media/logo-light.png": "/static/media/logo-light.cf54cf11fce28b1874c3.png",
     "index.html": "/index.html",
     "static/media/ftr-bg.svg": "/static/media/ftr-bg.d60b70dd01f0dee86e8f197add211454.svg",
     "static/media/play-btn.svg": "/static/media/play-btn.f5fbbff88fccffab534986f6e5912ba8.svg",
-    "main.124d7a1d.css.map": "/static/css/main.124d7a1d.css.map",
-    "main.bea56f2e.js.map": "/static/js/main.bea56f2e.js.map",
+    "main.5f4aba50.css.map": "/static/css/main.5f4aba50.css.map",
+    "main.755a7102.js.map": "/static/js/main.755a7102.js.map",
     "98.63eeb566.chunk.css.map": "/static/css/98.63eeb566.chunk.css.map",
     "98.f626aac7.chunk.js.map": "/static/js/98.f626aac7.chunk.js.map",
     "57.0c665cd1.chunk.css.map": "/static/css/57.0c665cd1.chunk.css.map",
@@ -32,7 +34,7 @@
     "787.10238c6d.chunk.js.map": "/static/js/787.10238c6d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.124d7a1d.css",
-    "static/js/main.bea56f2e.js"
+    "static/css/main.5f4aba50.css",
+    "static/js/main.755a7102.js"
   ]
 }
