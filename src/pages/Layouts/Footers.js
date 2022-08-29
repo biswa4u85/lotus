@@ -4,7 +4,12 @@ import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from 'react-redux'
 import ftrBg from "../../assets/img/svg/ftr-bg.svg";
 import FormValidate from "../../common/FormValidate";
+import Config from "../../common/Config";
+import { Image } from 'antd';
 import { subscribeEmail, getCmsDetails } from '../../store/MainRedux'
+import instagram from "../../assets/image/instagram.png";
+import facebook from "../../assets/image/facebook.png";
+import twitter from "../../assets/image/twitter.png";
 
 function Footers() {
     let navigate = useNavigate();
@@ -14,7 +19,7 @@ function Footers() {
     const [email, setEmail] = useState('')
     const [error, setError] = useState(null)
     const [submenu, setSubmenu] = useState(false)
-    const token = useSelector((state) => state.auth.token)
+    const token = Config.token
     const homeSettings = useSelector((state) => state.auth.homeSettings)
     const cmsData = useSelector((state) => state.auth.cms)
     const cms = cmsData['about-us-l']
@@ -104,11 +109,19 @@ function Footers() {
                                 </div>
                                 <div className="footer-social">
                                     <h6>Follow Us</h6>
-                                    <ul className="social-icon social-bg-red">
+                                    {/* <ul className="social-icon social-bg-red">
                                         <li><a href="https://www.facebook.com/Lotusnews247-105292842265621" target="_blank"><i className="icofont-facebook"></i></a></li>
                                         <li><a href="https://www.instagram.com/lotus_news247" target="_blank"><i className="icofont-instagram"></i></a></li>
                                         <li><a href="https://twitter.com/Lotusnews2" target="_blank"><i className="icofont-twitter"></i></a></li>
+                                    </ul> */}
+                                    <ul className="social-icon social-bg-red">
+                                        <li><a href="https://www.facebook.com/Lotusnews247-105292842265621" target="_blank"><Image preview={false} src={facebook} /></a></li>
+                                        <li><a href="https://instagram.com/lotus_news247" target="_blank"><Image preview={false} src={instagram} /></a></li>
+                                        <li><a href="https://twitter.com/Lotusnews2" target="_blank"><Image preview={false} src={twitter} /></a></li>
                                     </ul>
+
+
+
                                 </div>
                             </div>
                         </div>

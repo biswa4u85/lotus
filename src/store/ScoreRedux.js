@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { apiScoreCalls } from '../utility/site-apis'
-import Config from "../common/Config";
+import { getAllDataApi } from '../utility/site-apis'
+
+const doctypeFixtures = 'Live Score Fixtures'
+const fieldsFixtures = ["*"]
 
 const initialState = {
   isFetching: false,
@@ -12,34 +14,38 @@ const initialState = {
 
 export const getSeries = createAsyncThunk(
   'score/getSeries',
-  async (params, { rejectWithValue }) => {
-    const response = await apiScoreCalls('series')
-    if (response.status === 'error') {
-      return rejectWithValue(response.data)
-    }
-    return response.results
-  }
+  // async (params, { rejectWithValue }) => {
+  //   const response = await apiScoreCalls('series')
+  //   if (response.status === 'error') {
+  //     return rejectWithValue(response.data)
+  //   }
+  //   return response.results
+  // }
 )
-export const getFixtures = createAsyncThunk(
-  'score/getFixtures',
+export const getHomeFixtures = createAsyncThunk(
+  'score/getHomeFixtures',
   async (params, { rejectWithValue }) => {
     let date = new Date()
-    let queryDate = `${date.getFullYear()}-${date.getMonth() < 10 ? "0" + date.getMonth() : date.getMonth()}-${date.getDate() < 10 ? "0" + date.getDate() : date.getDate()}`
-    const response = await apiScoreCalls(`fixtures-by-date/${queryDate}`)
+    let queryDate = `${date.getDate() < 10 ? "0" + date.getDate() : date.getDate()}-${date.getMonth() < 10 ? "0" + (Number(date.getMonth()) + 1) : date.getMonth()}-${date.getFullYear()}`
+    const response = await getAllDataApi({ doctype: doctypeFixtures, fields: fieldsFixtures, searchEqual: { 'date': queryDate }, ...params })
     if (response.status === 'error') {
       return rejectWithValue(response.data)
     }
-    return response.results
+    for (let item of response.data) {
+      item.home = JSON.parse(item.home)
+      item.away = JSON.parse(item.away)
+    }
+    return response.data
   }
 )
 export const getScorecard = createAsyncThunk(
   'score/getScorecard',
   async (params, { rejectWithValue }) => {
-    const response = await apiScoreCalls('match/2432999')
-    if (response.status === 'error') {
-      return rejectWithValue(response.data)
-    }
-    return response.results
+    // const response = await apiScoreCalls('match/2432999')
+    // if (response.status === 'error') {
+    //   return rejectWithValue(response.data)
+    // }
+    // return response.results
   }
 )
 
@@ -68,15 +74,15 @@ export const counterSlice = createSlice({
       state.series = action.payload
     },
     // Fixtures
-    [getFixtures.pending]: (state, action) => {
+    [getHomeFixtures.pending]: (state, action) => {
       state.isFetching = true
       state.error = null
     },
-    [getFixtures.rejected]: (state, action) => {
+    [getHomeFixtures.rejected]: (state, action) => {
       state.isFetching = false
       state.error = action.payload.message
     },
-    [getFixtures.fulfilled]: (state, action) => {
+    [getHomeFixtures.fulfilled]: (state, action) => {
       state.isFetching = false
       state.error = null
       state.fixtures = action.payload

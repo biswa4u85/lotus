@@ -15,7 +15,7 @@ function Cms(props) {
     let { Id } = useParams();
     const dispatch = useDispatch()
     const { t } = useTranslation();
-    const token = useSelector((state) => state.auth.token)
+    const token = Config.token
     const cmsData = useSelector((state) => state.auth.cms)
     const cms = cmsData[Id]
     

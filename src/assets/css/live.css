@@ -77,10 +77,6 @@
     width: 100%;
 }
 
-.match h5 {
-    font-weight: 700;
-    margin: 20px 0;
-}
 
 .number {
     float: right;
@@ -297,7 +293,7 @@
 
 .tab-sec .ant-tabs>.ant-tabs-nav,
 .ant-tabs>div>.ant-tabs-nav {
-    background-color: #FFFFFF;
+    /* background-color: #FFFFFF; */
     border-radius: 10px;
     padding: 20px;
 }
@@ -389,6 +385,79 @@
     display: inline-block;
     padding-right: 20px;
 }
+/* demo */
+
+.tab {
+    margin: 18px;
+    background-color: white;
+    padding: 10px 20px;
+}
+
+.tab-btn {
+    margin: 0 10px;
+}
+
+.tab h3 {
+    margin: 30px 0;
+    background-color: rgb(221 221 221 / 85%);
+    padding: 19px 10px;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.africa span {
+    color: #9f9f9f;
+    font-size: 16px;
+}
+
+.africa h6 {
+    color: #9f9f9f;
+}
+
+.match {
+    background-color: #dadada;
+    width: 55%;
+}
+
+.match h5 {
+    margin: 0;
+    color: #4d4d4d;
+    padding: 5px 0;
+    font-weight: 600;
+}
+
+.match h5 span {
+    margin-left: 20px;
+}
+
+.match h6 {
+    color: #60AEF6;
+    font-weight: normal;
+    margin-top: 4px;
+}
+
+.vl {
+    border-left: 3px solid #60AEF6;
+    height: 110px;
+    padding: 10px 12px;
+}
+
+.runs{
+    display: flex;
+    margin: 20px 0;
+}
+
+.runs h6{
+    margin: 0 10px;
+    color: #60AEF6;
+}
+
+.score-border{
+    border-left: 2px solid #4a4b4b;
+    height: 25px;
+}
+
 
 
 
@@ -432,5 +501,26 @@
     .live-tab .evevts {
         width: 100%;
         margin: 0px;
+    }
+    .match{
+        width: 100%;
+    }
+
+    .runs h6 {
+        margin: 1px 5px;
+        font-size: 12px;
+    }
+    .trending_news h6{
+        font-size: 11px;
+    }
+    .srilanka span{
+        font-size: 11px;
+    }
+    .trending_news p{
+        font-size: 11px;
+    }
+    .lanka ul li{
+        padding: 0;
+        font-size: 11px;
     }
 }

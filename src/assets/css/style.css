@@ -165,6 +165,7 @@
 .viewAllMatch {
     margin: 0 auto;
     text-align: center;
+    margin-top: 14px;
 }
 
 .viewAllMatch button {
@@ -244,10 +245,10 @@
     transition: var(--ease-in)
 }
 
-.social-icon.social-bg-red li {
+/* .social-icon.social-bg-red li {
     border: 1px solid var(--color-blue);
     background-color: var(--color-blue)
-}
+} */
 
 .social-icon.social-bg-red li a i {
     color: var(--white)
@@ -2378,7 +2379,35 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
     transition: var(--ease-6ms);
     opacity: 0;
+    width: 40%;
     z-index: 99
+}
+
+.newMega {
+    padding: 15px;
+}
+
+.newMega h3 a {
+    margin: 0;
+    padding: 5px;
+    font-weight: bold;
+    border-bottom: solid 1px var(--color-blue);
+}
+
+.newMega ul {
+    margin: 0;
+    padding: 0;
+    margin-left: 20px;
+}
+.newMega ul>li>a{
+    color: #000;
+}
+.newMega ul>li>ul>li>a{
+    color: var(--color-blue);
+}
+.newMega li {
+    margin: 3px;
+    padding: 0;
 }
 
 .mega-dropdown .mega-fullwidth {
@@ -2719,13 +2748,16 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
 .main-footer h6 {
     color: var(--white);
 }
+
 .main-footer .ftr-link ul {
     margin-left: 10px;
 }
-.main-footer .ftr-link ul li{
+
+.main-footer .ftr-link ul li {
     list-style-type: disc;
     color: var(--white);
 }
+
 .main-footer .ftr-category ul li a,
 .main-footer .ftr-link ul li a {
     padding: 5px 15px;
@@ -11493,6 +11525,49 @@ body.demo {
 }
 
 @media screen and (max-width: 767px) {
+    .main-header{
+        padding: 0px;
+    }
+    .header-logo{
+        height: 45px!important;
+    }
+    .options-area{
+        padding: 0;
+    }
+    .nvbanner-area{
+        padding: 5px 0px;
+        margin-bottom: 10px;
+    }
+    .viewAllMatch button{
+        padding: 0px 10px;
+    }
+    .pro-area{
+        padding: 0;
+    }
+    .pro-wrapper{
+        padding: 0;
+    }
+    .pro-wrapper img{
+        height: 60px;
+        width: auto;
+    }
+    .viewAllMatch{
+        margin-top: 5px;
+       
+    }
+    .bnr-lft-title .news-heading{
+        padding: 5px 50px 5px 10px;
+    }
+    .bnr-lft-title .news-heading h5{
+        font-size: 12px;
+        margin: 0;
+    }
+    .bnr-lft-title .news-slider .elepse{
+        font-size: 12px;
+    }
+    .btl-simple-card span.btn{
+        background-color: var(--color-blue);
+    }
     .error-right h5 {
         font-size: 18px
     }
@@ -11555,5 +11630,19 @@ body.demo {
 
     .footerMobile li i {
         display: block;
+    }
+    .owl-theme .owl-dots{
+        display: none;
+    }
+    .bnr-lft-cnt-rgt{
+        margin-top: 10px;
+    }
+    .bnr-lft-title{
+        margin-bottom: 10px;
+    }
+    .news-card-wrapper,
+    .ns-mini-card,
+    .bnr-lft-cnt-rgt{
+        grid-gap: 10px;
     }
 }

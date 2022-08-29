@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Button, Form, Input } from 'antd';
 import $ from 'jquery';
@@ -6,12 +6,20 @@ import moment from "moment";
 import Config from "../../common/Config";
 import { useSelector, useDispatch } from 'react-redux'
 import { signUpUser, siteLogin, logout } from "../../store/UserRedux";
+import SocketApis from '../../utility/socket-apis'
 
 function Headers() {
     const dispatch = useDispatch()
     let navigate = useNavigate();
     const newsList = useSelector((state) => state.auth.newsList)
     const token = useSelector((state) => state.user.token)
+
+    useEffect(() => {
+        SocketApis.getSocketData('message', (data) => {
+            console.log(data)
+        });
+    }, []);
+
 
     // Filter News
     let menNews = newsList.filter(item => item.blog_category === 'men');
@@ -46,393 +54,41 @@ function Headers() {
                                     <li><NavLink to="/live-score">LIVE SCORE</NavLink></li>
                                     <li className="mega-dropdown"><NavLink to="/">SERIES</NavLink>
                                         <div className="mega-blog-menu mega-menu">
-                                            <div className="mega-menu-wrapper d-flex">
-                                                <div className="mega-tab-menu">
-                                                    <h4>Category</h4>
-                                                    <div className="nav flex-column" id="v-pills-tab" role="tablist"
-                                                        aria-orientation="vertical">
-                                                        <a className="nav-link active" data-bs-toggle="pill" href="#tab-one"
-                                                            role="tab" aria-selected="true">Men</a>
-                                                        <a className="nav-link" data-bs-toggle="pill" href="#tab-two" role="tab"
-                                                            aria-selected="false">Women</a>
-                                                    </div>
-                                                </div>
-                                                <div className="tab-content mega-tab-content" id="v-pills-tabContent">
-                                                    <div className="tab-pane fade show active" id="tab-one">
-                                                        <div className="mega-slider-area">
-                                                            <div className="megamenu-owl-wrapper owl-carousel"
-                                                                data-carousel-loop="false" data-carousel-items="4"
-                                                                data-carousel-nav="true" data-carousel-dots="true"
-                                                                data-carousel-lg="3" data-carousel-xl="3"
-                                                                data-carousel-md="2">
-
-                                                                {menNews.map((item, key) => <NavLink to={`/details/${item.name}`} ke={key}
-                                                                    className="carousel-single-cart">
-                                                                    <div className="carousel-card-img">
-                                                                        {Config.randerImage(item.meta_image)}
-                                                                        <span className="btn-theme">{item?.category_description}</span>
-                                                                    </div>
-                                                                    <div className="carousel-card-content">
-                                                                        <div className="post-date-time">
-                                                                            <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
-                                                                            <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
-                                                                        </div>
-                                                                        <h4>{Config.trunCate(item.title, 40, '. . .')}</h4>
-                                                                    </div>
-                                                                </NavLink>)}
-
-                                                            </div>
+                                            <div className="mega-menu-wrapper d-flex newMega">
+                                                <div className="container">
+                                                    <div className="row">
+                                                        <div className="col-6">
+                                                            <h3><NavLink to="/cat/mens">Men</NavLink></h3>
+                                                            <ul>
+                                                                <li><NavLink to="/cat/domestic">Domestic</NavLink>
+                                                                    <ul>
+                                                                        <li><NavLink to="/cat/ipl">IPL</NavLink></li>
+                                                                        <li><NavLink to="/cat/tnpl">TNPL</NavLink></li>
+                                                                    </ul>
+                                                                </li>
+                                                                <li><NavLink to="/cat/international">International</NavLink>
+                                                                    <ul>
+                                                                        <li><NavLink to="/cat/bang-vs-wi">Bang Vs WI</NavLink></li>
+                                                                        <li><NavLink to="/cat/ind-vs-eng">Ind Vs. Eng</NavLink></li>
+                                                                        <li><NavLink to="/cat/ire-vs-nz">Ire Vs Nz</NavLink></li>
+                                                                        <li><NavLink to="/cat/asia-cup">Asia Cup</NavLink></li>
+                                                                    </ul></li>
+                                                            </ul>
                                                         </div>
-                                                    </div>
-                                                    <div className="tab-pane fade" id="tab-two" role="tabpanel">
-                                                        <div className="mega-slider-area">
-                                                            <div className="megamenu-owl-wrapper owl-carousel"
-                                                                data-carousel-loop="false" data-carousel-items="4"
-                                                                data-carousel-nav="true" data-carousel-dots="true"
-                                                                data-carousel-lg="3" data-carousel-xl="3"
-                                                                data-carousel-md="2">
-
-                                                                {wpmenNews.map((item, key) => <NavLink to={`/details/${item.name}`} ke={key}
-                                                                    className="carousel-single-cart">
-                                                                    <div className="carousel-card-img">
-                                                                        {Config.randerImage(item.meta_image)}
-                                                                        <span className="btn-theme">{item?.category_description}</span>
-                                                                    </div>
-                                                                    <div className="carousel-card-content">
-                                                                        <div className="post-date-time">
-                                                                            <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
-                                                                            <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
-                                                                        </div>
-                                                                        <h4>{Config.trunCate(item.title, 40, '. . .')}</h4>
-                                                                    </div>
-                                                                </NavLink>)}
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="tab-pane fade" id="tab-three" role="tabpanel">
-                                                        <div className="mega-slider-area">
-                                                            <div className="megamenu-owl-wrapper owl-carousel"
-                                                                data-carousel-loop="false" data-carousel-items="4"
-                                                                data-carousel-nav="true" data-carousel-dots="true"
-                                                                data-carousel-lg="3" data-carousel-xl="3"
-                                                                data-carousel-md="2">
-
-                                                                <a href="single-post-details.html"
-                                                                    className="carousel-single-cart">
-                                                                    <div className="carousel-card-img">
-                                                                        <img src="assets/img/mega-menu-img/lifestyle/lifestyle-1.jpg"
-                                                                            alt="" />
-                                                                    </div>
-                                                                    <div className="carousel-card-content">
-                                                                        <div className="post-date-time">
-                                                                            <span>7:35 AM</span>
-                                                                            <span>16 Nov, 2020</span>
-                                                                        </div>
-                                                                        <h4>A collection of textile lorem samples lay spread
-                                                                            . . .</h4>
-                                                                    </div>
-                                                                </a>
-
-                                                                <a href="single-post-details.html"
-                                                                    className="carousel-single-cart">
-                                                                    <div className="carousel-card-img">
-                                                                        <img src="assets/img/mega-menu-img/lifestyle/lifestyle-2.jpg"
-                                                                            alt="" />
-                                                                    </div>
-                                                                    <div className="carousel-card-content">
-                                                                        <div className="post-date-time">
-                                                                            <span>7:35 AM</span>
-                                                                            <span>16 Nov, 2020</span>
-                                                                        </div>
-                                                                        <h4>A collection of textile lorem samples lay spread
-                                                                            . . .</h4>
-                                                                    </div>
-                                                                </a>
-
-                                                                <a href="single-post-details.html"
-                                                                    className="carousel-single-cart">
-                                                                    <div className="carousel-card-img">
-                                                                        <img src="assets/img/mega-menu-img/lifestyle/lifestyle-3.jpg"
-                                                                            alt="" />
-                                                                    </div>
-                                                                    <div className="carousel-card-content">
-                                                                        <div className="post-date-time">
-                                                                            <span>7:35 AM</span>
-                                                                            <span>16 Nov, 2020</span>
-                                                                        </div>
-                                                                        <h4>A collection of textile lorem samples lay spread
-                                                                            . . .</h4>
-                                                                    </div>
-                                                                </a>
-
-                                                                <a href="single-post-details.html"
-                                                                    className="carousel-single-cart">
-                                                                    <div className="carousel-card-img">
-                                                                        <img src="assets/img/mega-menu-img/lifestyle/lifestyle-4.jpg"
-                                                                            alt="" />
-                                                                    </div>
-                                                                    <div className="carousel-card-content">
-                                                                        <div className="post-date-time">
-                                                                            <span>7:35 AM</span>
-                                                                            <span>16 Nov, 2020</span>
-                                                                        </div>
-                                                                        <h4>A collection of textile lorem samples lay spread
-                                                                            . . .</h4>
-                                                                    </div>
-                                                                </a>
-
-                                                                <a href="single-post-details.html"
-                                                                    className="carousel-single-cart">
-                                                                    <div className="carousel-card-img">
-                                                                        <img src="assets/img/mega-menu-img/lifestyle/lifestyle-5.jpg"
-                                                                            alt="" />
-                                                                    </div>
-                                                                    <div className="carousel-card-content">
-                                                                        <div className="post-date-time">
-                                                                            <span>7:35 AM</span>
-                                                                            <span>16 Nov, 2020</span>
-                                                                        </div>
-                                                                        <h4>A collection of textile lorem samples lay spread
-                                                                            . . .</h4>
-                                                                    </div>
-                                                                </a>
-
-                                                                <a href="single-post-details.html"
-                                                                    className="carousel-single-cart">
-                                                                    <div className="carousel-card-img">
-                                                                        <img src="assets/img/mega-menu-img/lifestyle/lifestyle-6.jpg"
-                                                                            alt="" />
-                                                                    </div>
-                                                                    <div className="carousel-card-content">
-                                                                        <div className="post-date-time">
-                                                                            <span>7:35 AM</span>
-                                                                            <span>16 Nov, 2020</span>
-                                                                        </div>
-                                                                        <h4>A collection of textile lorem samples lay spread
-                                                                            . . .</h4>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="tab-pane fade" id="tab-four" role="tabpanel">
-                                                        <div className="mega-slider-area">
-                                                            <div className="megamenu-owl-wrapper owl-carousel"
-                                                                data-carousel-loop="false" data-carousel-items="4"
-                                                                data-carousel-nav="true" data-carousel-dots="true"
-                                                                data-carousel-lg="3" data-carousel-xl="3"
-                                                                data-carousel-md="2">
-
-                                                                <a href="single-post-details.html"
-                                                                    className="carousel-single-cart">
-                                                                    <div className="carousel-card-img">
-                                                                        <img src="assets/img/mega-menu-img/sports/sports-1.jpg"
-                                                                            alt="" />
-                                                                    </div>
-                                                                    <div className="carousel-card-content">
-                                                                        <div className="post-date-time">
-                                                                            <span>7:35 AM</span>
-                                                                            <span>16 Nov, 2020</span>
-                                                                        </div>
-                                                                        <h4>A collection of textile lorem samples lay spread
-                                                                            . . .</h4>
-                                                                    </div>
-                                                                </a>
-
-                                                                <a href="single-post-details.html"
-                                                                    className="carousel-single-cart">
-                                                                    <div className="carousel-card-img">
-                                                                        <img src="assets/img/mega-menu-img/sports/sports-2.jpg"
-                                                                            alt="" />
-                                                                    </div>
-                                                                    <div className="carousel-card-content">
-                                                                        <div className="post-date-time">
-                                                                            <span>7:35 AM</span>
-                                                                            <span>16 Nov, 2020</span>
-                                                                        </div>
-                                                                        <h4>A collection of textile lorem samples lay spread
-                                                                            . . .</h4>
-                                                                    </div>
-                                                                </a>
-
-                                                                <a href="single-post-details.html"
-                                                                    className="carousel-single-cart">
-                                                                    <div className="carousel-card-img">
-                                                                        <img src="assets/img/mega-menu-img/sports/sports-3.jpg"
-                                                                            alt="" />
-                                                                    </div>
-                                                                    <div className="carousel-card-content">
-                                                                        <div className="post-date-time">
-                                                                            <span>7:35 AM</span>
-                                                                            <span>16 Nov, 2020</span>
-                                                                        </div>
-                                                                        <h4>A collection of textile lorem samples lay spread
-                                                                            . . .</h4>
-                                                                    </div>
-                                                                </a>
-
-                                                                <a href="single-post-details.html"
-                                                                    className="carousel-single-cart">
-                                                                    <div className="carousel-card-img">
-                                                                        <img src="assets/img/mega-menu-img/sports/sports-4.jpg"
-                                                                            alt="" />
-                                                                    </div>
-                                                                    <div className="carousel-card-content">
-                                                                        <div className="post-date-time">
-                                                                            <span>7:35 AM</span>
-                                                                            <span>16 Nov, 2020</span>
-                                                                        </div>
-                                                                        <h4>A collection of textile lorem samples lay spread
-                                                                            . . .</h4>
-                                                                    </div>
-                                                                </a>
-
-                                                                <a href="single-post-details.html"
-                                                                    className="carousel-single-cart">
-                                                                    <div className="carousel-card-img">
-                                                                        <img src="assets/img/mega-menu-img/sports/sports-5.jpg"
-                                                                            alt="" />
-                                                                    </div>
-                                                                    <div className="carousel-card-content">
-                                                                        <div className="post-date-time">
-                                                                            <span>7:35 AM</span>
-                                                                            <span>16 Nov, 2020</span>
-                                                                        </div>
-                                                                        <h4>A collection of textile lorem samples lay spread
-                                                                            . . .</h4>
-                                                                    </div>
-                                                                </a>
-
-                                                                <a href="single-post-details.html"
-                                                                    className="carousel-single-cart">
-                                                                    <div className="carousel-card-img">
-                                                                        <img src="assets/img/mega-menu-img/sports/sports-6.jpg"
-                                                                            alt="" />
-                                                                    </div>
-                                                                    <div className="carousel-card-content">
-                                                                        <div className="post-date-time">
-                                                                            <span>7:35 AM</span>
-                                                                            <span>16 Nov, 2020</span>
-                                                                        </div>
-                                                                        <h4>A collection of textile lorem samples lay spread
-                                                                            . . .</h4>
-                                                                    </div>
-                                                                </a>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="tab-pane fade" id="tab-five" role="tabpanel">
-                                                        <div className="mega-slider-area">
-                                                            <div className="megamenu-owl-wrapper owl-carousel"
-                                                                data-carousel-loop="false" data-carousel-items="4"
-                                                                data-carousel-nav="true" data-carousel-dots="true"
-                                                                data-carousel-lg="3" data-carousel-xl="3"
-                                                                data-carousel-md="2">
-
-                                                                <a href="single-post-details.html"
-                                                                    className="carousel-single-cart">
-                                                                    <div className="carousel-card-img">
-                                                                        <img src="assets/img/mega-menu-img/gym/gym-1.jpg"
-                                                                            alt="" />
-                                                                    </div>
-                                                                    <div className="carousel-card-content">
-                                                                        <div className="post-date-time">
-                                                                            <span>7:35 AM</span>
-                                                                            <span>16 Nov, 2020</span>
-                                                                        </div>
-                                                                        <h4>A collection of textile lorem samples lay spread
-                                                                            . . .</h4>
-                                                                    </div>
-                                                                </a>
-
-                                                                <a href="single-post-details.html"
-                                                                    className="carousel-single-cart">
-                                                                    <div className="carousel-card-img">
-                                                                        <img src="assets/img/mega-menu-img/gym/gym-2.jpg"
-                                                                            alt="" />
-                                                                    </div>
-                                                                    <div className="carousel-card-content">
-                                                                        <div className="post-date-time">
-                                                                            <span>7:35 AM</span>
-                                                                            <span>16 Nov, 2020</span>
-                                                                        </div>
-                                                                        <h4>A collection of textile lorem samples lay spread
-                                                                            . . .</h4>
-                                                                    </div>
-                                                                </a>
-
-                                                                <a href="single-post-details.html"
-                                                                    className="carousel-single-cart">
-                                                                    <div className="carousel-card-img">
-                                                                        <img src="assets/img/mega-menu-img/gym/gym-3.jpg"
-                                                                            alt="" />
-                                                                    </div>
-                                                                    <div className="carousel-card-content">
-                                                                        <div className="post-date-time">
-                                                                            <span>7:35 AM</span>
-                                                                            <span>16 Nov, 2020</span>
-                                                                        </div>
-                                                                        <h4>A collection of textile lorem samples lay spread
-                                                                            . . .</h4>
-                                                                    </div>
-                                                                </a>
-
-                                                                <a href="single-post-details.html"
-                                                                    className="carousel-single-cart">
-                                                                    <div className="carousel-card-img">
-                                                                        <img src="assets/img/mega-menu-img/gym/gym-4.jpg"
-                                                                            alt="" />
-                                                                    </div>
-                                                                    <div className="carousel-card-content">
-                                                                        <div className="post-date-time">
-                                                                            <span>7:35 AM</span>
-                                                                            <span>16 Nov, 2020</span>
-                                                                        </div>
-                                                                        <h4>A collection of textile lorem samples lay spread
-                                                                            . . .</h4>
-                                                                    </div>
-                                                                </a>
-
-                                                                <a href="single-post-details.html"
-                                                                    className="carousel-single-cart">
-                                                                    <div className="carousel-card-img">
-                                                                        <img src="assets/img/mega-menu-img/gym/gym-5.jpg"
-                                                                            alt="" />
-                                                                    </div>
-                                                                    <div className="carousel-card-content">
-                                                                        <div className="post-date-time">
-                                                                            <span>7:35 AM</span>
-                                                                            <span>16 Nov, 2020</span>
-                                                                        </div>
-                                                                        <h4>A collection of textile lorem samples lay spread
-                                                                            . . .</h4>
-                                                                    </div>
-                                                                </a>
-
-                                                                <a href="single-post-details.html"
-                                                                    className="carousel-single-cart">
-                                                                    <div className="carousel-card-img">
-                                                                        <img src="assets/img/mega-menu-img/gym/gym-6.jpg"
-                                                                            alt="" />
-                                                                    </div>
-                                                                    <div className="carousel-card-content">
-                                                                        <div className="post-date-time">
-                                                                            <span>7:35 AM</span>
-                                                                            <span>16 Nov, 2020</span>
-                                                                        </div>
-                                                                        <h4>A collection of textile lorem samples lay spread
-                                                                            . . .</h4>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
+                                                        <div className="col-6">
+                                                            <h3><NavLink to="/cat/women">Women</NavLink></h3>
+                                                            <ul>
+                                                                <li><NavLink to="/cat/international-series">International series</NavLink></li>
+                                                                <li><NavLink to="/cat/t20i-women">T20I Women</NavLink></li>
+                                                                <li><NavLink to="/cat/wbbl-2022">WBBL 2022</NavLink></li>
+                                                            </ul>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </li>
+
                                     <li className="dropdown"><NavLink to="/cat/news">NEWS</NavLink>
                                         <ul>
                                             <li><NavLink to="/cat/trending-news">Trending News</NavLink></li>
@@ -450,7 +106,7 @@ function Headers() {
                                         </ul>
                                     </li>
                                 </ul>
-                                
+
                             </nav>
                         </div>
                         <div className="options-area">
