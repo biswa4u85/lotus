@@ -27,6 +27,7 @@ function HomeSlider() {
 
     const checkImg = (name) => {
         console.log(name)
+     
         return <img src={Flags[name] ? Flags[name] : Flags['NoImg']} className="flagimg" />
     }
 

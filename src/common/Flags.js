@@ -5,5 +5,5 @@ export default {
     nepal: require("../assets/flags/nepal.png"),
     hampshire: require("../assets/flags/hampshire.png"),
     sussex: require("../assets/flags/sussex.png"),
-    tba: require("../assets/flags/TBA.png"),
+    TBA: require("../assets/flags/TBA.png"),
 }
