@@ -8,6 +8,12 @@ import { useTranslation } from "react-i18next";
 import { getNewsDetails, addComments } from '../store/MainRedux'
 import Config from "../common/Config";
 import { Helmet } from "react-helmet";
+import { Image } from 'antd';
+import instagram from "../assets/image/instagram.png";
+import facebook from "../assets/image/facebook.png";
+import twitter from "../assets/image/twitter.png";
+import youtube from "../assets/image/youtube.png";
+import Tags from '../components/Tags';
 
 const { TextArea } = Input;
 
@@ -29,7 +35,7 @@ function Details(props) {
         window.scrollTo(0, 0)
         dispatch(getNewsDetails({ token, pId }))
     }, [pId]);
-    
+
     // Latest News
     let latestNews = newsList.filter(item => item.blog_category === 'news');
     latestNews.length = 5
@@ -77,6 +83,9 @@ function Details(props) {
                                 </div>
                                 <h2>{newsDetails?.title}</h2>
                                 <div dangerouslySetInnerHTML={{ __html: newsDetails?.content_html ? newsDetails?.content_html : newsDetails?.content }}></div>
+                                <div className="details_tags"><Tags data={newsDetails?._user_tags ? newsDetails?._user_tags : ''} /></div>
+                                
+                                
                                 {/* <div className="reaction">
                                     <h3>Your Reaction on this post</h3>
                                     <ul>
@@ -146,10 +155,11 @@ function Details(props) {
                         <div className="ath-social">
                             <h3>Share This Post</h3>
                             <ul className="social-icon social-outline-gray">
-                                <li><a href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`} target="_blank"><i className="icofont-facebook"></i></a></li>
-                                <li><a href={`https://www.youtube.com/sharer/sharer.php?u=${window.location.href}`} target="_blank"><i className="icofont-youtube-play"></i></a></li>
-                                <li><a href={`https://twitter.com/sharer/sharer.php?u=${window.location.href}`} target="_blank"><i className="icofont-twitter"></i></a></li>
-                                <li><a href={`https://www.instagram.com/sharer/sharer.php?u=${window.location.href}`} target="_blank"><i className="icofont-instagram"></i></a></li>
+                                
+                                <li><a href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`} target="_blank"><Image preview={false} src={facebook} /></a></li>
+                                <li><a href={`https://www.youtube.com/sharer/sharer.php?u=${window.location.href}`} target="_blank"><Image preview={false} src={youtube} /></a></li>
+                                <li><a href={`https://twitter.com/sharer/sharer.php?u=${window.location.href}`} target="_blank"><Image preview={false} src={twitter} /></a></li>
+                                <li><a href={`https://www.instagram.com/sharer/sharer.php?u=${window.location.href}`} target="_blank"><Image preview={false} src={instagram} /></a></li>
                             </ul>
                         </div>
                     </div>

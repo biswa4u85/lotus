@@ -1292,6 +1292,22 @@ body.remover {
     align-items: center;
     flex-wrap: wrap
 }
+.tagsection {
+    display: inline-block;
+    border: 1px solid var(--border-color);
+    margin: 5px; 
+    color: var(--white);
+    padding: 5px 8px;
+    border-radius: 15px;
+    font-size: 10px;
+}
+.details_tags .tagsection {
+    color: var(--black);
+    border: 1px solid var(--black);
+    margin-bottom: 10px;
+}
+
+
 
 .btl-simple-card .btlc-content .btcl-content-status span {
     font-size: var(--text-13);
@@ -7522,12 +7538,12 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
 }
 
 .social-icon.social-outline-gray li {
-    border: 1px solid var(--sub-title);
+    border: none;
     transition: var(--ease-in)
 }
 
 .social-icon.social-outline-gray li:hover {
-    border: 1px solid var(--color-primary);
+    border: none;
     background-color: var(--color-primary)
 }
 

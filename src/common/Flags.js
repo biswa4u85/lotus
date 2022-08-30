@@ -3,6 +3,7 @@ export default {
     Italy: require("../assets/flags/Italy.gif"),
     kenya: require("../assets/flags/kenya.png"),
     nepal: require("../assets/flags/nepal.png"),
-    trentrockets: require("../assets/flags/trentrockets.png"),
-    welshfire: require("../assets/flags/welshfire.png"),
+    hampshire: require("../assets/flags/hampshire.png"),
+    sussex: require("../assets/flags/sussex.png"),
+    tba: require("../assets/flags/TBA.png"),
 }
