@@ -1,8 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { getAllDataApi } from '../utility/site-apis'
+import { getAllDataApi } from '../utility/frappe-apis'
 
 const doctypeFixtures = 'Live Score Fixtures'
 const fieldsFixtures = ["*"]
+
+// seriesData
+
+const doctypeSeries = 'Live Score Series'
 
 const initialState = {
   isFetching: false,
@@ -11,6 +15,20 @@ const initialState = {
   fixtures: [],
   scorecard: {},
 }
+
+export const seriesAllData = createAsyncThunk(
+  'score/seriesAllData',
+  async (params, { rejectWithValue }) => {
+    const response = await getAllDataApi({ doctype: doctypeSeries, fields: ["*"], ...params })
+
+    if (response.status === 'error') {
+      return rejectWithValue(response.data)
+    }
+    return response.data
+  }
+)
+
+
 
 export const getSeries = createAsyncThunk(
   'score/getSeries',
@@ -26,8 +44,8 @@ export const getHomeFixtures = createAsyncThunk(
   'score/getHomeFixtures',
   async (params, { rejectWithValue }) => {
     let date = new Date()
-    let queryDate = `${date.getDate() < 10 ? "0" + date.getDate() : date.getDate()}-${date.getMonth() < 10 ? "0" + (Number(date.getMonth()) + 1) : date.getMonth()}-${date.getFullYear()}`
-    const response = await getAllDataApi({ doctype: doctypeFixtures, fields: fieldsFixtures, searchEqual: { 'date': queryDate }, ...params })
+    let queryDate = `${date.getFullYear()}-${date.getMonth() < 10 ? "0" + (Number(date.getMonth()) + 1) : date.getMonth()}-${date.getDate() < 10 ? "0" + date.getDate() : date.getDate()}`
+    const response = await getAllDataApi({ doctype: doctypeFixtures, fields: fieldsFixtures, filters: [[doctypeFixtures, "date", "=", queryDate]], ...params })
     if (response.status === 'error') {
       return rejectWithValue(response.data)
     }

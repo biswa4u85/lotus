@@ -130,12 +130,10 @@ export function getAllSingleDataApi(params) {
 export async function getAllDataApi(params) {
   let doctype = params.doctype
   let token = params.token
-  let search = params.search
-  let searchEqual = params.searchEqual
+  let filters = params.filters
   delete params.token
   delete params.doctype
-  delete params.search
-  delete params.searchEqual
+  delete params.filters
 
   let headers = {}
   if (token) {
@@ -148,22 +146,7 @@ export async function getAllDataApi(params) {
   if (params.orderBy) {
     body = body + `&order_by=${params.orderBy}`
   }
-  if (search) {
-    let filters = []
-    for (let key in search) {
-      if (search[key]) {
-        filters.push([doctype, key, "like", search[key]])
-      }
-    }
-    body = body + `&filters=${JSON.stringify(filters)}`
-  }
-  if (searchEqual) {
-    let filters = []
-    for (let key in searchEqual) {
-      if (searchEqual[key]) {
-        filters.push([doctype, key, "=", searchEqual[key]])
-      }
-    }
+  if (filters) {
     body = body + `&filters=${JSON.stringify(filters)}`
   }
   if (params.page) {
@@ -176,21 +159,20 @@ export async function getAllDataApi(params) {
     body = body + `&limit_page_length=None`
   }
 
-
   // Get Counts
   let count = 0
   let countHeaders = { 'Content-Type': 'application/json' }
   let searchBy = {}
-  if (search) {
-    for (let key in search) {
-      if (search[key]) {
-        searchBy[key] = search[key]
+  if (filters) {
+    for (let key in filters) {
+      if (filters[key]) {
+        searchBy[filters[key][1]] = filters[key][3]
       }
     }
   }
   let counts = await axiosAPI.post('api/method/erp_custom_auth.authentication.getDataDB', { doctype: doctype, search: searchBy }, { headers: countHeaders })
   if (counts) {
-    count = counts?.data?.message ? counts.data.message : 0
+    count = counts?.data?.message ? counts?.data?.message : 0
   }
   return axiosAPI.post('', body, { headers: headers })
     .then((response) => {

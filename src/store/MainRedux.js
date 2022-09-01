@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { getAllDataApi, getAllSingleDataApi, postCmdApi, postMethodApi } from '../utility/site-apis'
+import { getAllDataApi, getAllSingleDataApi, postCmdApi, postMethodApi } from '../utility/frappe-apis'
 import { toast } from 'react-toastify';
 import Config from "../common/Config";
 
@@ -33,6 +33,7 @@ const initialState = {
   newsDetails: {},
   isSubscribe: false,
   isAddComment: false,
+  searchValue: [],
 }
 
 export const getHomeSettings = createAsyncThunk(
@@ -49,7 +50,7 @@ export const getHomeSettings = createAsyncThunk(
 export const getHeadlineList = createAsyncThunk(
   'auth/getHeadlineList',
   async (params, { rejectWithValue }) => {
-    const response = await getAllDataApi({ doctype: doctypeNewsHeadlines, fields: fieldsNewsHeadlines, search: { [siteName]: 1 }, ...params })
+    const response = await getAllDataApi({ doctype: doctypeNewsHeadlines, fields: fieldsNewsHeadlines, filters: [[doctypeNewsHeadlines, siteName, "=", 1]], ...params })
     if (response.status === 'error') {
       return rejectWithValue(response.data)
     }
@@ -71,7 +72,7 @@ export const getNewsCategory = createAsyncThunk(
 export const getNewsList = createAsyncThunk(
   'auth/getNewsList',
   async (params, { rejectWithValue }) => {
-    const response = await getAllDataApi({ doctype: doctypeBlogPost, fields: fieldsBlogPost, search: { [siteName]: 1 }, orderBy: 'published_on desc', ...params })
+    const response = await getAllDataApi({ doctype: doctypeBlogPost, fields: fieldsBlogPost, filters: [[doctypeBlogPost, siteName, "=", 1]], orderBy: 'published_on desc', ...params })
     if (response.status === 'error') {
       return rejectWithValue(response.data)
     }
@@ -82,7 +83,17 @@ export const getNewsList = createAsyncThunk(
 export const getNewsListByCat = createAsyncThunk(
   'auth/getNewsListByCat',
   async (params, { rejectWithValue }) => {
-    const response = await getAllDataApi({ doctype: doctypeBlogPost, fields: fieldsBlogPost, search: { [siteName]: 1, blog_category: params.Id }, orderBy: 'published_on desc', ...params })
+    const response = await getAllDataApi({ doctype: doctypeBlogPost, fields: fieldsBlogPost, filters: [[doctypeBlogPost, siteName, "=", 1], [doctypeBlogPost, "blog_category", "=", params.Id]], orderBy: 'published_on desc', ...params })
+    if (response.status === 'error') {
+      return rejectWithValue(response.data)
+    }
+    return response
+  }
+)
+export const searchPost = createAsyncThunk(
+  'auth/searchPost',
+  async (params, { rejectWithValue }) => {
+    const response = await getAllDataApi({ doctype: doctypeBlogPost, fields: fieldsBlogPost, filters: [[doctypeBlogPost, siteName, "=", 1], [doctypeBlogPost, "title", "like", `%${params.name}%`]], orderBy: 'published_on desc', ...params })
     if (response.status === 'error') {
       return rejectWithValue(response.data)
     }
@@ -93,7 +104,7 @@ export const getNewsListByCat = createAsyncThunk(
 export const getNewsDetails = createAsyncThunk(
   'auth/getNewsDetails',
   async (params, { rejectWithValue }) => {
-    const response = await getAllDataApi({ doctype: doctypeBlogPost, fields: ["*"], search: { name: params.pId }, ...params })
+    const response = await getAllDataApi({ doctype: doctypeBlogPost, fields: ["*"], filters: [[doctypeBlogPost, "name", "=", params.pId]], ...params })
     if (response.status === 'error') {
       return rejectWithValue(response.data)
     }
@@ -104,7 +115,7 @@ export const getNewsDetails = createAsyncThunk(
 export const getCmsDetails = createAsyncThunk(
   'auth/getCmsDetails',
   async (params, { rejectWithValue }) => {
-    const response = await getAllDataApi({ doctype: doctypeWebPage, fields: fieldsWebPage, search: { route: params.Id }, ...params })
+    const response = await getAllDataApi({ doctype: doctypeWebPage, fields: fieldsWebPage, filters: [[doctypeWebPage, "route", "=", params.Id]], ...params })
     if (response.status === 'error') {
       return rejectWithValue(response.data)
     }
@@ -213,6 +224,21 @@ export const counterSlice = createSlice({
       state.isFetching = false
       state.error = null
       state.newsListByCat = action.payload
+    },
+    //searchPost
+    [searchPost.pending]: (state, action) => {
+      state.isFetching = true
+      state.error = null
+      state.newsListByCat = []
+    },
+    [searchPost.rejected]: (state, action) => {
+      state.isFetching = false
+      state.error = action.payload.message
+    },
+    [searchPost.fulfilled]: (state, action) => {
+      state.isFetching = false
+      state.error = null
+      state.searchValue = action.payload
     },
     // News Details
     [getNewsDetails.pending]: (state, action) => {

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { loginApi, apiGetCall, postCmdApi } from '../utility/site-apis'
+import { loginApi, apiGetCall, postCmdApi } from '../utility/frappe-apis'
 import { toast } from 'react-toastify';
 import Config from "../common/Config";
 
