@@ -1,7 +1,7 @@
 import noData from "../assets/img/nodata.jpg";
 import playBtn from "../assets/img/svg/play-btn.svg";
 export default {
-    apiSocketUrl: 'https://news.techwizards.io:3001',
+    apiSocketUrl: 'http://localhost:3005',
     frappe_url: 'https://news.techwizards.io',
     frappe_custom_app: 'erp_custom_auth',
     token: 'token 8013775618bd3a7:99fa9ff03295aa8',
@@ -17,5 +17,8 @@ export default {
     },
     trunCate: (str, max, suffix) => {
         return str.length < max ? str : `${str.substr(0, str.substr(0, max - suffix.length).lastIndexOf(' '))} ${suffix}`
+    },
+    filterTitle: (title) => {
+        return title.replaceAll("-", " ")
     }
 }

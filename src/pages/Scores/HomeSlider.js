@@ -3,6 +3,7 @@ import OwlCarousel from 'react-owl-carousel';
 import moment from "moment";
 import Flags from "../../common/Flags";
 import { useSelector, useDispatch } from 'react-redux'
+import SocketApis from '../../utility/socket-apis'
 import { getHomeFixtures } from "../../store/ScoreRedux";
 
 const responsive = {
@@ -23,11 +24,46 @@ function HomeSlider() {
 
     useEffect(() => {
         dispatch(getHomeFixtures())
+        return () => {
+            for (let item of fixtures) {
+                if (item.status === 'Fixture') {
+                    SocketApis.unSubscribe(item.name)
+                }
+            }
+        }
     }, []);
 
+    useEffect(() => {
+        for (let item of fixtures) {
+            if (item.status === 'Fixture' && checkTime(item.datetime)) {
+                SocketApis.subscribe(item.name)
+            }
+        }
+    }, [fixtures]);
+
+    const checkDate = (date) => {
+        const today = new Date();
+        const newDate = new Date(date);
+        if (today.toDateString() === newDate.toDateString()) {
+            return 'Today'
+        } else {
+            return 'Yesterday'
+        }
+    }
+    const checkTime = (date) => {
+        const now = new Date();
+        const nowTime = now.getTime();
+        const given = new Date(date);
+        const givenTime = given.getTime();
+        let difff = nowTime - givenTime
+        if (difff > 0) {
+            return true
+        } else {
+            return false
+        }
+    }
+
     const checkImg = (name) => {
-        console.log(name)
-     
         return <img src={Flags[name] ? Flags[name] : Flags['NoImg']} className="flagimg" />
     }
 
@@ -35,25 +71,28 @@ function HomeSlider() {
         return null
     }
 
-    return (<OwlCarousel className='owl-theme' responsive={responsive} loop margin={10} nav={false}>
-        {fixtures.map((item, key) => <div key={key} className='item'>
-            <div className="trending_news">
-                <div className="lanka">
-                    <h6>Today At {moment.utc(item.datetime).format('hh:mm A')} . <span> {item.match_subtitle} .</span> {item.status}</h6>
-                    <div className='srilanka'>
-                        {checkImg(item?.home?.name)} <span> {item?.home?.name}</span>
+    return (<OwlCarousel className='owl-theme' responsive={responsive} margin={10} autoplay={true} nav={false}>
+        {fixtures.map((item, key) => {
+            let score = null
+            return <div key={key} id={`live_home_${item.name}`} className='item'>
+                <div className="trending_news">
+                    <div className="lanka">
+                        <h6>{checkDate(item.date)} At {moment.utc(item.datetime).format('hh:mm A')} . <span> {item.match_subtitle} .</span> {item.status}</h6>
+                        <div className='srilanka'>
+                            {checkImg(item?.home?.name)} <span> {item?.home?.name}</span> <span id="live_home" className="red">{score ? score?.match_summary?.home_scores : ''}</span>
+                        </div>
+                        <div className='srilanka'>
+                            {checkImg(item?.away?.name)}  <span>{item?.away?.name} </span> <span id="live_away" className="red">{score ? score?.match_summary?.away_scores : ''}</span>
+                        </div>
+                        <span id="live_result">{item.status === 'Complete' ? <p>{item.result} - <span>{moment.utc(item.datetime).format('Do MMM YYYY')}</span></p> : <p>Match starts in <span>{moment.utc(item.date).format('Do MMM YYYY hh:mm A')}</span></p>}</span>
+                        <div className="lanka-border"></div>
+                        <ul>
+                            <li>{item.venue}</li>
+                        </ul>
                     </div>
-                    <div className='srilanka'>
-                        {checkImg(item?.away?.name)}  <span>{item?.away?.name}</span>
-                    </div>
-                    {item.status === 'Complete' ? <p>{item.result} - <span>{moment.utc(item.datetime).format('Do MMM YYYY')}</span></p> : <p>Match starts in <span>{moment.utc(item.date).format('Do MMM YYYY hh:mm A')}</span></p>}
-                    <div className="lanka-border"></div>
-                    <ul>
-                        <li>{item.venue}</li>
-                    </ul>
                 </div>
             </div>
-        </div>)}
+        })}
     </OwlCarousel>);
 }
 

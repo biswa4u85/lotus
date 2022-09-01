@@ -1,29 +1,34 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Button, Form, Input } from 'antd';
 import $ from 'jquery';
-import moment from "moment";
-import Config from "../../common/Config";
 import { useSelector, useDispatch } from 'react-redux'
 import { signUpUser, siteLogin, logout } from "../../store/UserRedux";
+import { getScorecard } from "../../store/ScoreRedux";
+import Config from "../../common/Config";
 import SocketApis from '../../utility/socket-apis'
 
 function Headers() {
     const dispatch = useDispatch()
     let navigate = useNavigate();
-    const newsList = useSelector((state) => state.auth.newsList)
+    const [search, setSearch] = useState('');
     const token = useSelector((state) => state.user.token)
+    const homeSettings = useSelector((state) => state.auth.homeSettings)
 
     useEffect(() => {
         SocketApis.getSocketData('message', (data) => {
-            console.log(data)
+            dispatch(getScorecard(data))
+            for (let key in data) {
+                let score = data[key] ? data[key].live_details : null
+                if (score) {
+                    $(`#live_home_${key} #live_home`).text(score?.match_summary?.home_scores);
+                    $(`#live_home_${key} #live_away`).text(score?.match_summary?.away_scores);
+                    $(`#live_home_${key} #live_result`).text(score?.match_summary?.status);
+                    $(`#live_home_${key} #live_result`).attr("class", 'red');
+                }
+            }
         });
     }, []);
-
-
-    // Filter News
-    let menNews = newsList.filter(item => item.blog_category === 'men');
-    let wpmenNews = newsList.filter(item => item.blog_category === 'women');
 
     const onSignIn = (values) => {
         dispatch(siteLogin(values))
@@ -44,7 +49,7 @@ function Headers() {
                     <div className="main-header-wrapper">
                         <div className="header-logo">
                             <NavLink to="/">
-                                <span>criczone</span>
+                                {Config.randerImage(homeSettings.site_logo)}
                             </NavLink>
                         </div>
                         <div className="navbar-wrapper">

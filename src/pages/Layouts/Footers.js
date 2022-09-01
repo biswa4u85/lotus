@@ -21,8 +21,6 @@ function Footers() {
     const [submenu, setSubmenu] = useState(false)
     const token = Config.token
     const homeSettings = useSelector((state) => state.auth.homeSettings)
-    const cmsData = useSelector((state) => state.auth.cms)
-    const cms = cmsData['about-us-l']
 
     useEffect(() => {
         dispatch(getCmsDetails({ token, Id: 'about-us-l' }))
@@ -69,23 +67,17 @@ function Footers() {
                                 <div className="ftr-drpt">
                                     <div className="footer-logo">
                                         <NavLink to="/">
-                                            <span>criczone</span>
+                                            {Config.randerImage(homeSettings.site_logo)}
                                         </NavLink>
                                     </div>
-                                    <p>{cms?.header}</p>
+                                    <p>{homeSettings?.site_about}</p>
                                 </div>
                             </div>
                             <div className="col-xl-2 col-md-4 ft-order-2 mb-sm-30">
                                 <div className="ftr-link">
                                     <h3 className="title-line-shape">Category</h3>
                                     <ul>
-                                        <li><NavLink to="/cat/trending-news">Trending News</NavLink></li>
-                                        <li><NavLink to="/cat/match-prediction">Match Prediction</NavLink></li>
-                                        {/* <li><NavLink to="/cat/Previews">Previews</NavLink></li> */}
-                                        <li><NavLink to="/cat/review-zone">Reviews</NavLink></li>
-                                        <li><NavLink to="/cat/on-this-day">On this Day</NavLink></li>
-                                        <li><NavLink to="/cat/men">Men</NavLink></li>
-                                        <li><NavLink to="/cat/women">Women</NavLink></li>
+                                        {homeSettings?.category ? homeSettings.category.map((item, key) => <li key={key}><NavLink to={`/cat/${item.title}`}>{Config.filterTitle(item.title)}</NavLink></li>) : null}
                                     </ul>
                                 </div>
                             </div>
@@ -93,27 +85,18 @@ function Footers() {
                                 <div className="ftr-link">
                                     <h3 className="title-line-shape">Useful Link</h3>
                                     <ul>
-                                        <li><NavLink to="/cms/dcma-l">DCMA</NavLink></li>
-                                        <li><NavLink to="/cms/disclaimer-l">Disclaimer</NavLink></li>
-                                        <li><NavLink to="/cms/copyright-notice-l">Copyright Notice</NavLink></li>
-                                        <li><NavLink to="/cms/about-us-l">About Us</NavLink></li>
-                                        <li><NavLink to="/cms/contact-us-l">Contact Us</NavLink></li>
+                                        {homeSettings?.usefulLinks ? homeSettings.usefulLinks.map((item, key) => <li key={key}><NavLink to={`/cms/${item.title}`}>{Config.filterTitle(item.title)}</NavLink></li>) : null}
                                     </ul>
                                 </div>
                             </div>
                             <div className="col-xl-3 col-md-4 ft-order-4">
                                 <div className="ftr-contact">
                                     <h3 className="title-line-shape">Contact Us</h3>
-                                    <p><a href="mailto:info@lotusnews247.com">info@lotusnews247.com</a></p>
+                                    <p><a href={`mailto:${homeSettings?.site_email}`}>{homeSettings?.site_email}</a></p>
                                     <br />
                                 </div>
                                 <div className="footer-social">
                                     <h6>Follow Us</h6>
-                                    {/* <ul className="social-icon social-bg-red">
-                                        <li><a href="https://www.facebook.com/Lotusnews247-105292842265621" target="_blank"><i className="icofont-facebook"></i></a></li>
-                                        <li><a href="https://www.instagram.com/lotus_news247" target="_blank"><i className="icofont-instagram"></i></a></li>
-                                        <li><a href="https://twitter.com/Lotusnews2" target="_blank"><i className="icofont-twitter"></i></a></li>
-                                    </ul> */}
                                     <ul className="social-icon social-bg-red">
                                         <li><a href="https://www.facebook.com/Lotusnews247-105292842265621" target="_blank"><Image preview={false} src={facebook} /></a></li>
                                         <li><a href="https://instagram.com/lotus_news247" target="_blank"><Image preview={false} src={instagram} /></a></li>

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { getAllDataApi, getAllSingleDataApi, postCmdApi, postMethodApi } from '../utility/frappe-apis'
+import { getAllDataApi, getQueryDataApi, postCmdApi, postMethodApi } from '../utility/frappe-apis'
 import { toast } from 'react-toastify';
 import Config from "../common/Config";
 
@@ -39,10 +39,15 @@ const initialState = {
 export const getHomeSettings = createAsyncThunk(
   'auth/getHomeSettings',
   async (params, { rejectWithValue }) => {
-    const response = await getAllSingleDataApi({ doctype: doctypeNewsHomePage, fields: fieldsNewsHomePage, ...params })
-    if (response.status === 'error') {
-      return rejectWithValue(response.data)
+    const settings = await getQueryDataApi(`select field,value from tabSingles where doctype = '${doctypeNewsHomePage}'`)
+    const settingCategory = await getQueryDataApi("select title from `tabNews Category Child` where parent= 'News Home Page Lotus' AND parentfield= 'footer_category'")
+    const settingUsefulLinks = await getQueryDataApi("select title from `tabWeb Page Child` where parent= 'News Home Page Lotus' AND parentfield= 'footer_useful_link'")
+    let response = {}
+    for (let item of settings) {
+      response[item.field] = item.value
     }
+    response['category'] = settingCategory
+    response['usefulLinks'] = settingUsefulLinks
     return response
   }
 )
