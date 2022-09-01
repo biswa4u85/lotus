@@ -4,9 +4,8 @@ import { getAllDataApi } from '../utility/frappe-apis'
 const doctypeFixtures = 'Live Score Fixtures'
 const fieldsFixtures = ["*"]
 
-// seriesData
-
 const doctypeSeries = 'Live Score Series'
+const fieldsSeries = ["*"]
 
 const initialState = {
   isFetching: false,
@@ -16,11 +15,10 @@ const initialState = {
   scorecard: {},
 }
 
-export const seriesAllData = createAsyncThunk(
-  'score/seriesAllData',
+export const getSeries = createAsyncThunk(
+  'score/getSeries',
   async (params, { rejectWithValue }) => {
-    const response = await getAllDataApi({ doctype: doctypeSeries, fields: ["*"], ...params })
-
+    const response = await getAllDataApi({ doctype: doctypeSeries, fields: fieldsSeries, ...params })
     if (response.status === 'error') {
       return rejectWithValue(response.data)
     }
@@ -28,24 +26,14 @@ export const seriesAllData = createAsyncThunk(
   }
 )
 
-
-
-export const getSeries = createAsyncThunk(
-  'score/getSeries',
-  // async (params, { rejectWithValue }) => {
-  //   const response = await apiScoreCalls('series')
-  //   if (response.status === 'error') {
-  //     return rejectWithValue(response.data)
-  //   }
-  //   return response.results
-  // }
-)
 export const getHomeFixtures = createAsyncThunk(
   'score/getHomeFixtures',
   async (params, { rejectWithValue }) => {
     let date = new Date()
-    let queryDate = `${date.getFullYear()}-${date.getMonth() < 10 ? "0" + (Number(date.getMonth()) + 1) : date.getMonth()}-${date.getDate() < 10 ? "0" + date.getDate() : date.getDate()}`
-    const response = await getAllDataApi({ doctype: doctypeFixtures, fields: fieldsFixtures, filters: [[doctypeFixtures, "date", "=", queryDate]], ...params })
+    let toDate = `${date.getFullYear()}-${date.getMonth() < 10 ? "0" + (Number(date.getMonth()) + 1) : date.getMonth()}-${date.getDate() < 10 ? "0" + date.getDate() : date.getDate()}`
+    date.setDate(date.getDate() - 1);
+    let fromDate = `${date.getFullYear()}-${date.getMonth() < 10 ? "0" + (Number(date.getMonth()) + 1) : date.getMonth()}-${date.getDate() < 10 ? "0" + date.getDate() : date.getDate()}`
+    const response = await getAllDataApi({ doctype: doctypeFixtures, fields: fieldsFixtures, filters: [[doctypeFixtures, "date", "Between", [fromDate, toDate]]], ...params })
     if (response.status === 'error') {
       return rejectWithValue(response.data)
     }
@@ -56,24 +44,14 @@ export const getHomeFixtures = createAsyncThunk(
     return response.data
   }
 )
-export const getScorecard = createAsyncThunk(
-  'score/getScorecard',
-  async (params, { rejectWithValue }) => {
-    // const response = await apiScoreCalls('match/2432999')
-    // if (response.status === 'error') {
-    //   return rejectWithValue(response.data)
-    // }
-    // return response.results
-  }
-)
 
 
 export const counterSlice = createSlice({
   name: 'score',
   initialState,
   reducers: {
-    resetNews: (state, action) => {
-      state.newsDetails = {}
+    getScorecard: (state, action) => {
+      state.scorecard = {...state.scorecard, ...action.payload}
     },
   },
   extraReducers: {
@@ -105,23 +83,9 @@ export const counterSlice = createSlice({
       state.error = null
       state.fixtures = action.payload
     },
-    // Home Settings
-    [getScorecard.pending]: (state, action) => {
-      state.isFetching = true
-      state.error = null
-    },
-    [getScorecard.rejected]: (state, action) => {
-      state.isFetching = false
-      state.error = action.payload.message
-    },
-    [getScorecard.fulfilled]: (state, action) => {
-      state.isFetching = false
-      state.error = null
-      state.scorecard = action.payload
-    },
   }
 
 })
 
-export const { resetNews } = counterSlice.actions
+export const { getScorecard } = counterSlice.actions
 export default counterSlice.reducer
