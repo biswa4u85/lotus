@@ -19,6 +19,7 @@ export default {
         return str.length < max ? str : `${str.substr(0, str.substr(0, max - suffix.length).lastIndexOf(' '))} ${suffix}`
     },
     filterTitle: (title) => {
-        return title.replaceAll("-", " ")
+        let res = title.replaceAll("-", " ")
+        return res.replaceAll("lotus", "")
     }
 }

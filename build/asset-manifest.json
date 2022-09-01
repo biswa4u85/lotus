@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.9a74d3d0.css",
-    "main.js": "/static/js/main.6373d652.js",
+    "main.css": "/static/css/main.1a5d5535.css",
+    "main.js": "/static/js/main.7ef38ffc.js",
     "static/css/98.63eeb566.chunk.css": "/static/css/98.63eeb566.chunk.css",
     "static/js/98.f626aac7.chunk.js": "/static/js/98.f626aac7.chunk.js",
     "static/css/57.0c665cd1.chunk.css": "/static/css/57.0c665cd1.chunk.css",
@@ -23,7 +23,6 @@
     "static/media/facebook.png": "/static/media/facebook.795fce8e464693d7346d.png",
     "static/media/youtube.png": "/static/media/youtube.53e70a78a824adc8e296.png",
     "static/media/AFGHANISTAN.gif": "/static/media/AFGHANISTAN.8d8fdd896f15dfe94718.gif",
-    "static/media/logo-light.png": "/static/media/logo-light.cf54cf11fce28b1874c3.png",
     "static/media/trinbagoknightriders.webp": "/static/media/trinbagoknightriders.4477db9e72ce61e7c6f3.webp",
     "static/media/khyber.webp": "/static/media/khyber.43f4dd02529125f86c03.webp",
     "static/media/stlucia.webp": "/static/media/stlucia.65ac5d69e32253bdc609.webp",
@@ -37,8 +36,8 @@
     "static/media/ftr-bg.svg": "/static/media/ftr-bg.d60b70dd01f0dee86e8f197add211454.svg",
     "static/media/bangladesh.webp": "/static/media/bangladesh.b7228809df378e8cdb39.webp",
     "static/media/play-btn.svg": "/static/media/play-btn.f5fbbff88fccffab534986f6e5912ba8.svg",
-    "main.9a74d3d0.css.map": "/static/css/main.9a74d3d0.css.map",
-    "main.6373d652.js.map": "/static/js/main.6373d652.js.map",
+    "main.1a5d5535.css.map": "/static/css/main.1a5d5535.css.map",
+    "main.7ef38ffc.js.map": "/static/js/main.7ef38ffc.js.map",
     "98.63eeb566.chunk.css.map": "/static/css/98.63eeb566.chunk.css.map",
     "98.f626aac7.chunk.js.map": "/static/js/98.f626aac7.chunk.js.map",
     "57.0c665cd1.chunk.css.map": "/static/css/57.0c665cd1.chunk.css.map",
@@ -46,7 +45,7 @@
     "787.10238c6d.chunk.js.map": "/static/js/787.10238c6d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9a74d3d0.css",
-    "static/js/main.6373d652.js"
+    "static/css/main.1a5d5535.css",
+    "static/js/main.7ef38ffc.js"
   ]
 }

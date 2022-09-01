@@ -102,9 +102,6 @@ function Footers() {
                                         <li><a href="https://instagram.com/lotus_news247" target="_blank"><Image preview={false} src={instagram} /></a></li>
                                         <li><a href="https://twitter.com/Lotusnews2" target="_blank"><Image preview={false} src={twitter} /></a></li>
                                     </ul>
-
-
-
                                 </div>
                             </div>
                         </div>

@@ -120,7 +120,7 @@ export const getNewsDetails = createAsyncThunk(
 export const getCmsDetails = createAsyncThunk(
   'auth/getCmsDetails',
   async (params, { rejectWithValue }) => {
-    const response = await getAllDataApi({ doctype: doctypeWebPage, fields: fieldsWebPage, filters: [[doctypeWebPage, "route", "=", params.Id]], ...params })
+    const response = await getAllDataApi({ doctype: doctypeWebPage, fields: fieldsWebPage, filters: [[doctypeWebPage, "name", "=", params.Id]], ...params })
     if (response.status === 'error') {
       return rejectWithValue(response.data)
     }
