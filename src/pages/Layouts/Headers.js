@@ -63,14 +63,14 @@ function Headers() {
                                                                 <li><NavLink to="/cat/domestic">Domestic</NavLink>
                                                                     <ul>
                                                                         <li><NavLink to="/cat/ipl">IPL</NavLink></li>
-                                                                        <li><NavLink to="/cat/tnpl">TNPL</NavLink></li>
+                                                                        {/* <li><NavLink to="/cat/tnpl">TNPL</NavLink></li> */}
                                                                     </ul>
                                                                 </li>
                                                                 <li><NavLink to="/cat/international">International</NavLink>
                                                                     <ul>
-                                                                        <li><NavLink to="/cat/bang-vs-wi">Bang Vs WI</NavLink></li>
+                                                                        {/* <li><NavLink to="/cat/bang-vs-wi">Bang Vs WI</NavLink></li>
                                                                         <li><NavLink to="/cat/ind-vs-eng">Ind Vs. Eng</NavLink></li>
-                                                                        <li><NavLink to="/cat/ire-vs-nz">Ire Vs Nz</NavLink></li>
+                                                                        <li><NavLink to="/cat/ire-vs-nz">Ire Vs Nz</NavLink></li> */}
                                                                         <li><NavLink to="/cat/asia-cup">Asia Cup</NavLink></li>
                                                                     </ul></li>
                                                             </ul>
@@ -78,8 +78,8 @@ function Headers() {
                                                         <div className="col-6">
                                                             <h3><NavLink to="/cat/women">Women</NavLink></h3>
                                                             <ul>
-                                                                <li><NavLink to="/cat/international-series">International series</NavLink></li>
-                                                                <li><NavLink to="/cat/t20i-women">T20I Women</NavLink></li>
+                                                                {/* <li><NavLink to="/cat/international-series">International series</NavLink></li>
+                                                                <li><NavLink to="/cat/t20i-women">T20I Women</NavLink></li> */}
                                                                 <li><NavLink to="/cat/wbbl-2022">WBBL 2022</NavLink></li>
                                                             </ul>
                                                         </div>
