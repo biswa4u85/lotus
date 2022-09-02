@@ -39,7 +39,7 @@ function Search(props) {
             <section className="single-post-area">
                 <div className="container">
                     <div className="weekly-list-item">
-                        {/* {searchValue ? searchValue.data.map((item, key) => <div key={key} className="news-vcard-single">
+                        {searchValue.data ? searchValue.data.map((item, key) => <div key={key} className="news-vcard-single">
                             <div className="news-vcard-img">
                                 {Config.randerImage(item.meta_image, 220)}
                             </div>
@@ -51,7 +51,7 @@ function Search(props) {
                                 </div>
                                 <h3><NavLink to={`/details/${item.name}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
                             </div>
-                        </div>) : null} */}
+                        </div>) : null}
                     </div>
                     {/* <div style={{ marginTop: 10, textAlign: 'right' }}><Pagination onChange={handlePageChange} defaultCurrent={1} pageSize={12} total={newsListByCatCount} /></div> */}
                 </div>
