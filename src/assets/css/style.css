@@ -1660,7 +1660,7 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
 
 .Search-popup .Search-icon i {
     font-size: 20px;
-    color: var(--color-secondary)
+    color: var(--color-blue);
 }
 
 .sign-option i {

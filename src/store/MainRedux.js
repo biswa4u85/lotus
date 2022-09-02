@@ -234,7 +234,7 @@ export const counterSlice = createSlice({
     [searchPost.pending]: (state, action) => {
       state.isFetching = true
       state.error = null
-      state.newsListByCat = []
+      state.searchValue = []
     },
     [searchPost.rejected]: (state, action) => {
       state.isFetching = false

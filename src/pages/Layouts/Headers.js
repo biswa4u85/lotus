@@ -15,6 +15,8 @@ function Headers() {
     const token = useSelector((state) => state.user.token)
     const homeSettings = useSelector((state) => state.auth.homeSettings)
 
+
+
     useEffect(() => {
         SocketApis.getSocketData('message', (data) => {
             dispatch(getScorecard(data))
@@ -114,7 +116,39 @@ function Headers() {
 
                             </nav>
                         </div>
+
+
                         <div className="options-area">
+                        <div className="Search-popup">
+                            <div className="Search-icon">
+                                <i className="icofont-search"></i>
+                            </div>
+                            <div className="search-popup-box">
+
+                                <div className="search-box">
+                                    <span><i className="icofont-search-1"></i></span>
+                                    <input type="text" placeholder="Type your keyword"
+                                        value={search}
+                                        onChange={(e) => setSearch(e.target.value)}
+                                    />
+                                    <button onClick={() => {
+                                        navigate(`/search/${search}`)
+                                        $(".search-popup-box").removeClass("active");
+                                        $("body").removeClass("overlay");
+                                    }}
+
+                                    >Search</button>
+                                </div>
+                                <div className="close-popup">
+                                    <i className="icofont-close-line"></i>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
                             {token ? <div className="sign-option">
                                 <button className="btn-normal" onClick={() => dispatch(logout())}><i className="icofont-sign-out"></i></button>
                             </div> : <div className="sign-option">
