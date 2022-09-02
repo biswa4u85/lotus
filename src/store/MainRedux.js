@@ -33,7 +33,7 @@ const initialState = {
   newsDetails: {},
   isSubscribe: false,
   isAddComment: false,
-  searchValue: [],
+  searchValue: {},
 }
 
 export const getHomeSettings = createAsyncThunk(
@@ -234,7 +234,7 @@ export const counterSlice = createSlice({
     [searchPost.pending]: (state, action) => {
       state.isFetching = true
       state.error = null
-      state.searchValue = []
+      state.searchValue = {}
     },
     [searchPost.rejected]: (state, action) => {
       state.isFetching = false
@@ -243,6 +243,7 @@ export const counterSlice = createSlice({
     [searchPost.fulfilled]: (state, action) => {
       state.isFetching = false
       state.error = null
+      // console.log(action.payload)
       state.searchValue = action.payload
     },
     // News Details
