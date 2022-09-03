@@ -301,6 +301,10 @@
 .trending_news h6 {
     font-size: 14px;
 }
+.trending_news .red {
+    font-size: 11px;
+    color: red !important;
+}
 
 .trending_news p {
     font-size: 14px;
@@ -385,6 +389,7 @@
     display: inline-block;
     padding-right: 20px;
 }
+
 /* demo */
 
 .tab {
@@ -400,31 +405,57 @@
 .tab h3 {
     margin: 30px 0;
     background-color: rgb(221 221 221 / 85%);
-    padding: 19px 10px;
+    padding: 14px 10px;
     text-transform: uppercase;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: bold;
 }
 
+.africa h5 a {
+    color: #000000;
+}
+
+.africa h5 a:hover {
+    text-decoration: underline;
+}
+
 .africa span {
-    color: #9f9f9f;
-    font-size: 16px;
+    color: #525050;
+    font-size: 14px;
+}
+
+.africa h5 {
+    color: #0b0a0a;
+    font-size: 17px;
+    font-weight: 600;
 }
 
 .africa h6 {
-    color: #9f9f9f;
+    color: #615f5f;
+    font-size: 14px;
+}
+
+.africa h4 {
+    position: absolute;
+    right: 47px;
+    background: deeppink;
+    padding: 5px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #ffff;
 }
 
 .match {
     background-color: #dadada;
-    width: 55%;
+    width: 30%;
 }
 
 .match h5 {
     margin: 0;
-    color: #4d4d4d;
+    color: #000000;
     padding: 5px 0;
     font-weight: 600;
+    font-size: 15px;
 }
 
 .match h5 span {
@@ -435,6 +466,7 @@
     color: #60AEF6;
     font-weight: normal;
     margin-top: 4px;
+    font-size: 15px;
 }
 
 .vl {
@@ -443,19 +475,286 @@
     padding: 10px 12px;
 }
 
-.runs{
+.read-preview {
+    border-left: 3px solid #584949;
+    height: 42px;
+    padding: 10px 12px;
+    background: gainsboro;
+    width: 16%;
+    margin: 10px 0;
+}
+
+.match-border {
+    border: 0.3px solid gainsboro;
+}
+
+.runs {
     display: flex;
     margin: 20px 0;
 }
 
-.runs h6{
+.runs h6 {
     margin: 0 10px;
-    color: #60AEF6;
+    color: #1866db;
+    font-weight: normal;
 }
 
-.score-border{
-    border-left: 2px solid #4a4b4b;
-    height: 25px;
+.score-border {
+    border-left: 1px solid #4a4b4b;
+    height: 22px;
+}
+
+.month {
+    background: #ecebeb;
+    padding: 4px 17px;
+    margin-top: 22px;
+}
+
+.series {
+    margin: 13px 8px;
+}
+
+.series h5 {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.series h6 {
+    color: #666;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+.series a {
+    color: black;
+    margin-top: 10px;
+    font-weight: 400;
+}
+
+.series a:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+.friday h2 {
+    background: #ecebeb;
+    padding: 6px;
+    font-size: 16px;
+    margin: 15px 0;
+}
+
+.nepal h5 {
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.nepal h6 {
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.nepal p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #4a4b4b;
+}
+
+.flg-sec {
+    margin: 20px 0;
+}
+
+.tour {
+    display: flex;
+}
+
+.tour h5 {
+    color: green;
+}
+
+.tour p {
+    margin-left: 15%;
+}
+
+.tour p a {
+    color: black;
+}
+
+.tour p a:hover {
+    color: black;
+    text-decoration: underline;
+}
+
+.tour p span {
+    font-size: 14px;
+    font-weight: 400;
+    color: #4a4b4b;
+}
+
+.tour-bordrt {
+    border-left: 1px solid grey;
+
+    padding: 10px 12px;
+}
+
+.flg-sec span {
+    margin-left: 10px;
+}
+
+.season_border {
+    border-left: 1px solid #4a4b4b;
+    height: 22px;
+}
+
+.ireland {
+    display: flex;
+}
+
+.ireland h6 {
+    color: #666;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+.ireland a {
+    color: #666;
+    margin-top: 10px;
+    font-weight: 400;
+    margin-right: 20px;
+}
+
+.ireland a:hover {
+    color: #666;
+    text-decoration: underline;
+}
+
+.nether {
+    color: red;
+}
+
+.run {
+    background: #6b6b6b;
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 11px;
+}
+
+.run h5 {
+    color: #FFFFFF;
+    margin: 0;
+}
+
+.wickets p {
+    margin: 10px 0;
+    font-size: 15px;
+}
+
+.wickets p a {
+    color: #3b8aff;
+}
+
+.wickets p a:hover {
+    text-decoration: underline;
+}
+
+
+
+.tab-bar .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    text-shadow: 0 0 0.25px currentcolor;
+    border: 1px solid;
+    padding: 0 16px;
+    border-radius: 13px;
+    background: aliceblue;
+    text-decoration: none;
+}
+
+.tab-bar .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn :hover {
+    background-color: #1DA57A;
+}
+
+.farooqi h5 {
+    color: #6b6b6b;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.farooqi h6 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.farooqi p {
+    font-size: 14px;
+    color: #3b8aff;
+    margin:  16px  0;
+}
+
+.plya p{
+    color: gray;
+    font-size: 14px;
+}
+
+.farooqi a {
+    color: black;
+    margin-bottom: 20px;
+}
+
+.farooqi a:hover {
+    color: black;
+    text-decoration: underline;
+}
+
+.surprise{
+   display: flex;
+   justify-content: space-between;
+  
+}
+
+.surprise h6{
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+    color: #0067ff;
+}
+
+.player-border {
+    border: 0.3px solid gray;
+}
+
+.videosse{
+    display: flex;
+   justify-content: space-between;
+   margin: 10px 0;
+}
+
+.videosse p{
+    margin: 0;
+    color: gray;
+    cursor: pointer;
+}
+
+.crazy{
+    /* display: flex; */
+    background-color: rgb(221 221 221 / 85%);
+}
+
+.ant-form-item-explain-error {
+    text-align: left;
+}
+.viewAllMatch {
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 14px;
+}
+
+.viewAllMatch button {
+    padding: 15px 30px;
+    font-size: var(--text-16);
+    font-weight: var(--medium);
+    color: var(--white);
+    background-color: var(--color-primary);
+    height: 100%;
 }
 
 
@@ -498,20 +797,25 @@
     .main-footer .ftr-link ul li {
         list-style-type: none;
     }
+
     .live-tab .evevts {
         width: 100%;
         margin: 0px;
     }
-    .match{
+
+    .match {
         width: 100%;
     }
 
     .runs h6 {
         margin: 1px 5px;
-        font-size: 12px;
+        font-size: 14px;
+        font-weight: normal;
+        margin-left: 11px;
+        margin-right: 17px;
     }
     .trending_news h6{
-        font-size: 11px;
+        font-size: 10px;
     }
     .srilanka span{
         font-size: 11px;

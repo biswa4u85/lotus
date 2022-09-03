@@ -29,11 +29,7 @@ export const getSeries = createAsyncThunk(
 export const getHomeFixtures = createAsyncThunk(
   'score/getHomeFixtures',
   async (params, { rejectWithValue }) => {
-    let date = new Date()
-    let toDate = `${date.getFullYear()}-${date.getMonth() < 10 ? "0" + (Number(date.getMonth()) + 1) : date.getMonth()}-${date.getDate() < 10 ? "0" + date.getDate() : date.getDate()}`
-    date.setDate(date.getDate() - 1);
-    let fromDate = `${date.getFullYear()}-${date.getMonth() < 10 ? "0" + (Number(date.getMonth()) + 1) : date.getMonth()}-${date.getDate() < 10 ? "0" + date.getDate() : date.getDate()}`
-    const response = await getAllDataApi({ doctype: doctypeFixtures, fields: fieldsFixtures, filters: [[doctypeFixtures, "date", "Between", [fromDate, toDate]]], ...params })
+    const response = await getAllDataApi({ doctype: doctypeFixtures, fields: fieldsFixtures, filters: params.filters, orderBy: 'date asc', ...params })
     if (response.status === 'error') {
       return rejectWithValue(response.data)
     }
@@ -51,7 +47,7 @@ export const counterSlice = createSlice({
   initialState,
   reducers: {
     getScorecard: (state, action) => {
-      state.scorecard = {...state.scorecard, ...action.payload}
+      state.scorecard = { ...state.scorecard, ...action.payload }
     },
   },
   extraReducers: {
@@ -73,6 +69,7 @@ export const counterSlice = createSlice({
     [getHomeFixtures.pending]: (state, action) => {
       state.isFetching = true
       state.error = null
+      state.fixtures = []
     },
     [getHomeFixtures.rejected]: (state, action) => {
       state.isFetching = false

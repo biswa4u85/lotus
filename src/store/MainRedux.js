@@ -77,7 +77,7 @@ export const getNewsCategory = createAsyncThunk(
 export const getNewsList = createAsyncThunk(
   'auth/getNewsList',
   async (params, { rejectWithValue }) => {
-    const response = await getAllDataApi({ doctype: doctypeBlogPost, fields: fieldsBlogPost, filters: [[doctypeBlogPost, siteName, "=", 1]], orderBy: 'published_on desc', ...params })
+    const response = await getAllDataApi({ doctype: doctypeBlogPost, fields: fieldsBlogPost, filters: [[doctypeBlogPost, siteName, "=", 1]], orderBy: 'published_time desc', ...params })
     if (response.status === 'error') {
       return rejectWithValue(response.data)
     }
@@ -88,7 +88,7 @@ export const getNewsList = createAsyncThunk(
 export const getNewsListByCat = createAsyncThunk(
   'auth/getNewsListByCat',
   async (params, { rejectWithValue }) => {
-    const response = await getAllDataApi({ doctype: doctypeBlogPost, fields: fieldsBlogPost, filters: [[doctypeBlogPost, siteName, "=", 1], [doctypeBlogPost, "blog_category", "=", params.Id]], orderBy: 'published_on desc', ...params })
+    const response = await getAllDataApi({ doctype: doctypeBlogPost, fields: fieldsBlogPost, filters: [[doctypeBlogPost, siteName, "=", 1], [doctypeBlogPost, "blog_category", "=", params.Id]], orderBy: 'published_time desc', ...params })
     if (response.status === 'error') {
       return rejectWithValue(response.data)
     }
@@ -98,7 +98,7 @@ export const getNewsListByCat = createAsyncThunk(
 export const searchPost = createAsyncThunk(
   'auth/searchPost',
   async (params, { rejectWithValue }) => {
-    const response = await getAllDataApi({ doctype: doctypeBlogPost, fields: fieldsBlogPost, filters: [[doctypeBlogPost, siteName, "=", 1], [doctypeBlogPost, "title", "like", `%${params.name}%`]], orderBy: 'published_on desc', ...params })
+    const response = await getAllDataApi({ doctype: doctypeBlogPost, fields: fieldsBlogPost, filters: [[doctypeBlogPost, siteName, "=", 1], [doctypeBlogPost, "title", "like", `%${params.name}%`]], orderBy: 'published_time desc', ...params })
     if (response.status === 'error') {
       return rejectWithValue(response.data)
     }
