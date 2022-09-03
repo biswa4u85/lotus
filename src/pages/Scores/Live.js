@@ -28,12 +28,27 @@ function Live(props) {
             let fromDate = `${date.getFullYear()}-${date.getMonth() < 10 ? "0" + (Number(date.getMonth()) + 1) : date.getMonth()}-${date.getDate() < 10 ? "0" + date.getDate() : date.getDate()}`
             dispatch(getHomeFixtures({ filters: [["Live Score Fixtures", "date", ">", fromDate]] }))
         }
+        return () => {
+            for (let item of fixtures) {
+                if (item.status === 'Fixture') {
+                    SocketApis.unSubscribe(item.name)
+                }
+            }
+        }
     }, [type]);
+
+    useEffect(() => {
+        for (let item of fixtures) {
+            if (item.status === 'Fixture' && Config.checkTime(item.datetime)) {
+                SocketApis.subscribe(item.name)
+            }
+        }
+    }, [fixtures]);
 
     return (<div>
         {Object.keys(grouped).map((name, k) => {
             let latestNews = series.filter(item => item.series_id === name);
-            return <div key={k}><h3> {latestNews[0].type} - {latestNews[0].series_name}</h3>
+            return <div key={k}><h3> {latestNews[0]?.type} - {latestNews[0]?.series_name}</h3>
                 {grouped[name].map((item, key) => <div key={key} id={`live_inner_${item.name}`}>
                     <div className="africa">
                         <h5>{item.match_title}<span> {item.match_subtitle}</span></h5>
