@@ -24,9 +24,13 @@ function Headers() {
                 let score = data[key] ? data[key].live_details : null
                 if (score) {
                     $(`#live_home_${key} #live_home`).text(score?.match_summary?.home_scores);
+                    $(`#live_inner_${key} #live_home`).text(score?.match_summary?.home_scores);
                     $(`#live_home_${key} #live_away`).text(score?.match_summary?.away_scores);
+                    $(`#live_inner_${key} #live_away`).text(score?.match_summary?.away_scores);
                     $(`#live_home_${key} #live_result`).text(score?.match_summary?.status);
+                    $(`#live_inner_${key} #live_result`).text(score?.match_summary?.status);
                     $(`#live_home_${key} #live_result`).attr("class", 'red');
+                    $(`#live_inner_${key} #live_result`).attr("class", 'red');
                 }
             }
         });
@@ -119,31 +123,31 @@ function Headers() {
 
 
                         <div className="options-area">
-                        <div className="Search-popup">
-                            <div className="Search-icon">
-                                <i className="icofont-search"></i>
-                            </div>
-                            <div className="search-popup-box">
-
-                                <div className="search-box">
-                                    <span><i className="icofont-search-1"></i></span>
-                                    <input type="text" placeholder="Type your keyword"
-                                        value={search}
-                                        onChange={(e) => setSearch(e.target.value)}
-                                    />
-                                    <button onClick={() => {
-                                        navigate(`/search/${search}`)
-                                        $(".search-popup-box").removeClass("active");
-                                        $("body").removeClass("overlay");
-                                    }}
-
-                                    >Search</button>
+                            <div className="Search-popup">
+                                <div className="Search-icon">
+                                    <i className="icofont-search"></i>
                                 </div>
-                                <div className="close-popup">
-                                    <i className="icofont-close-line"></i>
+                                <div className="search-popup-box">
+
+                                    <div className="search-box">
+                                        <span><i className="icofont-search-1"></i></span>
+                                        <input type="text" placeholder="Type your keyword"
+                                            value={search}
+                                            onChange={(e) => setSearch(e.target.value)}
+                                        />
+                                        <button onClick={() => {
+                                            navigate(`/search/${search}`)
+                                            $(".search-popup-box").removeClass("active");
+                                            $("body").removeClass("overlay");
+                                        }}
+
+                                        >Search</button>
+                                    </div>
+                                    <div className="close-popup">
+                                        <i className="icofont-close-line"></i>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
 
 
