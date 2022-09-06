@@ -21,5 +21,39 @@ export default {
     filterTitle: (title) => {
         let res = title.replaceAll("-", " ")
         return res.replaceAll("lotus", "")
+    },
+    checkDate: (date) => {
+        const today = new Date();
+        const newDate = new Date(date);
+        if (today.toDateString() === newDate.toDateString()) {
+            return 'Today'
+        } else {
+            return ''
+        }
+    },
+    checkTime: (date) => {
+        const now = new Date();
+        const nowTime = now.getTime();
+        const given = new Date(date);
+        const givenTime = given.getTime();
+        let difff = nowTime - givenTime
+        if (difff > 0) {
+            return true
+        } else {
+            return false
+        }
+    },
+    groupBy: (list, key) => {
+        let gropuArray = {}
+        for (let item of list) {
+            if (item[key] in gropuArray === false) {
+                gropuArray[item[key]] = [item]
+            } else {
+                gropuArray[item[key]].push(item);
+            }
+        }
+        // const reversedKeys = Object.keys(gropuArray).reverse();
+        // console.log(reversedKeys)
+        return gropuArray;
     }
 }
