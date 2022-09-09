@@ -3,7 +3,7 @@ import moment from "moment";
 import { useSelector, useDispatch } from 'react-redux'
 import { useTranslation } from "react-i18next";
 import { NavLink, useNavigate } from "react-router-dom";
-import { getHomeSettings, getHeadlineList, getNewsCategory, getNewsList } from '../store/MainRedux'
+import { getHeadlineList, getNewsCategory, getNewsList } from '../store/MainRedux'
 import { Helmet } from "react-helmet";
 import Config from "../common/Config";
 import SideBar from "./SideBar";
@@ -23,7 +23,6 @@ function Home() {
 
     useEffect(() => {
         window.scrollTo(0, 0)
-        dispatch(getHomeSettings({ token }))
         dispatch(getHeadlineList({ token }))
         dispatch(getNewsCategory({ token }))
         dispatch(getNewsList({ page: 1, size: 500, token }))

@@ -4,6 +4,7 @@ import { Button, Form, Input } from 'antd';
 import $ from 'jquery';
 import { useSelector, useDispatch } from 'react-redux'
 import { signUpUser, siteLogin, logout } from "../../store/UserRedux";
+import { getHomeSettings } from '../../store/MainRedux'
 import { getScorecard } from "../../store/ScoreRedux";
 import Config from "../../common/Config";
 import SocketApis from '../../utility/socket-apis'
@@ -18,6 +19,7 @@ function Headers() {
 
 
     useEffect(() => {
+        dispatch(getHomeSettings({ token }))
         SocketApis.getSocketData('message', (data) => {
             dispatch(getScorecard(data))
             for (let key in data) {
