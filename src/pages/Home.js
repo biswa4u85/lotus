@@ -181,7 +181,7 @@ function Home() {
             <section className="newsupdate-area">
                 <div className="container">
                     <div className="title-heading" data-title="Daily Update" data-aos="zoom-in">
-                        <h2 data-aos="fade-up" data-aos-delay="50">Daily Update News</h2>
+                        <h1 data-aos="fade-up" data-aos-delay="50">Daily Update News</h1>
                     </div>
                     <div className="row">
                         <div className="col-xl-9">
