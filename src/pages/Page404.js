@@ -25,7 +25,7 @@ function Page404(props) {
                     <div className="row">
                         <div className="col-lg-12 text-center">
                             <div className="single-post-content">
-                                <h2>Page Not Found</h2>
+                                <h1>Page Not Found</h1>
                                 <img width={100} src={noData} />
                             </div>
                         </div>

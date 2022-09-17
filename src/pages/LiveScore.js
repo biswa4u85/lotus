@@ -42,7 +42,7 @@ function LiveScore(props) {
                             <Tabs defaultActiveKey="1" onChange={setTab} >
 
                                 <TabPane tab="Current Matches" key="1">
-                                    <h2>Live Cricket Score</h2>
+                                    <h1>Live Cricket Score</h1>
                                     <Tabs defaultActiveKey="1" onChange={setSubTab} >
                                         <TabPane tab="Live" key="1">
                                             {subtab == 1 && (<Live type={'live'} />)}
