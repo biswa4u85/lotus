@@ -61,6 +61,11 @@
                 $('body').toggleClass('overlay');
                 $('.sign-option').removeClass('active')
             });
+            $('.navbar-area a').on("click", function() {
+                $('.navbar-wrapper').removeClass('active');
+                $('body').removeClass('overlay');
+                $('.sign-option').removeClass('active')
+            });
             $('.sign-bar').on("click", function(e) {
                 e.stopPropagation();
                 $('body').removeClass('overlay');
