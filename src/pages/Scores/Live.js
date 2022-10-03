@@ -15,17 +15,17 @@ function Live(props) {
     useEffect(() => {
         if (type === 'live') {
             let date = new Date()
-            let fromDate = `${date.getFullYear()}-${date.getMonth() < 10 ? "0" + (Number(date.getMonth()) + 1) : date.getMonth()}-${date.getDate() < 10 ? "0" + date.getDate() : date.getDate()}`
+            let fromDate = `${date.getFullYear()}-${date.getMonth() < 9 ? "0" + (Number(date.getMonth()) + 1) : date.getMonth()}-${date.getDate() < 9 ? "0" + date.getDate() : date.getDate()}`
             dispatch(getHomeFixtures({ filters: [["Live Score Fixtures", "date", "=", fromDate]] }))
         } else if (type === 'recent') {
             let date = new Date()
-            let toDate = `${date.getFullYear()}-${date.getMonth() < 10 ? "0" + (Number(date.getMonth()) + 1) : date.getMonth()}-${date.getDate() < 10 ? "0" + date.getDate() : date.getDate()}`
+            let toDate = `${date.getFullYear()}-${date.getMonth() < 9 ? "0" + (Number(date.getMonth()) + 1) : date.getMonth()}-${date.getDate() < 9 ? "0" + date.getDate() : date.getDate()}`
             date.setDate(date.getDate() - 1);
-            let fromDate = `${date.getFullYear()}-${date.getMonth() < 10 ? "0" + (Number(date.getMonth()) + 1) : date.getMonth()}-${date.getDate() < 10 ? "0" + date.getDate() : date.getDate()}`
+            let fromDate = `${date.getFullYear()}-${date.getMonth() < 9 ? "0" + (Number(date.getMonth()) + 1) : date.getMonth()}-${date.getDate() < 9 ? "0" + date.getDate() : date.getDate()}`
             dispatch(getHomeFixtures({ filters: [["Live Score Fixtures", "date", "Between", [fromDate, toDate]]] }))
         } else {
             let date = new Date()
-            let fromDate = `${date.getFullYear()}-${date.getMonth() < 10 ? "0" + (Number(date.getMonth()) + 1) : date.getMonth()}-${date.getDate() < 10 ? "0" + date.getDate() : date.getDate()}`
+            let fromDate = `${date.getFullYear()}-${date.getMonth() < 9 ? "0" + (Number(date.getMonth()) + 1) : date.getMonth()}-${date.getDate() < 9 ? "0" + date.getDate() : date.getDate()}`
             dispatch(getHomeFixtures({ filters: [["Live Score Fixtures", "date", ">", fromDate]] }))
         }
         return () => {
