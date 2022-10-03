@@ -3,13 +3,13 @@ import moment from "moment";
 import { useSelector, useDispatch } from 'react-redux'
 import { useTranslation } from "react-i18next";
 import { NavLink, useNavigate } from "react-router-dom";
+import OwlCarousel from 'react-owl-carousel';
 import { getHeadlineList, getNewsCategory, getNewsList } from '../store/MainRedux'
 import { Helmet } from "react-helmet";
 import Config from "../common/Config";
 import SideBar from "./SideBar";
 import HomeSlider from './Scores/HomeSlider';
 import topBanner from '../assets/img/topBanner.png'
-import dailyUpdate from '../assets/img/dailyUpdate.png'
 import thisWeek from '../assets/img/thisWeek.png'
 
 function Home() {
@@ -86,13 +86,15 @@ function Home() {
                                 <div className="news-heading">
                                     <h5>Headline</h5>
                                 </div>
-                                <div className="news-slider owl-carousel" data-carousel-loop="true" data-carousel-items="1"
+                                <OwlCarousel className='news-slider owl-theme' items={1} loop margin={10} dots={false} nav={false} autoplay={true} autoplayTimeout={3000}>
+                                    {/* <div className="news-slider owl-carousel" data-carousel-loop="true" data-carousel-items="1"
                                     data-carousel-nav="false" data-carousel-dots="false" data-carousel-autoplay="true"
-                                    data-carousel-mousedrag="true" data-carousel-animateout="null">
+                                    data-carousel-mousedrag="true" data-carousel-animateout="null"> */}
                                     {headlines ? headlines.map((item, key) => <div key={key} className="elepse">
                                         {item.description}
                                     </div>) : null}
-                                </div>
+                                    {/* </div> */}
+                                </OwlCarousel>
                             </div>
                             <div className="bnr-lft-cnt">
                                 <div className="row">
