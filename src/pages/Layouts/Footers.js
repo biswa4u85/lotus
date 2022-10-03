@@ -99,7 +99,7 @@ function Footers() {
                                     <h6>Follow Us</h6>
                                     <ul className="social-icon social-bg-red">
                                         <li><a href="https://www.facebook.com/Lotusnews247-105292842265621" target="_blank"><Image preview={false} src={facebook} /></a></li>
-                                        <li><a href="https://instagram.com/lotus_news247" target="_blank"><Image preview={false} src={instagram} /></a></li>
+                                        <li><a href="https://www.instagram.com/lotusnews247" target="_blank"><Image preview={false} src={instagram} /></a></li>
                                         <li><a href="https://twitter.com/Lotusnews2" target="_blank"><Image preview={false} src={twitter} /></a></li>
                                     </ul>
                                 </div>

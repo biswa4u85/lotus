@@ -16,8 +16,6 @@ function Headers() {
     const token = useSelector((state) => state.user.token)
     const homeSettings = useSelector((state) => state.auth.homeSettings)
 
-
-
     useEffect(() => {
         dispatch(getHomeSettings({ token }))
         SocketApis.getSocketData('message', (data) => {
@@ -97,6 +95,7 @@ function Headers() {
                                                                 {/* <li><NavLink to="/cat/international-series">International series</NavLink></li>
                                                                 <li><NavLink to="/cat/t20i-women">T20I Women</NavLink></li> */}
                                                                 <li><NavLink to="/cat/wbbl-2022">WBBL 2022</NavLink></li>
+                                                                <li><NavLink to="/cat/womens-asia-cup-2022">Women's Asia cup 2022</NavLink></li>
                                                             </ul>
                                                         </div>
                                                     </div>

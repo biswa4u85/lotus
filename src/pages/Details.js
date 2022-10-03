@@ -155,7 +155,6 @@ function Details(props) {
                         <div className="ath-social">
                             <h3>Share This Post</h3>
                             <ul className="social-icon social-outline-gray">
-                                
                                 <li><a href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`} target="_blank"><Image preview={false} src={facebook} /></a></li>
                                 <li><a href={`https://www.youtube.com/sharer/sharer.php?u=${window.location.href}`} target="_blank"><Image preview={false} src={youtube} /></a></li>
                                 <li><a href={`https://twitter.com/sharer/sharer.php?u=${window.location.href}`} target="_blank"><Image preview={false} src={twitter} /></a></li>
