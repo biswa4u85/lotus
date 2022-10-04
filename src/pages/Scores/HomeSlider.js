@@ -75,7 +75,7 @@ function HomeSlider() {
         return null
     }
 
-    return (<OwlCarousel className='owl-theme' responsive={responsive} margin={10} autoplay={true} nav={false}>
+    return (<OwlCarousel className='owl-theme' responsive={responsive} margin={9} autoplay={true} nav={false}>
         {fixtures.map((item, key) => {
             let score = null
             return <div key={key} id={`live_home_${item.name}`} className='item'>
