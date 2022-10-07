@@ -45,15 +45,15 @@ function LiveScore(props) {
                                     <h1>Live Cricket Score</h1>
                                     <Tabs defaultActiveKey="1" onChange={setSubTab} >
                                         <TabPane tab="Live" key="1">
-                                            {subtab == 1 && (<Live type={'live'} />)}
+                                            {subtab == 1 && (<Live type={'live'} navigate={navigate} />)}
                                         </TabPane>
 
                                         <TabPane tab="Recent" key="2">
-                                            {subtab == 2 && (<Live type={'recent'} />)}
+                                            {subtab == 2 && (<Live type={'recent'}  navigate={navigate} />)}
                                         </TabPane>
 
                                         <TabPane tab="Upcoming" key="3">
-                                            {subtab == 3 && (<Live type={'upcoming'} />)}
+                                            {subtab == 3 && (<Live type={'upcoming'}  navigate={navigate} />)}
                                         </TabPane>
 
                                     </Tabs>

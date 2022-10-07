@@ -61,7 +61,7 @@ function Home() {
                 <meta name="description" content={homeSettings?.meta_description} />
             </Helmet>
             <div className="nvbanner-area">
-                <HomeSlider />
+                <HomeSlider navigate={navigate} />
                 <div className="viewAllMatch"><button onClick={() => navigate('/live-score')}>View all Matches</button></div>
             </div>
 

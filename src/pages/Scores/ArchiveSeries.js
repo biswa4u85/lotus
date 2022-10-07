@@ -28,7 +28,7 @@ function ArchiveSeries(props) {
                         <div className="series">
                             <Row>
                                 <Col span={6}>
-                                    <h5>{latestNews[0].series_name}</h5>
+                                    <h5>{latestNews[0]?.series_name}</h5>
                                 </Col>
                                 <Col span={16}>
                                     {grouped[name].map((item, key) => <div key={key}>

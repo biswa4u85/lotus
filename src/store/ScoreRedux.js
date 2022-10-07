@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { getAllDataApi } from '../utility/frappe-apis'
+import { getAllDataApi, getLiveDataDataApi } from '../utility/frappe-apis'
 
 const doctypeFixtures = 'Live Score Fixtures'
 const fieldsFixtures = ["*"]
@@ -13,6 +13,7 @@ const initialState = {
   series: [],
   fixtures: [],
   scorecard: {},
+  highlights: {},
 }
 
 export const getSeries = createAsyncThunk(
@@ -38,6 +39,18 @@ export const getHomeFixtures = createAsyncThunk(
       item.away = JSON.parse(item.away)
     }
     return response.data
+  }
+)
+
+
+export const getHighlights = createAsyncThunk(
+  'score/getHighlights',
+  async (params, { rejectWithValue }) => {
+    const response = await getLiveDataDataApi({ ...params })
+    if (response.status === 'error') {
+      return rejectWithValue(response.data)
+    }
+    return response.results
   }
 )
 
@@ -79,6 +92,21 @@ export const counterSlice = createSlice({
       state.isFetching = false
       state.error = null
       state.fixtures = action.payload
+    },
+    // Highlights
+    [getHighlights.pending]: (state, action) => {
+      state.isFetching = true
+      state.error = null
+      state.fixtures = []
+    },
+    [getHighlights.rejected]: (state, action) => {
+      state.isFetching = false
+      state.error = action.payload.message
+    },
+    [getHighlights.fulfilled]: (state, action) => {
+      state.isFetching = false
+      state.error = null
+      state.highlights = action.payload
     },
   }
 

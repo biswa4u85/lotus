@@ -301,3 +301,9 @@ export async function getQueryDataApi(query) {
   let data = await axiosAPI.post('api/method/erp_custom_auth.authentication.getSqlQuery', { query }, { headers })
   return data?.data?.message
 }
+
+export async function getLiveDataDataApi(query) {
+  let headers = { 'Content-Type': 'application/json' }
+  let data = await axiosAPI.post('api/method/news_management.fixtures_api.getHighlights', { query:query.name }, { headers })
+  return data?.data?.message
+}

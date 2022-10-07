@@ -28,7 +28,7 @@ function FutureSeries(props) {
                         <div className="series">
                             <Row>
                                 <Col span={4}>
-                                    <h5>{latestNews[0].series_name}</h5>
+                                    <h5>{latestNews[0]?.series_name}</h5>
                                 </Col>
                                 <Col span={20}>
                                     {grouped[name].map((item, key) => <div key={key}>
