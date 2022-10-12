@@ -23,11 +23,11 @@ function SideBar(props) {
                     </div>
                     <div className="card-list-cont">
                         <div className="card-list-discript">
-                            <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
+                            <span><NavLink to={`/category/${item.blog_category}`}>{item.category_description}</NavLink></span>
                             <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                         </div>
                         <div className="card-list-heading">
-                            <h6><NavLink to={`/details/${item.name}`}>{Config.trunCate(item.title, 60, '. . .')}</NavLink></h6>
+                            <h6><NavLink to={`/news/${item.name}`}>{Config.trunCate(item.title, 60, '. . .')}</NavLink></h6>
                         </div>
                     </div>
                 </div>)}
@@ -40,10 +40,9 @@ function SideBar(props) {
             {/* <div className="video-card">
             <img src="https://tpc.googlesyndication.com/simgad/14556471411178073418?" width="250" height="250" alt="Advertiser" border="0" />
         </div> */}
-            {/* <InstagramEmbed
-                url='https://instagr.am/p/Ytlfl/'
-                clientAccessToken='355600636724975|41858f9abccc022adde76de776ffc8f3'
-                // clientAccessToken='IGQVJWclRmcmpGcHpXNl81TnpVNzJVZAU83VWhLRVhWcEhVNkNSTGU1VXN2cm5JNFhmLVoxNmpWRUNlV2g2NVdYWGZAtbDNXRlg1NGpZALWE4VWVqdHNIak9aeWJyNWV3OWRNcWhveWtaN3NLTHRuQ2M1awZDZD'
+            <InstagramEmbed
+               url='https://instagr.am/p/Ytlfl/'
+               clientAccessToken='355600636724975|41858f9abccc022adde76de776ffc8f3'
                 maxWidth={320}
                 hideCaption={false}
                 containerTagName='div'
@@ -53,7 +52,7 @@ function SideBar(props) {
                 onSuccess={() => { }}
                 onAfterRender={() => { }}
                 onFailure={() => { }}
-            /> */}
+            />
         </aside>
     );
 }

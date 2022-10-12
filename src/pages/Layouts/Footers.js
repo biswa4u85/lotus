@@ -77,7 +77,7 @@ function Footers() {
                                 <div className="ftr-link">
                                     <h3 className="title-line-shape">Category</h3>
                                     <ul>
-                                        {homeSettings?.category ? homeSettings.category.map((item, key) => <li key={key}><NavLink to={`/cat/${item.title}`}>{Config.filterTitle(item.title)}</NavLink></li>) : null}
+                                        {homeSettings?.category ? homeSettings.category.map((item, key) => <li key={key}><NavLink to={`/category/${item.title}`}>{Config.filterTitle(item.title)}</NavLink></li>) : null}
                                     </ul>
                                 </div>
                             </div>
@@ -85,7 +85,7 @@ function Footers() {
                                 <div className="ftr-link">
                                     <h3 className="title-line-shape">Useful Link</h3>
                                     <ul>
-                                        {homeSettings?.usefulLinks ? homeSettings.usefulLinks.map((item, key) => <li key={key}><NavLink to={`/cms/${item.title}`}>{Config.filterTitle(item.title)}</NavLink></li>) : null}
+                                        {homeSettings?.usefulLinks ? homeSettings.usefulLinks.map((item, key) => <li key={key}><NavLink to={`/pages/${item.title}`}>{Config.filterTitle(item.title)}</NavLink></li>) : null}
                                     </ul>
                                 </div>
                             </div>
@@ -115,8 +115,8 @@ function Footers() {
                         <div className="ftr-dtls-wrapper">
                             <p>Copyright © 2022 lotusnews247 All Rights Reserved.</p>
                             <ul>
-                                <li><NavLink to="/cms/terms-conditions-l">Term & Condition</NavLink></li>
-                                <li><NavLink to="/cms/privacy-l">Privacy</NavLink></li>
+                                <li><NavLink to="/pages/terms-conditions-l">Term & Condition</NavLink></li>
+                                <li><NavLink to="/pages/privacy-l">Privacy</NavLink></li>
                             </ul>
                         </div>
                     </div>
@@ -124,14 +124,14 @@ function Footers() {
             </footer>
             <div className="footerMobile">
                 {submenu && (<ul>
-                    <li><NavLink to="/cat/men">Mens</NavLink></li>
-                    <li><NavLink to="/cat/women">Women</NavLink></li>
-                    <li><NavLink to="/cat/international">International</NavLink></li>
+                    <li><NavLink to="/category/men">Mens</NavLink></li>
+                    <li><NavLink to="/category/women">Women</NavLink></li>
+                    <li><NavLink to="/category/international">International</NavLink></li>
                 </ul>)}
                 <ul>
                     <li onClick={() => setSubmenu(false)}><NavLink to="/"><i className="icofont-home"></i> Home</NavLink></li>
                     <li onClick={() => setSubmenu(false)}><NavLink to="/live-score"><i className="icofont-score-board"></i>  Live score</NavLink></li>
-                    <li onClick={() => setSubmenu(false)}><NavLink to="/cat/trending-news"><i className="icofont-ssl-security"></i>  Trending</NavLink></li>
+                    <li onClick={() => setSubmenu(false)}><NavLink to="/category/trending-news"><i className="icofont-ssl-security"></i>  Trending</NavLink></li>
                     <li onClick={() => setSubmenu(!submenu)}><a className={submenu ? 'active' : ''}><i className="icofont-navigation-menu"></i> More</a></li>
                 </ul>
             </div>

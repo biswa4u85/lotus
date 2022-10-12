@@ -87,13 +87,9 @@ function Home() {
                                     <h5>Headline</h5>
                                 </div>
                                 <OwlCarousel className='news-slider owl-theme' items={1} loop margin={10} dots={false} nav={false} autoplay={true} autoplayTimeout={3000}>
-                                    {/* <div className="news-slider owl-carousel" data-carousel-loop="true" data-carousel-items="1"
-                                    data-carousel-nav="false" data-carousel-dots="false" data-carousel-autoplay="true"
-                                    data-carousel-mousedrag="true" data-carousel-animateout="null"> */}
                                     {headlines ? headlines.map((item, key) => <div key={key} className="elepse">
                                         {item.description}
                                     </div>) : null}
-                                    {/* </div> */}
                                 </OwlCarousel>
                             </div>
                             <div className="bnr-lft-cnt">
@@ -102,7 +98,7 @@ function Home() {
                                         {newsList[0] && (<div className="btl-simple-card">
                                             {Config.randerImage(newsList[0].meta_image, 600, 740)}
                                             <div className="btlc-content-wrapper">
-                                                <NavLink to={`/details/${newsList[0].name}`}><span className="btn">{newsList[0].category_description}</span></NavLink>
+                                                <NavLink to={`/details/${newsList[0].route}`}><span className="btn">{newsList[0].category_description}</span></NavLink>
                                                 <div className="btlc-marking">
                                                     <span className="icofont-star"></span>
                                                 </div>
@@ -112,7 +108,7 @@ function Home() {
                                                         <span>{moment.utc(newsList[0].published_on).format('Do MMM YYYY')}</span>
                                                         <span>{newsList[0].blogger}</span>
                                                     </div>
-                                                    <h3><NavLink to={`/details/${newsList[0].name}`}>{Config.trunCate(newsList[0].title, 40, '. . .')}</NavLink></h3>
+                                                    <h3><NavLink to={`/details/${newsList[0].route}`}>{Config.trunCate(newsList[0].title, 40, '. . .')}</NavLink></h3>
                                                 </div>
                                             </div>
                                         </div>)}
@@ -123,7 +119,7 @@ function Home() {
                                                 data-aos-delay="100">
                                                 {Config.randerImage(newsList[1].meta_image, 300, 355)}
                                                 <div className="btlc-content-wrapper">
-                                                    <NavLink to={`/details/${newsList[1].name}`}><span className="btn">{newsList[1].category_description}</span></NavLink>
+                                                    <NavLink to={`/details/${newsList[1].route}`}><span className="btn">{newsList[1].category_description}</span></NavLink>
                                                     <div className="btlc-marking">
                                                         <span className="icofont-star"></span>
                                                     </div>
@@ -133,7 +129,7 @@ function Home() {
                                                             <span>{moment.utc(newsList[1].published_on).format('Do MMM YYYY')}</span>
                                                             <span>{newsList[1].blogger}</span>
                                                         </div>
-                                                        <h3><NavLink to={`/details/${newsList[1].name}`}>{Config.trunCate(newsList[1].title, 40, '. . .')}</NavLink></h3>
+                                                        <h3><NavLink to={`/details/${newsList[1].route}`}>{Config.trunCate(newsList[1].title, 40, '. . .')}</NavLink></h3>
                                                     </div>
                                                 </div>
                                             </div>)}
@@ -141,7 +137,7 @@ function Home() {
                                                 data-aos-delay="100">
                                                 {Config.randerImage(newsList[2].meta_image, 300, 355)}
                                                 <div className="btlc-content-wrapper">
-                                                    <NavLink to={`/details/${newsList[2].name}`}><span className="btn">{newsList[2].category_description}</span></NavLink>
+                                                    <NavLink to={`/details/${newsList[2].route}`}><span className="btn">{newsList[2].category_description}</span></NavLink>
                                                     <div className="btlc-marking">
                                                         <span className="icofont-star"></span>
                                                     </div>
@@ -151,7 +147,7 @@ function Home() {
                                                             <span>{moment.utc(newsList[2].published_on).format('Do MMM YYYY')}</span>
                                                             <span>{newsList[2].blogger}</span>
                                                         </div>
-                                                        <h3><NavLink to={`/details/${newsList[2].name}`}>{Config.trunCate(newsList[2].title, 40, '. . .')}</NavLink></h3>
+                                                        <h3><NavLink to={`/details/${newsList[2].route}`}>{Config.trunCate(newsList[2].title, 40, '. . .')}</NavLink></h3>
                                                     </div>
                                                 </div>
                                             </div>)}
@@ -183,7 +179,7 @@ function Home() {
             <section className="newsupdate-area">
                 <div className="container">
                     <div className="title-heading" data-title="Daily Update" data-aos="zoom-in">
-                        <h1 data-aos="fade-up" data-aos-delay="50">Daily Update News</h1>
+                        <h2 data-aos="fade-up" data-aos-delay="50">Daily Update News</h2>
                     </div>
                     <div className="row">
                         <div className="col-xl-9">
@@ -192,63 +188,62 @@ function Home() {
                                     <div className="ns-mini-card">
                                         {filterByDay('left_category_one', 1).map((item, key) => <div key={key} className="btl-simple-card" data-aos="fade-up">
                                             {Config.randerImage(item.meta_image, 300)}
-                                            <NavLink to={`/details/${item.name}`}><div className="btlc-content-wrapper">
-                                                <span className="btn">{item.category_description}</span>
+                                            <div className="btlc-content-wrapper">
+                                                <NavLink to={`/category/${item.blog_category}`}><span className="btn">{item.category_description}</span></NavLink>
                                                 <div className="btlc-content">
                                                     <div className="btcl-content-status">
                                                         <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
                                                         <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                                     </div>
-                                                    <h3>{Config.trunCate(item.title, 40, '. . .')}</h3>
+                                                    <h3><NavLink to={`/news/${item.route}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
                                                 </div>
-                                            </div></NavLink>
+                                            </div>
                                         </div>)}
                                         {filterByDay('left_category_two', 1).map((item, key) => <div key={key} className="btl-simple-card" data-aos="fade-up">
                                             {Config.randerImage(item.meta_image, 300)}
-                                            <NavLink to={`/details/${item.name}`}><div className="btlc-content-wrapper">
-                                                <span className="btn">{item.category_description}</span>
+                                            <div className="btlc-content-wrapper">
+                                                <NavLink to={`/category/${item.blog_category}`}><span className="btn">{item.category_description}</span></NavLink>
                                                 <div className="btlc-content">
                                                     <div className="btcl-content-status">
                                                         <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
                                                         <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                                     </div>
-                                                    <h3>{Config.trunCate(item.title, 40, '. . .')}</h3>
+                                                    <h3><NavLink to={`/news/${item.route}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
                                                 </div>
-                                            </div></NavLink>
+                                            </div>
                                         </div>)}
                                     </div>
 
                                     {filterByDay('center_category', 1).map((item, key) => <div key={key} className="btl-simple-card" data-aos="fade-up"
                                         data-aos-delay="50">
                                         {Config.randerImage(item.meta_image, 640)}
-                                        <NavLink to={`/details/${item.name}`}><div className="btlc-content-wrapper">
-                                            <span className="btn btn-red">{item.category_description}</span>
+                                        <div className="btlc-content-wrapper">
+                                            <NavLink to={`/category/${item.blog_category}`}><span className="btn-card btn-red">{item.category_description}</span></NavLink>
                                             <div className="btlc-content">
                                                 <div className="btcl-content-status">
                                                     <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
                                                     <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                                 </div>
-                                                <h3>{Config.trunCate(item.title, 60, '. . .')}</h3>
+                                                <h3><NavLink to={`/news/${item.route}`}>{Config.trunCate(item.title, 60, '. . .')}</NavLink></h3>
                                             </div>
-                                        </div></NavLink>
+                                        </div>
                                     </div>)}
 
                                 </div>
                                 <div className="ns-card-list" data-aos="fade-up" data-aos-delay="100">
 
-                                    {filterByDay('bottom_category', 3).map((item, key) => <NavLink key={key} to={`/details/${item.name}`}><div className="nsc-list-single">
+                                    {filterByDay('bottom_category', 3).map((item, key) => <div key={key} className="nsc-list-single">
                                         <div className="nsc-list-img">
                                             {Config.randerImage(item.meta_image)}
                                         </div>
                                         <div className="nsc-list-content">
                                             <div className="nsc-list-title">
-                                                <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
+                                                <span><NavLink to={`/category/${item.blog_category}`}>{item.category_description}</NavLink></span>
                                                 <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                             </div>
-                                            <h3>{Config.trunCate(item.title, 40, '. . .')}
-                                            </h3>
+                                            <h3><NavLink to={`/news/${item.route}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink> </h3>
                                         </div>
-                                    </div></NavLink>)}
+                                    </div>)}
 
                                 </div>
                             </div>
@@ -256,40 +251,40 @@ function Home() {
                         <div className="col-xl-3">
                             <div className="news-vcard-wrapper">
 
-                                {filterByDay('right_category_one', 1).map((item, key) => <NavLink key={key} to={`/details/${item.name}`}><div className="news-vcard-single aos-init aos-animate" data-aos="fade-up">
-                                    <span className="btn-card btn-red">{item.category_description}</span>
-                                    <div className="news-vcard-img">
+                                {filterByDay('right_category_one', 1).map((item, key) => <div key={key} class="news-vcard-single aos-init aos-animate" data-aos="fade-up">
+                                    <NavLink to={`/category/${item.blog_category}`}><span className="btn-card btn-red">{item.category_description}</span></NavLink>
+                                    <div class="news-vcard-img">
                                         {Config.randerImage(item.meta_image, 290)}
                                     </div>
-                                    <div className="news-vcard-content">
-                                        <div className="news-vcard-title">
+                                    <div class="news-vcard-content">
+                                        <div class="news-vcard-title">
                                             <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
                                             <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                         </div>
-                                        <h3>{Config.trunCate(item.title, 40, '. . .')}</h3>
+                                        <h3><NavLink to={`/news/${item.route}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
                                     </div>
-                                </div></NavLink>)}
+                                </div>)}
 
-                                {filterByDay('right_category_two', 1).map((item, key) => <NavLink key={key} to={`/details/${item.name}`}><div className="news-vcard-single aos-init aos-animate" data-aos="fade-up">
-                                    <span className="btn-card btn-red">{item.category_description}</span>
-                                    <div className="news-vcard-img">
+                                {filterByDay('right_category_two', 1).map((item, key) => <div key={key} class="news-vcard-single aos-init aos-animate" data-aos="fade-up">
+                                    <NavLink to={`/category/${item.blog_category}`}><span className="btn-card btn-red">{item.category_description}</span></NavLink>
+                                    <div class="news-vcard-img">
                                         {Config.randerImage(item.meta_image, 290)}
                                     </div>
-                                    <div className="news-vcard-content">
-                                        <div className="news-vcard-title">
+                                    <div class="news-vcard-content">
+                                        <div class="news-vcard-title">
                                             <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
                                             <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                         </div>
-                                        <h3>{Config.trunCate(item.title, 40, '. . .')}</h3>
+                                        <h3><NavLink to={`/news/${item.route}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
                                     </div>
-                                </div></NavLink>)}
-
+                                </div>)}
 
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+
 
             {/* <div className="pro-area" data-aos="fade-up">
                 <div className="container">
@@ -345,7 +340,7 @@ function Home() {
                                                 <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
                                                 <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                             </div>
-                                            <h3><NavLink to={`/details/${item.name}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
+                                            <h3><NavLink to={`/details/${item.route}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
                                         </div>
                                     </div>)}
 
@@ -364,7 +359,7 @@ function Home() {
                                                 <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
                                                 <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                             </div>
-                                            <h3><NavLink to={`/details/${item.name}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
+                                            <h3><NavLink to={`/details/${item.route}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
                                         </div>
                                     </div>)}
                                 </div>
@@ -381,7 +376,7 @@ function Home() {
                                                 <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
                                                 <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                             </div>
-                                            <h3><NavLink to={`/details/${item.name}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
+                                            <h3><NavLink to={`/details/${item.route}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
                                         </div>
                                     </div>)}
                                 </div>
@@ -398,7 +393,7 @@ function Home() {
                                                 <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
                                                 <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                             </div>
-                                            <h3><NavLink to={`/details/${item.name}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
+                                            <h3><NavLink to={`/details/${item.route}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
                                         </div>
                                     </div>)}
                                 </div>
@@ -415,7 +410,7 @@ function Home() {
                                                 <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
                                                 <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                             </div>
-                                            <h3><NavLink to={`/details/${item.name}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
+                                            <h3><NavLink to={`/details/${item.route}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
                                         </div>
                                     </div>)}
                                 </div>
@@ -428,7 +423,7 @@ function Home() {
                         data-carousel-lg="3" data-carousel-xl="3" data-aos="fade-up">
                         {filterByWeek('video', 12).map((item, key) => <div key={key} className="fdc-single-item">
                             <div className="fdc-img">
-                                <NavLink to={`/details/${item.name}`}>
+                                <NavLink to={`/details/${item.route}`}>
                                     {Config.randerImage(item.meta_image, 220)}
                                 </NavLink>
                             </div>
@@ -437,7 +432,7 @@ function Home() {
                                     <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
                                     <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                 </div>
-                                <h3><NavLink to={`/details/${item.name}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
+                                <h3><NavLink to={`/details/${item.route}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
                             </div>
                         </div>)}
                     </div>

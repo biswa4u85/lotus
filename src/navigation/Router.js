@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  BrowserRouter,
   HashRouter,
   Routes,
   Route,
@@ -21,20 +22,20 @@ import ScoreBoard from "../pages/ScoreBoard";
 
 function Routers() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Routes>
         <Route element={<Layouts />}>
           <Route path="/" element={<Home />} />
-          <Route path="/details/:pId" element={<Details />} />
-          <Route path="/cms/:Id" element={<Cms />} />
-          <Route path="/cat/:Id" element={<Category />} />
+          <Route path="/news/:pId" element={<Details />} />
+          <Route path="/pages/:Id" element={<Cms />} />
+          <Route path="/category/:Id" element={<Category />} />
           <Route path="/live-score" element={<LiveScore />} />
           <Route path="*" element={<Page404 />} />
           <Route path="/search/:name" element={<Search />} />
-          <Route path="/match-details/:name" element={<ScoreBoard />} />
+          <Route path="/match-news/:name" element={<ScoreBoard />} />
         </Route>
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 

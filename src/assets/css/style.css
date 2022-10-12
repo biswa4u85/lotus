@@ -935,7 +935,7 @@ body.overlay:after {
 }
 
 body {
-    overflow: hidden
+    overflow: visible
 }
 
 body.remover {
@@ -11548,6 +11548,9 @@ body.demo {
     .header-logo{
         height: 45px!important;
     }
+    .header-logo a img{
+        margin-top: -20px;
+    }
     .options-area{
         padding: 0;
     }
@@ -11662,4 +11665,8 @@ body.demo {
     .bnr-lft-cnt-rgt{
         grid-gap: 10px;
     }
+}
+.owl-theme .owl-dots,
+.owl-theme .owl-nav{
+    display: none!important;
 }

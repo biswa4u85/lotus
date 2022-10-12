@@ -69,33 +69,33 @@ function Headers() {
                                                 <div className="container">
                                                     <div className="row">
                                                         <div className="col-6">
-                                                            <h3><NavLink to="/cat/mens">Men</NavLink></h3>
+                                                            <h3><NavLink to="/category/mens">Men</NavLink></h3>
                                                             <ul>
-                                                                <li><NavLink to="/cat/domestic">Domestic</NavLink>
+                                                                <li><NavLink to="/category/domestic">Domestic</NavLink>
                                                                     <ul>
-                                                                        <li><NavLink to="/cat/ipl">IPL</NavLink></li>
-                                                                        {/* <li><NavLink to="/cat/tnpl">TNPL</NavLink></li> */}
+                                                                        <li><NavLink to="/category/ipl">IPL</NavLink></li>
+                                                                        {/* <li><NavLink to="/category/tnpl">TNPL</NavLink></li> */}
                                                                     </ul>
                                                                 </li>
-                                                                <li><NavLink to="/cat/international">International</NavLink>
+                                                                <li><NavLink to="/category/international">International</NavLink>
                                                                     <ul>
-                                                                        <li><NavLink to="/cat/asia-cup">Asia Cup</NavLink></li>
-                                                                        <li><NavLink to="/cat/legends-league-cricket">Legends League Cricket</NavLink></li>
-                                                                        <li><NavLink to="/cat/road-safety-world-series">Road Safety World Series</NavLink></li>
-                                                                        <li><NavLink to="/cat/t20-world-cup">T20 World Cup</NavLink></li>
+                                                                        <li><NavLink to="/category/asia-cup">Asia Cup</NavLink></li>
+                                                                        <li><NavLink to="/category/legends-league-cricket">Legends League Cricket</NavLink></li>
+                                                                        <li><NavLink to="/category/road-safety-world-series">Road Safety World Series</NavLink></li>
+                                                                        <li><NavLink to="/category/t20-world-cup">T20 World Cup</NavLink></li>
                                                                         
-                                                                        {/* <li><NavLink to="/cat/ire-vs-nz">Ire Vs Nz</NavLink></li> */}
+                                                                        {/* <li><NavLink to="/category/ire-vs-nz">Ire Vs Nz</NavLink></li> */}
 
                                                                     </ul></li>
                                                             </ul>
                                                         </div>
                                                         <div className="col-6">
-                                                            <h3><NavLink to="/cat/women">Women</NavLink></h3>
+                                                            <h3><NavLink to="/category/women">Women</NavLink></h3>
                                                             <ul>
-                                                                {/* <li><NavLink to="/cat/international-series">International series</NavLink></li>
-                                                                <li><NavLink to="/cat/t20i-women">T20I Women</NavLink></li> */}
-                                                                <li><NavLink to="/cat/wbbl-2022">WBBL 2022</NavLink></li>
-                                                                <li><NavLink to="/cat/womens-asia-cup-2022">Women's Asia cup 2022</NavLink></li>
+                                                                {/* <li><NavLink to="/category/international-series">International series</NavLink></li>
+                                                                <li><NavLink to="/category/t20i-women">T20I Women</NavLink></li> */}
+                                                                <li><NavLink to="/category/wbbl-2022">WBBL 2022</NavLink></li>
+                                                                <li><NavLink to="/category/womens-asia-cup-2022">Women's Asia cup 2022</NavLink></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -104,20 +104,20 @@ function Headers() {
                                         </div>
                                     </li>
 
-                                    <li className="dropdown"><NavLink to="/cat/news">NEWS</NavLink>
+                                    <li className="dropdown"><NavLink to="/category/news">NEWS</NavLink>
                                         <ul>
-                                            <li><NavLink to="/cat/trending-news">Trending News</NavLink></li>
-                                            <li><NavLink to="/cat/editors-pick">Editor's Pick</NavLink></li>
-                                            <li><NavLink to="/cat/featured-post">Featured Post</NavLink></li>
-                                            <li><NavLink to="/cat/on-this-day">On this day</NavLink></li>
+                                            <li><NavLink to="/category/trending-news">Trending News</NavLink></li>
+                                            <li><NavLink to="/category/editors-pick">Editor's Pick</NavLink></li>
+                                            <li><NavLink to="/category/featured-post">Featured Post</NavLink></li>
+                                            <li><NavLink to="/category/on-this-day">On this day</NavLink></li>
                                         </ul>
                                     </li>
-                                    <li className="dropdown"><NavLink to="/cat/match-prediction">MATCH PREDICTION</NavLink>
+                                    <li className="dropdown"><NavLink to="/category/match-prediction">MATCH PREDICTION</NavLink>
                                         <ul>
-                                            <li><NavLink to="/cat/match-review">Match Review</NavLink></li>
-                                            <li><NavLink to="/cat/match-prediction">Match Prediction</NavLink></li>
-                                            <li><NavLink to="/cat/match-analysis">Match Analysis</NavLink></li>
-                                            <li><NavLink to="/cat/fantasy-tips">Fantasy Tips</NavLink></li>
+                                            <li><NavLink to="/category/match-review">Match Review</NavLink></li>
+                                            <li><NavLink to="/category/match-prediction">Match Prediction</NavLink></li>
+                                            <li><NavLink to="/category/match-analysis">Match Analysis</NavLink></li>
+                                            <li><NavLink to="/category/fantasy-tips">Fantasy Tips</NavLink></li>
                                         </ul>
                                     </li>
                                 </ul>

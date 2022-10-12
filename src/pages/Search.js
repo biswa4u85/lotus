@@ -49,7 +49,7 @@ function Search(props) {
                                     <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                     <span>{item.blogger}</span>
                                 </div>
-                                <h3><NavLink to={`/details/${item.name}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
+                                <h3><NavLink to={`/news/${item.name}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
                             </div>
                         </div>) : null}
                     </div>
