@@ -116,7 +116,7 @@ function Footers() {
                             <p>Copyright © 2022 lotusnews247 All Rights Reserved.</p>
                             <ul>
                                 <li><NavLink to="/pages/terms-conditions-l">Term & Condition</NavLink></li>
-                                <li><NavLink to="/pages/privacy-l">Privacy</NavLink></li>
+                                <li><NavLink to="/pages/privacy">Privacy</NavLink></li>
                             </ul>
                         </div>
                     </div>

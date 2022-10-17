@@ -18,7 +18,7 @@ const doctypeBlogCategory = 'Blog Category'
 const fieldsBlogCategory = ["name", "title", "status", "meta_title_lotus", "meta_description_lotus"]
 
 const doctypeBlogPost = 'Blog Post'
-const fieldsBlogPost = ["name", "title", "blog_category", "category_description", "blog_intro", "meta_image", "published_on", "published_time", "blogger"]
+const fieldsBlogPost = ["name", 'route', "title", "blog_category", "category_description", "blog_intro", "meta_image", "published_on", "published_time", "blogger"]
 
 const initialState = {
   isFetching: false,

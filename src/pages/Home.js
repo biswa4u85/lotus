@@ -98,7 +98,7 @@ function Home() {
                                         {newsList[0] && (<div className="btl-simple-card">
                                             {Config.randerImage(newsList[0].meta_image, 600, 740)}
                                             <div className="btlc-content-wrapper">
-                                                <NavLink to={`/details/${newsList[0].route}`}><span className="btn">{newsList[0].category_description}</span></NavLink>
+                                                <NavLink to={`/category/${newsList[0].blog_category}`}><span className="btn">{newsList[0].category_description}</span></NavLink>
                                                 <div className="btlc-marking">
                                                     <span className="icofont-star"></span>
                                                 </div>
@@ -108,7 +108,7 @@ function Home() {
                                                         <span>{moment.utc(newsList[0].published_on).format('Do MMM YYYY')}</span>
                                                         <span>{newsList[0].blogger}</span>
                                                     </div>
-                                                    <h3><NavLink to={`/details/${newsList[0].route}`}>{Config.trunCate(newsList[0].title, 40, '. . .')}</NavLink></h3>
+                                                    <h3><NavLink to={`/news/${newsList[0].route}`}>{Config.trunCate(newsList[0].title, 40, '. . .')}</NavLink></h3>
                                                 </div>
                                             </div>
                                         </div>)}
@@ -119,7 +119,7 @@ function Home() {
                                                 data-aos-delay="100">
                                                 {Config.randerImage(newsList[1].meta_image, 300, 355)}
                                                 <div className="btlc-content-wrapper">
-                                                    <NavLink to={`/details/${newsList[1].route}`}><span className="btn">{newsList[1].category_description}</span></NavLink>
+                                                    <NavLink to={`/category/${newsList[1].blog_category}`}><span className="btn">{newsList[1].category_description}</span></NavLink>
                                                     <div className="btlc-marking">
                                                         <span className="icofont-star"></span>
                                                     </div>
@@ -129,7 +129,7 @@ function Home() {
                                                             <span>{moment.utc(newsList[1].published_on).format('Do MMM YYYY')}</span>
                                                             <span>{newsList[1].blogger}</span>
                                                         </div>
-                                                        <h3><NavLink to={`/details/${newsList[1].route}`}>{Config.trunCate(newsList[1].title, 40, '. . .')}</NavLink></h3>
+                                                        <h3><NavLink to={`/news/${newsList[1].route}`}>{Config.trunCate(newsList[1].title, 40, '. . .')}</NavLink></h3>
                                                     </div>
                                                 </div>
                                             </div>)}
@@ -137,7 +137,7 @@ function Home() {
                                                 data-aos-delay="100">
                                                 {Config.randerImage(newsList[2].meta_image, 300, 355)}
                                                 <div className="btlc-content-wrapper">
-                                                    <NavLink to={`/details/${newsList[2].route}`}><span className="btn">{newsList[2].category_description}</span></NavLink>
+                                                    <NavLink to={`/category/${newsList[2].blog_category}`}><span className="btn">{newsList[2].category_description}</span></NavLink>
                                                     <div className="btlc-marking">
                                                         <span className="icofont-star"></span>
                                                     </div>
@@ -147,7 +147,7 @@ function Home() {
                                                             <span>{moment.utc(newsList[2].published_on).format('Do MMM YYYY')}</span>
                                                             <span>{newsList[2].blogger}</span>
                                                         </div>
-                                                        <h3><NavLink to={`/details/${newsList[2].route}`}>{Config.trunCate(newsList[2].title, 40, '. . .')}</NavLink></h3>
+                                                        <h3><NavLink to={`/news/${newsList[2].route}`}>{Config.trunCate(newsList[2].title, 40, '. . .')}</NavLink></h3>
                                                     </div>
                                                 </div>
                                             </div>)}
@@ -340,7 +340,7 @@ function Home() {
                                                 <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
                                                 <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                             </div>
-                                            <h3><NavLink to={`/details/${item.route}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
+                                            <h3><NavLink to={`/news/${item.route}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
                                         </div>
                                     </div>)}
 
@@ -359,7 +359,7 @@ function Home() {
                                                 <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
                                                 <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                             </div>
-                                            <h3><NavLink to={`/details/${item.route}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
+                                            <h3><NavLink to={`/news/${item.route}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
                                         </div>
                                     </div>)}
                                 </div>
@@ -376,7 +376,7 @@ function Home() {
                                                 <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
                                                 <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                             </div>
-                                            <h3><NavLink to={`/details/${item.route}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
+                                            <h3><NavLink to={`/news/${item.route}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
                                         </div>
                                     </div>)}
                                 </div>
@@ -393,7 +393,7 @@ function Home() {
                                                 <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
                                                 <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                             </div>
-                                            <h3><NavLink to={`/details/${item.route}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
+                                            <h3><NavLink to={`/news/${item.route}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
                                         </div>
                                     </div>)}
                                 </div>
@@ -410,7 +410,7 @@ function Home() {
                                                 <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
                                                 <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                             </div>
-                                            <h3><NavLink to={`/details/${item.route}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
+                                            <h3><NavLink to={`/news/${item.route}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
                                         </div>
                                     </div>)}
                                 </div>
@@ -423,7 +423,7 @@ function Home() {
                         data-carousel-lg="3" data-carousel-xl="3" data-aos="fade-up">
                         {filterByWeek('video', 12).map((item, key) => <div key={key} className="fdc-single-item">
                             <div className="fdc-img">
-                                <NavLink to={`/details/${item.route}`}>
+                                <NavLink to={`/news/${item.route}`}>
                                     {Config.randerImage(item.meta_image, 220)}
                                 </NavLink>
                             </div>
@@ -432,7 +432,7 @@ function Home() {
                                     <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
                                     <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                 </div>
-                                <h3><NavLink to={`/details/${item.route}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
+                                <h3><NavLink to={`/news/${item.route}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
                             </div>
                         </div>)}
                     </div>
