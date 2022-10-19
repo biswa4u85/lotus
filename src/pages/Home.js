@@ -65,7 +65,7 @@ function Home() {
                 <div className="viewAllMatch"><button onClick={() => navigate('/live-score')}>View all Matches</button></div>
             </div>
 
-            <div className="pro-area" data-aos="fade-up">
+            {/* <div className="pro-area" data-aos="fade-up">
                 <div className="container">
                     <div className="row">
                         <div className="pro-wrapper">
@@ -75,7 +75,7 @@ function Home() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             <div className="container">
 
