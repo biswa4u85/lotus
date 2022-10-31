@@ -122,4 +122,7 @@ export default {
     PoliceSportsClub: require("../assets/countryFlags/police sports club.jpeg"),
     RagamaCricketClub: require("../assets/countryFlags/ragama cricket club.jpeg"),
     SaracensSportsClub: require("../assets/countryFlags/saracens sports club.jpeg"),
+    ghana: require("../assets/countryFlags/ghana.png"),
+    mozambique: require("../assets/countryFlags/mozambique.png"),
+    uganda: require("../assets/countryFlags/uganda.png"),
 }

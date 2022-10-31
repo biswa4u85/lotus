@@ -74,7 +74,7 @@ function Details(props) {
                         <div className="col-lg-8">
                             <div className="single-post-content">
                                 <div className="figer-img">
-                                    {Config.randerImage(newsDetails?.meta_image)}
+                                    {Config.randerImage(newsDetails)}
                                     <button className="btn btn-theme">{newsDetails?.category_description}</button>
                                 </div>
                                 <div className="timeline">
@@ -106,7 +106,7 @@ function Details(props) {
                                     <div className="card-list card-counting">
                                         {latestNews.map((item, key) => <div key={key} className="single-card-list card-border">
                                             <div className="card-list-img">
-                                                {Config.randerImage(item.meta_image, 100, 70)}
+                                                {Config.randerImage(item, 100, 70, null)}
                                             </div>
                                             <div className="card-list-cont">
                                                 <div className="card-list-discript">
@@ -134,7 +134,7 @@ function Details(props) {
                                         <div className="card-list card-counting">
                                             {relatedNews.map((item, key) => <div key={key} className="single-card-list card-border">
                                                 <div className="card-list-img">
-                                                    {Config.randerImage(item.meta_image, 100, 70)}
+                                                    {Config.randerImage(item, 100, 70 , null)}
                                                 </div>
                                                 <div className="card-list-cont">
                                                     <div className="card-list-discript">

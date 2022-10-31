@@ -1,22 +1,20 @@
 import noData from "../assets/img/nodata.jpg";
-import playBtn from "../assets/img/svg/play-btn.svg";
 export default {
     apiSocketUrl: 'https://score.techwizards.io:4000',
     frappe_url: 'https://news.techwizards.io',
     frappe_custom_app: 'erp_custom_auth',
     token: 'token 8013775618bd3a7:99fa9ff03295aa8',
-    randerImage: (src, height, imgHeight) => {
+    randerImage: (item, height, imgHeight, type) => {
+        let src = item?.meta_image
         let imageURL = src ? (String(src).includes('https://') ? src : 'https://news.techwizards.io' + src) : noData
-        return <div style={{ textAlign: "center", objectFit: 'cover', height: height }}>
-            <img style={{ height: (imgHeight ? imgHeight : 'inherit') }} src={imageURL} alt="image" />
-            {/* <div className="news-vcard-play">
-                <a className="vimo1" href="https://vimeo.com/63729905"><img
-                    src={playBtn} alt="image" /></a>
-            </div> */}
+        return <div style={{ position: 'relative', textAlign: "center", objectFit: 'cover' }}>
+            <img style={{ height: (imgHeight ? imgHeight : 'inherit') }} src={imageURL} title={item.image_alt} alt={item.image_alt} />
+            {!type &&(<div style={{ position: 'absolute', background: '#fff', left: 0, bottom: 0, width: '100%', padding: 2 }}>{item.image_captions}</div>)}
         </div>
     },
     trunCate: (str, max, suffix) => {
-        return str.length < max ? str : `${str.substr(0, str.substr(0, max - suffix.length).lastIndexOf(' '))} ${suffix}`
+        // return <span className="trunCate">{str.length < max ? str : `${str.substr(0, str.substr(0, max - suffix.length).lastIndexOf(' '))} ${suffix}`}</span>
+        return <span className={max == 2 ? "trunCate" : "trunCate1"}>{str}</span>
     },
     filterTitle: (title) => {
         let res = title.replaceAll("-", " ")

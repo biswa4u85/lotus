@@ -25,9 +25,10 @@ function HomeSlider(props) {
 
     useEffect(() => {
         let date = new Date()
-        let toDate = `${date.getFullYear()}-${date.getMonth() < 9 ? "0" + (Number(date.getMonth()) + 1) : date.getMonth()}-${date.getDate() < 9 ? "0" + date.getDate() : date.getDate()}`
+        let month = Number(date.getMonth()) + 1
+        let toDate = `${date.getFullYear()}-${month < 9 ? "0" + month : month}-${date.getDate() < 9 ? "0" + date.getDate() : date.getDate()}`
         date.setDate(date.getDate() - 1);
-        let fromDate = `${date.getFullYear()}-${date.getMonth() < 9 ? "0" + (Number(date.getMonth()) + 1) : date.getMonth()}-${date.getDate() < 9 ? "0" + date.getDate() : date.getDate()}`
+        let fromDate = `${date.getFullYear()}-${month < 9 ? "0" + month : month}-${date.getDate() < 9 ? "0" + date.getDate() : date.getDate()}`
         dispatch(getHomeFixtures({ filters: [["Live Score Fixtures", "date", "Between", [fromDate, toDate]]] }))
         return () => {
             for (let item of fixtures) {
@@ -81,7 +82,7 @@ function HomeSlider(props) {
             let score = null
             return <div key={key} id={`live_home_${item.name}`} className='item'>
                 <div className="trending_news">
-                    <div className="lanka" onClick={() => navigate(`/match-news/${item.name}`)}>
+                    <div className="lanka" >
                         <h6>{checkDate(item.date)} At {moment.utc(item.datetime).format('hh:mm A')} . <span> {item.match_subtitle} .</span> {item.status}</h6>
                         <div className='srilanka'>
                             {checkImg(item?.home?.name)} <span> {item?.home?.name}</span> <span id="live_home" className="red">{score ? score?.match_summary?.home_scores : ''}</span>
@@ -91,6 +92,7 @@ function HomeSlider(props) {
                         </div>
                         <span id="live_result">{item.status === 'Complete' ? <p>{item.result} - <span>{moment.utc(item.datetime).format('Do MMM YYYY')}</span></p> : <p>Match starts in <span>{moment.utc(item.date).format('Do MMM YYYY hh:mm A')}</span></p>}</span>
                         <div className="lanka-border"></div>
+                        <div style={{ cursor: "pointer", float: 'right' }} onClick={() => navigate(`/match-news/${item.name}`)}>View Details</div>
                         <ul>
                             <li>{item.venue}</li>
                         </ul>

@@ -58,7 +58,7 @@ function Headers() {
                     <div className="main-header-wrapper">
                         <div className="header-logo">
                             <NavLink to="/">
-                                {Config.randerImage(homeSettings.site_logo)}
+                            <img src={Config.frappe_url + '/' + homeSettings.site_logo} alt="image" />
                             </NavLink>
                         </div>
                         <div className="navbar-wrapper">
