@@ -106,7 +106,7 @@ function Details(props) {
                                     <div className="card-list card-counting">
                                         {latestNews.map((item, key) => <div key={key} className="single-card-list card-border">
                                             <div className="card-list-img">
-                                                {Config.randerImage(item, 100, 70, null)}
+                                                {Config.randerImage(item, 100, 70, true)}
                                             </div>
                                             <div className="card-list-cont">
                                                 <div className="card-list-discript">
@@ -134,7 +134,7 @@ function Details(props) {
                                         <div className="card-list card-counting">
                                             {relatedNews.map((item, key) => <div key={key} className="single-card-list card-border">
                                                 <div className="card-list-img">
-                                                    {Config.randerImage(item, 100, 70 , null)}
+                                                    {Config.randerImage(item, 100, 70 , true)}
                                                 </div>
                                                 <div className="card-list-cont">
                                                     <div className="card-list-discript">
