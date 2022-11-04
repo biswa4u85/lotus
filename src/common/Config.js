@@ -7,9 +7,10 @@ export default {
     randerImage: (item, height, imgHeight, type) => {
         let src = item?.meta_image
         let imageURL = src ? (String(src).includes('https://') ? src : 'https://news.techwizards.io' + src) : noData
-        return <div style={{ position: 'relative', textAlign: "center", objectFit: 'cover' }}>
+        return <div className="mainImage">
+            {!type &&(<div className="mainTitle">{item.title}</div>)}
             <img style={{ height: (imgHeight ? imgHeight : 'inherit') }} src={imageURL} title={item.image_alt} alt={item.image_alt} />
-            {!type &&(<div style={{ position: 'absolute', background: '#fff', left: 0, bottom: 0, width: '100%', padding: 2 }}>{item.image_captions}</div>)}
+            {!type &&(<div className="imageCaptions">{item.image_captions}</div>)}
         </div>
     },
     trunCate: (str, max, suffix) => {
