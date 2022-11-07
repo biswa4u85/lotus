@@ -17,7 +17,7 @@ function Live(props) {
             let date = new Date()
             let month = Number(date.getMonth()) + 1
             let fromDate = `${date.getFullYear()}-${month < 9 ? "0" + month : month}-${date.getDate() < 9 ? "0" + date.getDate() : date.getDate()}`
-            dispatch(getHomeFixtures({ filters: [["Live Score Fixtures", "date", "=", fromDate]] }))
+            dispatch(getHomeFixtures({ filters: [["Flash All Events", "date", "=", fromDate]] }))
         } else if (type === 'recent') {
             let date = new Date()
             let month = Number(date.getMonth()) + 1
@@ -25,12 +25,12 @@ function Live(props) {
             date.setDate(date.getDate() - 1);
             let frommonth = Number(date.getMonth()) + 1
             let fromDate = `${date.getFullYear()}-${frommonth < 9 ? "0" + frommonth : frommonth}-${date.getDate() < 9 ? "0" + date.getDate() : date.getDate()}`
-            dispatch(getHomeFixtures({ filters: [["Live Score Fixtures", "date", "Between", [fromDate, toDate]]] }))
+            dispatch(getHomeFixtures({ filters: [["Flash All Events", "date", "Between", [fromDate, toDate]]] }))
         } else {
             let date = new Date()
             let month = Number(date.getMonth()) + 1
             let fromDate = `${date.getFullYear()}-${month < 9 ? "0" + month : month}-${date.getDate() < 9 ? "0" + date.getDate() : date.getDate()}`
-            dispatch(getHomeFixtures({ filters: [["Live Score Fixtures", "date", ">", fromDate]] }))
+            dispatch(getHomeFixtures({ filters: [["Flash All Events", "date", ">", fromDate]] }))
         }
         return () => {
             for (let item of fixtures) {

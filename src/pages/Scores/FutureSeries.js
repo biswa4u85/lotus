@@ -16,7 +16,7 @@ function FutureSeries(props) {
         let date = new Date()
         let month = Number(date.getMonth()) + 1
         let fromDate = `${date.getFullYear()}-${month < 9 ? "0" + month : month}-${date.getDate() < 9 ? "0" + date.getDate() : date.getDate()}`
-        dispatch(getHomeFixtures({ filters: [["Live Score Fixtures", "date", ">=", fromDate]] }))
+        dispatch(getHomeFixtures({ filters: [["Flash All Events", "date", ">=", fromDate]] }))
     }, [type]);
 
 

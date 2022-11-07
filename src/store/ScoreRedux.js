@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { getAllDataApi, getLiveDataDataApi } from '../utility/frappe-apis'
 
-const doctypeFixtures = 'Live Score Fixtures'
+const doctypeFixtures = 'Flash All Events'
 const fieldsFixtures = ["*"]
 
 const doctypeSeries = 'Live Score Series'
@@ -35,8 +35,8 @@ export const getHomeFixtures = createAsyncThunk(
       return rejectWithValue(response.data)
     }
     for (let item of response.data) {
-      item.home = JSON.parse(item.home)
-      item.away = JSON.parse(item.away)
+      item.tournament_details = item.tournament_details ? JSON.parse(item.tournament_details) : {}
+      item.event_details = item.event_details ? JSON.parse(item.event_details) : {}
     }
     return response.data
   }
@@ -86,7 +86,7 @@ export const counterSlice = createSlice({
     },
     [getHomeFixtures.rejected]: (state, action) => {
       state.isFetching = false
-      state.error = action.payload.message
+      state.error = action.payload
     },
     [getHomeFixtures.fulfilled]: (state, action) => {
       state.isFetching = false

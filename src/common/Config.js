@@ -1,5 +1,7 @@
 import noData from "../assets/img/nodata.jpg";
 export default {
+    hostUrl: 'https://lotusnews247.com',
+    twitter: 'Lotusnews2',
     apiSocketUrl: 'https://score.techwizards.io:4000',
     frappe_url: 'https://news.techwizards.io',
     frappe_custom_app: 'erp_custom_auth',
@@ -8,9 +10,9 @@ export default {
         let src = item?.meta_image
         let imageURL = src ? (String(src).includes('https://') ? src : 'https://news.techwizards.io' + src) : noData
         return <div className="mainImage">
-            {!type &&(<div className="mainTitle">{item.title}</div>)}
-            <img style={{ height: (imgHeight ? imgHeight : 'inherit') }} src={imageURL} title={item.image_alt} alt={item.image_alt} />
-            {!type &&(<div className="imageCaptions">{item.image_captions}</div>)}
+            {!type &&(<div className="mainTitle">{item?.title}</div>)}
+            <img style={{ height: (imgHeight ? imgHeight : 'inherit') }} src={imageURL} title={item?.image_alt} alt={item?.image_alt} />
+            {!type &&(<div className="imageCaptions">{item?.image_captions}</div>)}
         </div>
     },
     trunCate: (str, max, suffix) => {

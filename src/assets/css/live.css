@@ -1,9 +1,26 @@
 .lanka {
-    background-color: white;
+    padding: 5px;
+}
+
+.finshed {
+    background-color: #FFF;
     border-radius: 10px;
     box-shadow: 0px 0px 6px rgba(96, 174, 246, 0.4);
-    padding: 10px;
-    margin: 0 7px;
+    margin: 0 5px;
+}
+
+.false-zealand {
+    background-color: gainsboro !important;
+    border-radius: 0 0 10px 10px;
+    padding: 5px 10px 0;
+}
+
+.false-zealand h5 {
+    cursor: pointer;
+    font-size: 13px;
+}
+.false-zealand h6 {
+    font-size: 13px;
 }
 
 .ipsum {
@@ -33,10 +50,42 @@
     margin: 20px 0;
 }
 
+.false {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+}
+
+.false h6 {
+    margin: 0px 10px;
+}
+
+.false h6 span {
+    color: #4a4b4b;
+    font-size: 14px;
+}
+
+.lanka h5 {
+    color: var(--color-blue);
+    font-size: 13px;
+}
+.lanka h6 {
+    font-size: 13px;
+}
+#live_result p{
+    font-size: 13px;
+}
+.false-series {
+    background-color: #0b0a0a;
+    padding: 0 !important;
+}
+
 .dolor h1 {
     font-size: 25px;
     font-weight: bold;
 }
+
+
 
 .dolor p {
     font-size: 12px;
@@ -380,6 +429,7 @@
 
 .border-box {
     border: 1px solid #b4b4b45c;
+    margin-bottom: 5px;
 }
 
 .evevts p a:hover {
@@ -755,8 +805,10 @@
     font-size: var(--text-16);
     font-weight: var(--medium);
     color: var(--white);
-    background-color: var(--color-primary);
+    background-color: var(--color-blue);
     height: 100%;
+    border-radius: 12px;
+    border: 1px solid;
 }
 
 .score-board {
@@ -850,7 +902,27 @@
 
 .match-player p {
     margin: 0;
-    font-size:12px;
+    font-size: 12px;
+}
+
+.total-scre {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    background-color: #ededed;
+    padding: 10px;
+}
+
+.scorecard-tab {
+    border: 0.3px solid #a1a1a1;
+    border-radius: 7px;
+    margin: 10px 0;
+}
+
+.scorecard-tab h5 {
+    background-color: rgba(135, 229, 255, 0.681);
+    padding: 10px;
+    border-radius: 7px 7px 0 0;
 }
 
 

@@ -17,11 +17,14 @@ function Category(props) {
     const categorys = useSelector((state) => state.auth.categorys)
     const newsListByCat = useSelector((state) => state.auth.newsListByCat.data)
     const newsListByCatCount = useSelector((state) => state.auth.newsListByCat.count)
-    const category = categorys.find((x) => x.route == Id)
+    const category = categorys.find((x) => x.name == Id)
 
     useEffect(() => {
         window.scrollTo(0, 0)
         handlePageChange()
+        if (!category) {
+            navigate('/')
+        }
     }, [Id]);
 
     const handlePageChange = (page = 1, size = 12) => {

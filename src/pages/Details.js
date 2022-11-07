@@ -36,6 +36,12 @@ function Details(props) {
         dispatch(getNewsDetails({ token, pId }))
     }, [pId]);
 
+    useEffect(() => {
+        if (!newsDetails) {
+            navigate('/')
+        }
+    }, [newsDetails]);
+
     // Latest News
     let latestNews = newsList.filter(item => item.blog_category === 'news');
     latestNews.length = 5
@@ -44,7 +50,7 @@ function Details(props) {
     let relatedNews = newsList.filter(item => item.blog_category === 'news');
     relatedNews.length = 5
 
-    let comments = newsDetails._comments ? JSON.parse(newsDetails._comments) : []
+    let comments = newsDetails?._comments ? JSON.parse(newsDetails._comments) : []
 
 
     const onFinish = (values) => {
@@ -85,8 +91,8 @@ function Details(props) {
                                 <h2>{newsDetails?.title}</h2>
                                 <div dangerouslySetInnerHTML={{ __html: newsDetails?.content_html ? newsDetails?.content_html : newsDetails?.content }}></div>
                                 <div className="details_tags"><Tags data={newsDetails?._user_tags ? newsDetails?._user_tags : ''} /></div>
-                                
-                                
+
+
                                 {/* <div className="reaction">
                                     <h3>Your Reaction on this post</h3>
                                     <ul>
@@ -134,7 +140,7 @@ function Details(props) {
                                         <div className="card-list card-counting">
                                             {relatedNews.map((item, key) => <div key={key} className="single-card-list card-border">
                                                 <div className="card-list-img">
-                                                    {Config.randerImage(item, 100, 70 , true)}
+                                                    {Config.randerImage(item, 100, 70, true)}
                                                 </div>
                                                 <div className="card-list-cont">
                                                     <div className="card-list-discript">

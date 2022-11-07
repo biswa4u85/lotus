@@ -3,7 +3,6 @@ const fs = require('fs'),
     fetch = require('node-fetch'),
     moment = require('moment'),
     hostBlogBaseURL = 'https://lotusnews247.com',
-    getBlogsListURL = `https://jsonplaceholder.typicode.com/posts`,
     untrackedUrlsList = [],
     options = { compact: true, ignoreComment: true, spaces: 4 };
 
@@ -11,20 +10,51 @@ const fs = require('fs'),
     Method to Fetch dynamic List of URLs from Rest API/DB
 */
 const fetchBlogsList = () => {
-    fetch(getBlogsListURL)
-        .then(res => res.json())
+    // Blog Category
+    let raw = "doctype=Blog Category&cmd=frappe.client.get_list&fields=[\"name\"]&limit_page_length=None";
+    let requestOptions = {
+        method: 'POST',
+        headers: {
+            "Authorization": "token 8013775618bd3a7:99fa9ff03295aa8",
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+        },
+        body: raw,
+        redirect: 'follow'
+    };
+    fetch("https://news.techwizards.io/", requestOptions)
+        .then(response => response.json())
         .then(dataJSON => {
-            if (dataJSON) {
-                dataJSON.forEach(element => {
-                    const modifiedURL = element.title.replace(/ /g, '-');
-                    untrackedUrlsList.push(`${hostBlogBaseURL}/${modifiedURL}`);
+            if (dataJSON && dataJSON.message) {
+                dataJSON.message.forEach(element => {
+                    untrackedUrlsList.push(`${hostBlogBaseURL}/category/${element.name}`);
                 });
                 filterUniqueURLs();
             }
         })
-        .catch(error => {
-            console.log(error);
-        });
+        .catch(error => console.log('error', error));
+
+    // Blog Pages
+    let rawNews = "doctype=Blog Post&cmd=frappe.client.get_list&fields=[\"name\"]&limit_page_length=None";
+    let requestOptionsNews = {
+        method: 'POST',
+        headers: {
+            "Authorization": "token 8013775618bd3a7:99fa9ff03295aa8",
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+        },
+        body: rawNews,
+        redirect: 'follow'
+    };
+    fetch("https://news.techwizards.io/", requestOptionsNews)
+        .then(response => response.json())
+        .then(dataJSON => {
+            if (dataJSON && dataJSON.message) {
+                dataJSON.message.forEach(element => {
+                    untrackedUrlsList.push(`${hostBlogBaseURL}/news/${element.name}`);
+                });
+                filterUniqueURLs();
+            }
+        })
+        .catch(error => console.log('error', error));
 }
 
 /*
