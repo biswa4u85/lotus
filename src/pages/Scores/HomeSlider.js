@@ -32,10 +32,10 @@ function HomeSlider(props) {
         date.setDate(date.getDate() - 1);
         let frommonth = Number(date.getMonth()) + 1
         let fromDate = `${date.getFullYear()}-${frommonth < 9 ? "0" + frommonth : frommonth}-${date.getDate() < 9 ? "0" + date.getDate() : date.getDate()}`
-        dispatch(getHomeFixtures({ filters: [["Flash All Events", "date", "Between", [fromDate, toDate]]] }))
+        dispatch(getHomeFixtures({ filters: [["Flash Events", "date", "Between", [fromDate, toDate]]] }))
         return () => {
             for (let item of fixtures) {
-                if (item.status === 'Fixture') {
+                if (item.stage_type === 'LIVE') {
                     SocketApis.unSubscribe(item.name)
                 }
             }
@@ -44,7 +44,7 @@ function HomeSlider(props) {
 
     useEffect(() => {
         for (let item of fixtures) {
-            if (item.status === 'Fixture' && Config.checkTime(item.datetime)) {
+            if (item.stage_type === 'LIVE' && Config.checkTime(item.datetime)) {
                 SocketApis.subscribe(item.name)
             }
         }
@@ -68,7 +68,7 @@ function HomeSlider(props) {
                     <div className="lanka">
                         <Row>
                             <Col span={5}>
-                                <h5>{events.STAGE_TYPE}</h5>
+                                <h5>{item.stage_type}</h5>
                             </Col>
                             <Col span={11} offset={8} align="right" >
                                 <h6>{Config.checkDate(item.date)} At {moment.utc(item.start_time).format('hh:mm A')}</h6>
@@ -80,7 +80,7 @@ function HomeSlider(props) {
                                 {checkImg(events?.HOME_IMAGES)}
                                 <h6>{events?.HOME_NAME}</h6>
                             </div>
-                            <h6 id="live_home" className="red">{events?.HOME_SCORE_CURRENT > 0 ? events?.HOME_SCORE_CURRENT + '/' + events?.HOME_SCORE_PART_2_OVERS_OUTS_WICKETS : ''}</h6>
+                            <h6 id="live_home">{events?.HOME_SCORE_CURRENT > 0 ? events?.HOME_SCORE_CURRENT + '/' + events?.HOME_SCORE_PART_2_OVERS_OUTS_WICKETS : ''}</h6>
                         </div>
 
                         <div className="false">
@@ -88,9 +88,9 @@ function HomeSlider(props) {
                                 {checkImg(events?.AWAY_IMAGES)}
                                 <h6>{events?.AWAY_NAME}</h6>
                             </div>
-                            <h6 id="live_away" className="red">{events?.AWAY_SCORE_CURRENT > 0 ? events?.AWAY_SCORE_CURRENT + '/' + events?.AWAY_SCORE_PART_2_OVERS_OUTS_WICKETS : ''}</h6>
+                            <h6 id="live_away">{events?.AWAY_SCORE_CURRENT > 0 ? events?.AWAY_SCORE_CURRENT + '/' + events?.AWAY_SCORE_PART_2_OVERS_OUTS_WICKETS : ''}</h6>
                         </div>
-                        <h5 id="live_result">{events.STAGE_TYPE === 'FINISHED' ? <p>{events.CRICKET_LIVE_SENTENCE} - <span>{moment.utc(item.start_time).format('Do MMM YYYY')}</span></p> : <p>Match starts in <span>{moment.utc(item.start_time).format('Do MMM YYYY hh:mm A')}</span></p>}</h5>
+                        <h5 id="live_result">{item.stage_type === 'FINISHED' ? <p>{item.result} - <span>{moment.utc(item.start_time).format('Do MMM YYYY')}</span></p> : <p>Match starts in <span>{moment.utc(item.start_time).format('Do MMM YYYY hh:mm A')}</span></p>}</h5>
                     </div>
 
                     <div className="false-zealand">

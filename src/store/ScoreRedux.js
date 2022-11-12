@@ -1,25 +1,40 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { getAllDataApi, getLiveDataDataApi } from '../utility/frappe-apis'
 
-const doctypeFixtures = 'Flash All Events'
-const fieldsFixtures = ["*"]
+const doctypeTournaments = 'Flash Tournaments'
+const fieldsTournaments = ["*"]
 
-const doctypeSeries = 'Live Score Series'
-const fieldsSeries = ["*"]
+const doctypeSeasons = 'Flash Seasons'
+const fieldsSeasons = ["*"]
+
+const doctypeFixtures = 'Flash Events'
+const fieldsFixtures = ["*"]
 
 const initialState = {
   isFetching: false,
   error: null,
-  series: [],
+  tournaments: [],
+  seasons: [],
   fixtures: [],
   scorecard: {},
   highlights: {},
 }
 
-export const getSeries = createAsyncThunk(
-  'score/getSeries',
+export const getTournaments = createAsyncThunk(
+  'score/getTournaments',
   async (params, { rejectWithValue }) => {
-    const response = await getAllDataApi({ doctype: doctypeSeries, fields: fieldsSeries, ...params })
+    const response = await getAllDataApi({ doctype: doctypeTournaments, fields: fieldsTournaments, ...params })
+    if (response.status === 'error') {
+      return rejectWithValue(response.data)
+    }
+    return response.data
+  }
+)
+
+export const getSeasons = createAsyncThunk(
+  'score/getSeasons',
+  async (params, { rejectWithValue }) => {
+    const response = await getAllDataApi({ doctype: doctypeSeasons, fields: fieldsSeasons, ...params })
     if (response.status === 'error') {
       return rejectWithValue(response.data)
     }
@@ -42,7 +57,6 @@ export const getHomeFixtures = createAsyncThunk(
   }
 )
 
-
 export const getHighlights = createAsyncThunk(
   'score/getHighlights',
   async (params, { rejectWithValue }) => {
@@ -50,7 +64,7 @@ export const getHighlights = createAsyncThunk(
     if (response.status === 'error') {
       return rejectWithValue(response.data)
     }
-    return response.results
+    return response.DATA
   }
 )
 
@@ -64,19 +78,33 @@ export const counterSlice = createSlice({
     },
   },
   extraReducers: {
-    // Series
-    [getSeries.pending]: (state, action) => {
+    // Tournaments
+    [getTournaments.pending]: (state, action) => {
       state.isFetching = true
       state.error = null
     },
-    [getSeries.rejected]: (state, action) => {
+    [getTournaments.rejected]: (state, action) => {
       state.isFetching = false
       state.error = action.payload.message
     },
-    [getSeries.fulfilled]: (state, action) => {
+    [getTournaments.fulfilled]: (state, action) => {
       state.isFetching = false
       state.error = null
-      state.series = action.payload
+      state.tournaments = action.payload
+    },
+    // Seasons
+    [getSeasons.pending]: (state, action) => {
+      state.isFetching = true
+      state.error = null
+    },
+    [getSeasons.rejected]: (state, action) => {
+      state.isFetching = false
+      state.error = action.payload.message
+    },
+    [getSeasons.fulfilled]: (state, action) => {
+      state.isFetching = false
+      state.error = null
+      state.seasons = action.payload
     },
     // Fixtures
     [getHomeFixtures.pending]: (state, action) => {

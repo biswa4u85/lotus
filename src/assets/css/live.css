@@ -19,6 +19,7 @@
     cursor: pointer;
     font-size: 13px;
 }
+
 .false-zealand h6 {
     font-size: 13px;
 }
@@ -69,12 +70,15 @@
     color: var(--color-blue);
     font-size: 13px;
 }
+
 .lanka h6 {
     font-size: 13px;
 }
-#live_result p{
+
+#live_result p {
     font-size: 13px;
 }
+
 .false-series {
     background-color: #0b0a0a;
     padding: 0 !important;
@@ -350,7 +354,9 @@
 .trending_news h6 {
     font-size: 14px;
 }
-
+.red {
+    color: red !important;
+}
 .trending_news .red {
     font-size: 11px;
     color: red !important;
@@ -547,6 +553,7 @@
 .runs h6 {
     margin: 0 10px;
     color: #1866db;
+    cursor: pointer;
     font-weight: normal;
 }
 

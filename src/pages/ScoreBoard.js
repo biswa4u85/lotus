@@ -6,7 +6,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { getHighlights } from "../store/ScoreRedux";
 import { ShareAltOutlined } from '@ant-design/icons';
+import ArchiveSeries from "./Scores/ArchiveSeries";
 import Live from "./Scores/Live";
+import SocketApis from '../utility/socket-apis'
 import flag from '../assets/image/flag.png'
 
 function ScoreBoard(props) {
@@ -24,6 +26,7 @@ function ScoreBoard(props) {
     useEffect(() => {
         window.scrollTo(0, 0)
         dispatch(getHighlights({ token, name }))
+        SocketApis.subscribe(name)
     }, [name]);
 
 
@@ -99,78 +102,265 @@ function ScoreBoard(props) {
 
     ];
 
-    const data = [
+    const battingcolumns = [
         {
-            key: '1',
-            name: 'Nattaya Boochatham* (lhb)',
-            run: 3,
-            bull: 3,
-            four: 0,
-            six: 0,
-            SR: 100.00,
-            Bowler: 6,
-            Balls: 6,
-            Mat: 4,
-            Runs: 4,
-            HS: 3,
-            Ave: 4.00,
+            title: 'BATTING',
+            dataIndex: 'player_name',
+            key: 'name',
+            width: 400
 
         },
 
         {
-            key: '2',
-            name: 'Nattaya Boochatham* (lhb)',
-            run: 3,
-            bull: 3,
-            four: 0,
-            six: 0,
-            SR: 100.00,
-            Bowler: 6,
-            Balls: 6,
-            Mat: 4,
-            Runs: 4,
-            HS: 3,
-            Ave: 4.00,
+            title: '',
+            dataIndex: 'how_out',
+            key: 'name',
+            width: 400,
 
+        },
+
+        {
+            title: 'R',
+            dataIndex: 'runs',
+            width: 30
+        },
+        {
+            title: 'B',
+            dataIndex: 'balls',
+            width: 30
+        },
+        {
+            title: '4s',
+            dataIndex: 'fours',
+            width: 30
+        },
+        {
+            title: '6s',
+            dataIndex: 'sixes',
+            width: 30
+        },
+        {
+            title: 'SR',
+            dataIndex: 'strike_rate',
+            width: 30
+        },
+
+
+
+
+    ];
+
+    const bolingcolumns = [
+        {
+            title: 'BOWLING',
+            dataIndex: 'player_name',
+            key: 'name',
+            width: 400
+
+        },
+
+        {
+            title: 'O',
+            dataIndex: 'overs',
+            width: 30
+        },
+
+        {
+            title: 'M',
+            dataIndex: 'maidens',
+            width: 30
+        },
+
+        {
+            title: 'R',
+            dataIndex: 'runs_conceded',
+            width: 30
+        },
+        {
+            title: 'W',
+            dataIndex: 'wickets',
+            width: 30
+        },
+        {
+            title: 'ECON',
+            dataIndex: 'economy',
+            width: 30
+        },
+        {
+            title: '0s',
+            dataIndex: 'dot_balls',
+            width: 30
+        },
+        {
+            title: '4s',
+            dataIndex: 'fours',
+            width: 30
+        },
+        {
+            title: '6s',
+            dataIndex: 'sixes',
+            width: 30
+        },
+        {
+            title: 'EX',
+            dataIndex: 'extras',
+            width: 30
+        },
+
+
+
+
+
+
+    ];
+
+    const womencolumns = [
+        {
+            title: 'BATTING',
+            dataIndex: 'player_name',
+            key: 'name',
+            width: 400
+
+        },
+        {
+            title: '',
+            dataIndex: 'how_out',
+            key: 'name',
+            width: 400
+
+        },
+
+        {
+            title: 'R',
+            dataIndex: 'runs',
+            width: 30
+        },
+
+        {
+            title: 'B',
+            dataIndex: 'balls',
+            width: 30
+        },
+
+        {
+            title: 'M',
+            dataIndex: 'minutes',
+            width: 30
+        },
+        {
+            title: '4s',
+            dataIndex: 'fours',
+            width: 30
+        },
+        {
+            title: '6s',
+            dataIndex: 'sixes',
+            width: 30
+        },
+        {
+            title: 'sr',
+            dataIndex: 'strike_rate',
+            width: 30
+        },
+
+
+
+
+
+
+
+    ];
+
+    const bolingwomencolumns = [
+        {
+            title: 'BOWLING',
+            dataIndex: 'player_name',
+            key: 'name',
+            width: 400
+
+        },
+
+        {
+            title: 'O',
+            dataIndex: 'overs',
+            width: 30
+        },
+
+        {
+            title: 'M',
+            dataIndex: 'maidens',
+            width: 30
+        },
+
+        {
+            title: 'R',
+            dataIndex: 'runs_conceded',
+            width: 30
+        },
+        {
+            title: 'W',
+            dataIndex: 'wickets',
+            width: 30
+        },
+        {
+            title: 'ECON',
+            dataIndex: 'economy',
+            width: 30
+        },
+        {
+            title: '0s',
+            dataIndex: 'dot_balls',
+            width: 30
+        },
+        {
+            title: '4s',
+            dataIndex: 'fours',
+            width: 30
+        },
+        {
+            title: '6s',
+            dataIndex: 'sixes',
+            width: 30
+        },
+        {
+            title: 'EX',
+            dataIndex: 'extras',
+            width: 30
+        },
+    ];
+
+    const matchcolumns = [
+        {
+            title: 'Name',
+            dataIndex: 'name',
+        },
+        {
+            title: 'Address',
+            dataIndex: 'address',
+        },
+    ];
+
+    const data = [
+        {
+            key: '1',
+            name: 'John Brown',
+            age: 32,
+            address: 'New York No. 1 Lake Park',
         },
 
         {
             key: '3',
-            name: 'Nattaya Boochatham* (lhb)',
-            run: 3,
-            bull: 3,
-            four: 0,
-            six: 0,
-            SR: 100.00,
-            Bowler: 6,
-            Balls: 6,
-            Mat: 4,
-            Runs: 4,
-            HS: 3,
-            Ave: 4.00,
-
+            name: 'Joe Black',
+            age: 32,
+            address: 'Sidney No. 1 Lake Park',
         },
-
-        {
-            key: '4',
-            name: 'Nattaya Boochatham* (lhb)',
-            run: 3,
-            bull: 3,
-            four: 0,
-            six: 0,
-            SR: 100.00,
-            Bowler: 6,
-            Balls: 6,
-            Mat: 4,
-            Runs: 4,
-            HS: 3,
-            Ave: 4.00,
-
-        },
-
     ];
 
-    console.log(highlights)
+
+
+    let still_to_bat_ins1 = highlights?.live_details?.scorecard[0]?.still_to_bat ? highlights?.live_details?.scorecard[0]?.still_to_bat : []
+    let still_to_bat_ins2 = highlights?.live_details?.scorecard[1]?.still_to_bat ? highlights?.live_details?.scorecard[1]?.still_to_bat : []
+
 
     return (
         <>
@@ -227,14 +417,92 @@ function ScoreBoard(props) {
                         <Tabs defaultActiveKey="1" onChange={setTab} >
 
                             <TabPane tab="Live" key="1">
-                                <Table columns={columns} dataSource={highlights?.live_details?.scorecard?.[0]?.batting} />
+                                <Table pagination={false} columns={columns} dataSource={highlights?.live_details?.scorecard?.[0]?.batting} />
 
                             </TabPane>
+
 
                             <TabPane tab="Scorecard" key="2">
-                                <Table columns={columns} dataSource={data} />
+                                <Tabs defaultActiveKey="1" onChange={setTab} >
+                                    <TabPane tab={highlights?.live_details?.scorecard?.[0]?.title} key="1">
+                                        <div className="scorecard-tab">
+                                            <h5>{highlights?.live_details?.scorecard?.[0]?.title}</h5>
+                                            <Table pagination={false} columns={battingcolumns} dataSource={highlights?.live_details?.scorecard?.[0]?.batting} size="middle" />
+                                            <div className="total-scre">
+                                                <h6>TOTAL</h6>
+                                                <spcn>{highlights?.live_details?.match_summary?.home_scores}</spcn>
+                                                <h6>{highlights?.live_details?.match_summary?.away_scores}</h6>
+                                            </div>
+                                            <div>
+                                                <h6>{still_to_bat_ins1.map((item, key) => <a key={key} href="#">{item.player_name}</a>)}</h6>
+                                                <p>{highlights?.live_details?.scorecard?.[0]?.fow}</p>
+                                            </div>
+                                            <Table pagination={false} columns={bolingcolumns} dataSource={highlights?.live_details?.scorecard?.[0]?.bowling} size="middle" />
+                                        </div>
+
+                                        <div className="scorecard-tab">
+                                            <h5>{highlights?.live_details?.scorecard?.[0]?.title}</h5>
+                                            <Table pagination={false} columns={womencolumns} dataSource={highlights?.live_details?.scorecard?.[1]?.batting} size="middle" />
+                                            <div className="total-scre">
+                                                <h6>TOTAL</h6>
+                                                <spcn>{highlights?.live_details?.match_summary?.home_scores}</spcn>
+                                                <h6>{highlights?.live_details?.match_summary?.away_scores}</h6>
+                                            </div>
+
+                                            <div>
+
+                                                <p>{highlights?.live_details?.scorecard?.[1]?.fow}</p>
+                                            </div>
+                                            <Table pagination={false} columns={bolingwomencolumns} dataSource={highlights?.live_details?.scorecard?.[1]?.bowling} size="middle" />
+                                        </div>
+                                    </TabPane>
+
+                                    <TabPane tab={highlights?.live_details?.scorecard?.[1]?.title}>
+                                        <div className="scorecard-tab">
+                                            <h5>{highlights?.live_details?.scorecard?.[1]?.title}</h5>
+                                            <Table pagination={false} columns={battingcolumns} dataSource={highlights?.live_details?.scorecard?.[1]?.batting} size="middle" />
+                                            <div className="total-scre">
+                                                <h6>TOTAL</h6>
+                                                <spcn>{highlights?.live_details?.match_summary?.home_scores}</spcn>
+                                                <h6>{highlights?.live_details?.match_summary?.away_scores}</h6>
+                                            </div>
+                                            <div>
+                                                <h6>{still_to_bat_ins2.map((item, key) => <a key={key} href="#">{item.player_name}</a>)}</h6>
+                                                <p>{highlights?.live_details?.scorecard?.[1]?.fow}</p>
+                                            </div>
+                                            <Table pagination={false} columns={bolingcolumns} dataSource={highlights?.live_details?.scorecard?.[1]?.bowling} size="middle" />
+                                        </div>
+
+                                        <div className="scorecard-tab">
+                                            <h5>{highlights?.live_details?.scorecard?.[1]?.title}</h5>
+                                            <Table pagination={false} columns={womencolumns} dataSource={highlights?.live_details?.scorecard?.[1]?.batting} size="middle" />
+                                            <div className="total-scre">
+                                                <h6>TOTAL</h6>
+                                                <spcn>{highlights?.live_details?.match_summary?.home_scores}</spcn>
+                                                <h6>{highlights?.live_details?.match_summary?.away_scores}</h6>
+                                            </div>
+
+                                            <div>
+
+                                                <p>{highlights?.live_details?.scorecard?.[1]?.fow}</p>
+                                            </div>
+                                            <Table pagination={false} columns={bolingwomencolumns} dataSource={highlights?.live_details?.scorecard?.[1]?.bowling} size="middle" />
+                                        </div>
+
+                                    </TabPane>
+
+                                    <TabPane tab="Match Details" key="3">
+                                        <h5>MATCH DETAILS</h5>
+                                        <Table pagination={false} columns={matchcolumns} dataSource={data} size="small" />
+
+                                    </TabPane>
+                                </Tabs>
+
+
                             </TabPane>
+
                         </Tabs>
+
                     </div>
                 </div>
 

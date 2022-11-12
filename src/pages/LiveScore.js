@@ -9,7 +9,7 @@ import Live from "./Scores/Live";
 import FutureSeries from "./Scores/FutureSeries";
 import MatchesByDay from "./Scores/MatchesByDay";
 import ArchiveSeries from "./Scores/ArchiveSeries";
-import { getSeries } from "../store/ScoreRedux";
+import { getTournaments, getSeasons } from "../store/ScoreRedux";
 
 function LiveScore(props) {
     let navigate = useNavigate();
@@ -26,7 +26,8 @@ function LiveScore(props) {
     }, []);
 
     useEffect(() => {
-        dispatch(getSeries({ token }))
+        dispatch(getTournaments({ token }))
+        dispatch(getSeasons({ token }))
     }, []);
 
     return (
@@ -42,18 +43,18 @@ function LiveScore(props) {
                             <Tabs defaultActiveKey="1" onChange={setTab} >
 
                                 <TabPane tab="Current Matches" key="1">
-                                    <h1>Live Cricket Score</h1>
+                                    <h2>Live Cricket Score</h2>
                                     <Tabs defaultActiveKey="1" onChange={setSubTab} >
                                         <TabPane tab="Live" key="1">
                                             {subtab == 1 && (<Live type={'live'} navigate={navigate} />)}
                                         </TabPane>
 
                                         <TabPane tab="Recent" key="2">
-                                            {subtab == 2 && (<Live type={'recent'}  navigate={navigate} />)}
+                                            {subtab == 2 && (<Live type={'recent'} navigate={navigate} />)}
                                         </TabPane>
 
                                         <TabPane tab="Upcoming" key="3">
-                                            {subtab == 3 && (<Live type={'upcoming'}  navigate={navigate} />)}
+                                            {subtab == 3 && (<Live type={'upcoming'} navigate={navigate} />)}
                                         </TabPane>
 
                                     </Tabs>
