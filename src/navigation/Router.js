@@ -17,7 +17,7 @@ import Category from "../pages/Category";
 import LiveScore from "../pages/LiveScore";
 import Page404 from "../pages/Page404";
 import Search from "../pages/Search";
-import ScoreBoard from "../pages/ScoreBoard";
+import ScoreBoard from "../pages/Scores/ScoreBoard";
 
 
 function Routers() {

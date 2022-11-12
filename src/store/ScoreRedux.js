@@ -64,7 +64,7 @@ export const getHighlights = createAsyncThunk(
     if (response.status === 'error') {
       return rejectWithValue(response.data)
     }
-    return response.DATA
+    return response
   }
 )
 

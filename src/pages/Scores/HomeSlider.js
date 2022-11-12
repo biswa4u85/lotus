@@ -96,7 +96,7 @@ function HomeSlider(props) {
                     <div className="false-zealand">
                         <Row>
                             <Col span={8}>
-                                <h5 onClick={() => navigate(`/match-news/${item.name}`)}>View Details</h5>
+                                <h5 onClick={() => navigate(`/match-news/${events.EVENT_ID}`)}>View Details</h5>
                             </Col>
                             <Col span={16} align="right" >
                                 <h6>{tournaments.NAME}</h6>

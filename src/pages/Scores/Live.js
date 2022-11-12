@@ -68,11 +68,11 @@ function Live(props) {
                             </div>
                         </div>
                         <div className="runs">
-                            <h6 onClick={() => navigate(`/match-news/${item.name}`)}>Live Score</h6>
+                            <h6 onClick={() => navigate(`/match-news/${events.EVENT_ID}`)}>Live Score</h6>
                             <div class="score-border"></div>
-                            <h6 onClick={() => navigate(`/match-news/${item.name}`)}>Scorecard</h6>
+                            <h6 onClick={() => navigate(`/match-news/${events.EVENT_ID}`)}>Scorecard</h6>
                             <div class="score-border"></div>
-                            <h6 onClick={() => navigate(`/match-news/${item.name}`)}>Full Commentary</h6>
+                            <h6 onClick={() => navigate(`/match-news/${events.EVENT_ID}`)}>Full Commentary</h6>
                             <div class="score-border"></div>
                             <h6 onClick={() => navigate(`/category/match-prediction`)}>News</h6>
                         </div>

@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Tabs, Row, Col, Table } from 'antd';
-import Config from "../common/Config";
+import Config from "../../common/Config";
+import moment from "moment";
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { getHighlights } from "../store/ScoreRedux";
+import { getHighlights } from "../../store/ScoreRedux";
 import { ShareAltOutlined } from '@ant-design/icons';
-import ArchiveSeries from "./Scores/ArchiveSeries";
-import Live from "./Scores/Live";
-import SocketApis from '../utility/socket-apis'
-import flag from '../assets/image/flag.png'
+import ArchiveSeries from "./ArchiveSeries";
+import Live from "./Live";
+import SocketApis from '../../utility/socket-apis'
+import flag from '../../assets/image/flag.png'
 
 function ScoreBoard(props) {
     let navigate = useNavigate();
@@ -21,14 +22,11 @@ function ScoreBoard(props) {
     const [subtab, setSubTab] = useState(1)
     const { TabPane } = Tabs;
 
-    console.log(highlights)
-    //   debugger
     useEffect(() => {
         window.scrollTo(0, 0)
         dispatch(getHighlights({ token, name }))
         SocketApis.subscribe(name)
     }, [name]);
-
 
     const onChange = (key) => {
         console.log(key);
@@ -356,11 +354,12 @@ function ScoreBoard(props) {
         },
     ];
 
-
+    // console.log(highlights)
 
     let still_to_bat_ins1 = highlights?.live_details?.scorecard[0]?.still_to_bat ? highlights?.live_details?.scorecard[0]?.still_to_bat : []
     let still_to_bat_ins2 = highlights?.live_details?.scorecard[1]?.still_to_bat ? highlights?.live_details?.scorecard[1]?.still_to_bat : []
-
+    let tournaments = highlights?.tournaments ? highlights.tournaments : {}
+    let events = highlights?.events ? highlights.events : {}
 
     return (
         <>
@@ -368,12 +367,12 @@ function ScoreBoard(props) {
                 <div className="score-board">
 
                     <Row className="scores">
-                        <Col span={12} >
+                        <Col span={20} >
                             <h5>RESULT</h5>
-                            {/* <p>10th Match, Sylhet, October 06, 2022, <a href="#">Women's Asia Cup</a></p> */}
-                            <p>{highlights?.fixture?.start_date},{highlights?.fixture?.venue} <a href="#">{highlights?.fixture?.series?.series_name}</a></p>
+                            <h6>{moment.unix(events.START_TIME).format('Do MMM YYYY hh:mm A')}, {tournaments.NAME} {tournaments.TOURNAMENT_IMAGE && (<img src={tournaments.TOURNAMENT_IMAGE} className="flagimg" />)}</h6>
+                            <p>{events.CRICKET_LIVE_SENTENCE}</p>
                         </Col>
-                        <Col span={12} >
+                        <Col span={4}>
                             <ShareAltOutlined className="shree" />
                         </Col>
                     </Row>
@@ -384,23 +383,23 @@ function ScoreBoard(props) {
                             <div className="wickets">
                                 <div className="match-board">
                                     <div>
-                                        <img src={flag} />
-                                        <a href="#">{highlights?.fixture?.home?.name}</a>
+                                        {events.HOME_IMAGES && (<img src={events.HOME_IMAGES[0]} className="flagimg" />)}
+                                        <a href="">{events.HOME_NAME}</a>
                                     </div>
-                                    <div>
-                                        <h6>{highlights?.live_details?.match_summary?.home_scores}</h6>
+                                    <div className="score-number">
+                                        <h6>{`${events?.HOME_SCORE_CURRENT}/${events?.HOME_SCORE_PART_2_OVERS_OUTS_WICKETS}`}</h6>
                                     </div>
                                 </div>
                                 <div className="match-board">
                                     <div>
-                                        <img src={flag} />
-                                        <a href="#">{highlights?.fixture?.away?.name}</a>
+                                        {events.AWAY_IMAGES && (<img src={events.AWAY_IMAGES[0]} className="flagimg" />)}
+                                        <a href="">{events.AWAY_NAME}</a>
                                     </div>
                                     <div className="score-number">
-                                        <h6>{highlights?.live_details?.match_summary?.away_scores}</h6>
+                                        <h6>{`${events?.AWAY_SCORE_CURRENT}/${events?.AWAY_SCORE_PART_2_OVERS_OUTS_WICKETS}`}</h6>
                                     </div>
                                 </div>
-                                <p >{highlights?.fixture?.match_title}</p>
+                                <p >{events?.CRICKET_SENTENCE ? (events?.CRICKET_SENTENCE).replaceAll(';', ', ') : ''}</p>
                             </div>
                         </Col>
 
