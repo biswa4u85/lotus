@@ -296,6 +296,14 @@ export function uploadVideoApi(file, token) {
     });
 }
 
+
+export async function getScoreDataApi({ path, query }) {
+  let headers = { 'Content-Type': 'application/json' }
+  let data = await axiosAPI.post(`api/method/news_management.cric_api.${path}`, { query }, { headers })
+  return data?.data?.message
+}
+
+
 export async function getQueryDataApi(query) {
   let headers = { 'Content-Type': 'application/json' }
   let data = await axiosAPI.post('api/method/erp_custom_auth.authentication.getSqlQuery', { query }, { headers })

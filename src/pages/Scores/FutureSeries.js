@@ -1,55 +1,57 @@
-import React, { useEffect } from "react";
-import { Row, Col } from 'antd';
+import React, { useEffect, useState } from "react";
+import { Row, Col, Tabs } from 'antd';
 import { useSelector, useDispatch } from 'react-redux'
 import moment from "moment";
 import Config from '../../common/Config'
-import { getHomeFixtures } from "../../store/ScoreRedux";
+import { getAllSeries } from "../../store/ScoreRedux";
 
 function FutureSeries(props) {
     const { type } = props
+    const [tab, setTab] = useState(1)
     const dispatch = useDispatch()
-    const fixtures = useSelector((state) => state.score.fixtures)
-    const grouped = Config.groupBy(fixtures, 'tournament_id');
+    const series = useSelector((state) => state.score.series)
+    const grouped = Config.groupBy(series, 'type');
+    const { TabPane } = Tabs;
 
     useEffect(() => {
-        let date = new Date()
-        let month = Number(date.getMonth()) + 1
-        let fromDate = `${date.getFullYear()}-${month < 9 ? "0" + month : month}-${date.getDate() < 9 ? "0" + date.getDate() : date.getDate()}`
-        dispatch(getHomeFixtures({ filters: [["Flash Events", "date", ">=", fromDate]] }))
+        dispatch(getAllSeries({ 'status': 'open' }))
     }, [type]);
 
-    return (<div>
-        {Object.keys(grouped).map((name, k) => {
-            let tournaments = grouped[name][0]?.tournament_details
-            return <div key={k}>
-                <div className="tab-bar">
-                    <div className="month">
-                        <div className="series">
-                            <Row>
-                                <Col span={4}>
-                                    <h5>{tournaments?.NAME} {tournaments.TOURNAMENT_IMAGE && (<img src={tournaments.TOURNAMENT_IMAGE} className="flagimg" />)}</h5>
-                                </Col>
-                                <Col span={20}>
-                                    {grouped[name].map((item, key) => {
-                                        let events = item?.event_details
-                                        return <div key={key}>
-                                            {events.HOME_NAME} {events.HOME_IMAGES && (<img src={events.HOME_IMAGES[0]} className="flagimg" />)} VS {events.AWAY_IMAGES && (<img src={events.AWAY_IMAGES[0]} className="flagimg" />)} {events.AWAY_NAME}
-                                            <br />
-                                            <br />
-                                            <p>{item.stage_type}, {item.result}</p>
-                                            <h6>{moment.utc(item.start_time).format('Do MMM YYYY hh:mm A')}</h6>
-                                            <div className="match-border"></div>
-                                            <br />
+    return (
+        <div className="seriesBox">
+            <h1>Cricket Schedule</h1>
+            <Tabs defaultActiveKey="1" onChange={setTab}>
+                {Config.groups.map((name, k) => {
+                    if (grouped[name]) {
+                        let data = Config.groupBy(grouped[name], 'sortdate');
+                        return <TabPane key={k} tab={name}>
+                            {Object.keys(data).map((items, k) => {
+                                return <div className="tab-bar">
+                                    <div className="month">
+                                        <div className="series">
+                                            <Row>
+                                                <Col span={5}>
+                                                    <h5>{data[items][0]?.date}</h5>
+                                                </Col>
+                                                <Col span={19}>
+                                                    {data[items].map((item, key) => {
+                                                        return <div key={key}>
+                                                            <p><a href="">{item.series_name}</a>, {moment.utc(item.startdt).format('Do hh:mm A')}</p>
+                                                        </div>
+                                                    })}
+                                                </Col>
+                                            </Row>
                                         </div>
-                                    })}
-                                </Col>
-                            </Row>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        })}
-    </div>);
+                                    </div>
+                                </div>
+
+                            })}
+                        </TabPane>
+                    }
+                })}
+            </Tabs>
+        </div>
+    );
 }
 
 export default FutureSeries;

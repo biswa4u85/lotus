@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { Tabs, Row, Col } from 'antd';
-import Config from "../common/Config";
+import Config from "../../common/Config";
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet";
-import Live from "./Scores/Live";
-import FutureSeries from "./Scores/FutureSeries";
-import MatchesByDay from "./Scores/MatchesByDay";
-import ArchiveSeries from "./Scores/ArchiveSeries";
-import { getTournaments, getSeasons } from "../store/ScoreRedux";
+import Live from "./Live";
+import FutureSeries from "./FutureSeries";
+import MatchesByDay from "./MatchesByDay";
+import Teams from "./Teams";
+import ArchiveSeries from "./ArchiveSeries";
 
 function LiveScore(props) {
     let navigate = useNavigate();
     const dispatch = useDispatch()
     const { t } = useTranslation();
     const homeSettings = useSelector((state) => state.auth.homeSettings)
-    const token = Config.token
     const [tab, setTab] = useState(1)
     const [subtab, setSubTab] = useState(1)
     const { TabPane } = Tabs;
@@ -25,10 +24,6 @@ function LiveScore(props) {
         window.scrollTo(0, 0)
     }, []);
 
-    useEffect(() => {
-        dispatch(getTournaments({ token }))
-        dispatch(getSeasons({ token }))
-    }, []);
 
     return (
         <>
@@ -61,19 +56,19 @@ function LiveScore(props) {
                                 </TabPane>
 
                                 <TabPane tab="Current & Future Series" key="2">
-                                    <h2>Cricket Schedule</h2>
-                                    {tab == 2 && (<FutureSeries type={'future'} />)}
+                                    {tab == 2 && (<FutureSeries type={'future'} navigate={navigate} />)}
                                 </TabPane>
 
                                 <TabPane tab="Matches By Day" key="3">
-                                    <h2>Cricket Schedule</h2>
-                                    {tab == 3 && (<MatchesByDay type={'day'} />)}
+                                    {tab == 3 && (<MatchesByDay type={'day'} navigate={navigate} />)}
                                 </TabPane>
 
+                                <TabPane tab="Teams" key="4">
+                                    {tab == 4 && (<Teams type={'teams'} navigate={navigate} />)}
+                                </TabPane>
 
-                                <TabPane tab="Series Archive" key="4">
-                                    <h2>Cricket Schedule</h2>
-                                    {tab == 4 && (<ArchiveSeries type={'archiveS'} />)}
+                                <TabPane tab="Series Archive" key="5">
+                                    {tab == 5 && (<ArchiveSeries type={'archive'} navigate={navigate} />)}
                                 </TabPane>
 
                             </Tabs>

@@ -8,16 +8,15 @@ import { searchPost } from '../store/MainRedux'
 import Config from "../common/Config";
 import { Helmet } from "react-helmet";
 
-
-function Search(props) {
+function Category(props) {
     let navigate = useNavigate();
     let { name } = useParams();
     const dispatch = useDispatch()
     const { t } = useTranslation();
     const token = Config.token
     const searchValue = useSelector((state) => state.auth.searchValue)
-   
-    console.log(searchValue)
+  
+
     useEffect(() => {
         window.scrollTo(0, 0)
         handlePageChange()
@@ -30,18 +29,17 @@ function Search(props) {
 
     return (
         <>
-   
             <Helmet>
                 <meta charSet="utf-8" />
-                {/* <title>{category?.meta_title_lotus}</title>
-                <meta name="description" content={category?.meta_description_lotus} /> */}
+                {/* <title>{category?.meta_title}</title>
+                <meta name="description" content={category?.meta_description} /> */}
             </Helmet>
             <section className="single-post-area">
                 <div className="container">
                     <div className="weekly-list-item">
                         {searchValue.data ? searchValue.data.map((item, key) => <div key={key} className="news-vcard-single">
                             <div className="news-vcard-img">
-                                {Config.randerImage(item.meta_image, 220)}
+                                {Config.randerImage(item, 220)}
                             </div>
                             <div className="news-vcard-content">
                                 <div className="news-vcard-title">
@@ -61,4 +59,4 @@ function Search(props) {
     );
 }
 
-export default Search;
+export default Category;

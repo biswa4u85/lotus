@@ -1,53 +1,67 @@
-import React, { useEffect } from "react";
-import { Row, Col } from 'antd';
+import React, { useEffect, useState } from "react";
+import { Row, Col, Tabs } from 'antd';
 import { useSelector, useDispatch } from 'react-redux'
 import moment from "moment";
 import Config from '../../common/Config'
-import { getHomeFixtures } from "../../store/ScoreRedux";
+import { getMatchesByDay } from "../../store/ScoreRedux";
 
 function MatchesByDay(props) {
-    const { type } = props
+    const { type, navigate } = props
+    const [tab, setTab] = useState(1)
+    const [groups, setGroups] = useState([])
     const dispatch = useDispatch()
-    const fixtures = useSelector((state) => state.score.fixtures)
-    const grouped = Config.groupBy(fixtures, 'date');
+    const matcheslistByDay = useSelector((state) => state.score.matcheslistByDay)
+    const groupedBySeries = Config.groupBy(matcheslistByDay, 'series_type');
+    const { TabPane } = Tabs;
 
     useEffect(() => {
         let date = new Date()
         let month = Number(date.getMonth()) + 1
         let fromDate = `${date.getFullYear()}-${month < 9 ? "0" + month : month}-${date.getDate() < 9 ? "0" + date.getDate() : date.getDate()}`
-        dispatch(getHomeFixtures({ filters: [["Flash Events", "date", ">=", fromDate]] }))
+        dispatch(getMatchesByDay(fromDate))
     }, [type]);
 
-    return (<div>
-        {Object.keys(grouped).map((name, k) => {
-            return <div key={k}>
-                <div className="tab-bar">
-                    <div className="friday">
-                        <h2>{moment.utc(name).format('Do MMM YYYY')}</h2>
-                    </div>
-                    <div className="nepal">
-                        {grouped[name].map((item, key) => {
-                            let tournaments = grouped[name][0]?.tournament_details
-                            let events = item?.event_details
-                            return <Row key={key}>
-                                <Col span={7}>
-                                    <h5>{tournaments?.NAME} {tournaments.TOURNAMENT_IMAGE && (<img src={tournaments.TOURNAMENT_IMAGE} className="flagimg" />)}</h5>
-                                </Col>
-                                <Col span={7} offset={2}>
-                                    <p>{events.HOME_NAME} {events.HOME_IMAGES && (<img src={events.HOME_IMAGES[0]} className="flagimg" />)} VS {events.AWAY_IMAGES && (<img src={events.AWAY_IMAGES[0]} className="flagimg" />)} {events.AWAY_NAME}</p>
-                                </Col>
-                                <Col span={6} offset={2}>
-                                    <h6>{moment.utc(item.start_time).format('hh:mm A')}</h6>
-                                    <p>{moment.utc(item.start_time).format('Do MMM YYYY')}</p>
-                                </Col>
-                            </Row>
+    return (
+        <div className="seriesBox">
+            <h1>Cricket Schedule</h1>
+            <Tabs defaultActiveKey="1" onChange={setTab}>
+                {Config.groups.map((name, t) => {
+                    let data = groupedBySeries[name] ? Config.groupBy(groupedBySeries[name], 'series_date') : {}
+                    return <TabPane key={t} tab={name}>
+                        {Object.keys(data).map((items, k) => {
+                            let events = Config.groupBy(data[items], 'series_name')
+                            return <div key={k} className="tab-bar">
+                                <div className="month">
+                                    <h5>{items}</h5>
+                                </div>
+                                <div className="series">
+                                    {Object.keys(events).map((item, key) => {
+                                        let event = events[item]
+                                        return <div key={key}>
+                                            <Row>
+                                                <Col span={5}>
+                                                    <p style={{ border: 'none' }}><b>{item}</b></p>
+                                                </Col>
+                                                <Col span={19}>
+                                                    {event.map((item, key) => {
+                                                        return <div key={key}>
+                                                            <div style={{ float: 'right', paddingRight: 15 }}>{moment.utc(item.startdt).format('hh:mm A')}<br />{moment.utc(item.startdt).format('Do MMM YYYY')}</div>
+                                                            <p><a onClick={() => navigate(`/match-news/${item.name}`)}>{item?.team1} VS {item?.team2}, {item?.match_desc}</a><br />
+                                                                {item?.venue?.ground}, {item?.venue?.city} {item?.venue?.country}</p>
+                                                        </div>
+                                                    })}
+                                                </Col>
+                                            </Row>
+                                        </div>
+                                    })}
+                                </div>
+                            </div>
                         })}
-                    </div>
-
-                </div>
-            </div>
-        })}
-    </div>);
+                    </TabPane>
+                })}
+            </Tabs>
+        </div>
+    );
 }
 
 export default MatchesByDay;

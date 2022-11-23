@@ -1,69 +1,138 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { getAllDataApi, getLiveDataDataApi } from '../utility/frappe-apis'
-
-const doctypeTournaments = 'Flash Tournaments'
-const fieldsTournaments = ["*"]
-
-const doctypeSeasons = 'Flash Seasons'
-const fieldsSeasons = ["*"]
-
-const doctypeFixtures = 'Flash Events'
-const fieldsFixtures = ["*"]
+import { getScoreDataApi, getAllDataApi, getLiveDataDataApi } from '../utility/frappe-apis'
 
 const initialState = {
   isFetching: false,
   error: null,
-  tournaments: [],
-  seasons: [],
-  fixtures: [],
-  scorecard: {},
+  homeslider: [],
+  series: [],
+  archivesSeries: [],
+  matches: [],
+  teams: [],
+  matcheslistByDay: [],
+  matcheslistByFilter: [],
+  matcheslistBySerie: [],
   highlights: {},
 }
 
-export const getTournaments = createAsyncThunk(
-  'score/getTournaments',
+
+export const getHomeSliders = createAsyncThunk(
+  'score/getHomeSliders',
   async (params, { rejectWithValue }) => {
-    const response = await getAllDataApi({ doctype: doctypeTournaments, fields: fieldsTournaments, ...params })
+    const response = await getScoreDataApi({ path: 'getHomeMatchList', query: params })
     if (response.status === 'error') {
       return rejectWithValue(response.data)
     }
-    return response.data
+    for (let item of response) {
+      item.venue = item.venue ? JSON.parse(item.venue) : {}
+      item.score = item.score ? JSON.parse(item.score) : {}
+    }
+    return response
   }
 )
 
-export const getSeasons = createAsyncThunk(
-  'score/getSeasons',
+export const getArchivesSeries = createAsyncThunk(
+  'score/getArchivesSeries',
   async (params, { rejectWithValue }) => {
-    const response = await getAllDataApi({ doctype: doctypeSeasons, fields: fieldsSeasons, ...params })
+    const response = await getScoreDataApi({ path: 'getSeriesArchivesList', query: params })
     if (response.status === 'error') {
       return rejectWithValue(response.data)
     }
-    return response.data
+    for (let item of response) {
+      if (item.startdt) {
+        let date = new Date(item.startdt)
+        let month = Number(date.getMonth()) + 1
+        item.sortdate = `${date.getFullYear()}-${month < 10 ? "0" + month : month}-${date.getDate() < 10 ? "0" + date.getDate() : date.getDate()}`
+      }
+    }
+    return response
   }
 )
 
-export const getHomeFixtures = createAsyncThunk(
-  'score/getHomeFixtures',
+export const getAllSeries = createAsyncThunk(
+  'score/getAllSeries',
   async (params, { rejectWithValue }) => {
-    const response = await getAllDataApi({ doctype: doctypeFixtures, fields: fieldsFixtures, filters: params.filters, orderBy: 'date asc', ...params })
+    const response = await getScoreDataApi({ path: 'getSeriesList', query: params })
     if (response.status === 'error') {
       return rejectWithValue(response.data)
     }
-    for (let item of response.data) {
-      item.tournament_details = item.tournament_details ? JSON.parse(item.tournament_details) : {}
-      item.event_details = item.event_details ? JSON.parse(item.event_details) : {}
+    for (let item of response) {
+      if (item.startdt) {
+        let date = new Date(item.startdt)
+        let month = Number(date.getMonth()) + 1
+        item.sortdate = `${date.getFullYear()}-${month < 10 ? "0" + month : month}-${date.getDate() < 10 ? "0" + date.getDate() : date.getDate()}`
+      }
     }
-    return response.data
+    return response
+  }
+)
+
+export const getAllTeam = createAsyncThunk(
+  'score/getAllTeam',
+  async (params, { rejectWithValue }) => {
+    const response = await getScoreDataApi({ path: 'getTeamsList', query: null })
+    if (response.status === 'error') {
+      return rejectWithValue(response.data)
+    }
+    return response
+  }
+)
+
+export const getMatchesByDay = createAsyncThunk(
+  'score/getMatchesByDay',
+  async (params, { rejectWithValue }) => {
+    const response = await getScoreDataApi({ path: 'getMatchesByDay', query: params })
+    if (response.status === 'error') {
+      return rejectWithValue(response.data)
+    }
+    for (let item of response) {
+      item.venue = item.venue ? JSON.parse(item.venue) : {}
+    }
+    return response
+  }
+)
+
+export const getMatchesByFilter = createAsyncThunk(
+  'score/getMatchesByFilter',
+  async (params, { rejectWithValue }) => {
+    const response = await getScoreDataApi({ path: 'getMatchesByFilter', query: params })
+    if (response.status === 'error') {
+      return rejectWithValue(response.data)
+    }
+    for (let item of response) {
+      item.venue = item.venue ? JSON.parse(item.venue) : {}
+      item.score = item.score ? JSON.parse(item.score) : {}
+    }
+    return response
+  }
+)
+
+export const getMatchesBySeries = createAsyncThunk(
+  'score/getMatchesBySeries',
+  async (params, { rejectWithValue }) => {
+    const response = await getScoreDataApi({ path: 'getMatchesBySeries', query: params })
+    if (response.status === 'error') {
+      return rejectWithValue(response.data)
+    }
+    for (let item of response) {
+      item.venue = item.venue ? JSON.parse(item.venue) : {}
+      item.score = item.score ? JSON.parse(item.score) : {}
+    }
+    return response
   }
 )
 
 export const getHighlights = createAsyncThunk(
   'score/getHighlights',
   async (params, { rejectWithValue }) => {
-    const response = await getLiveDataDataApi({ ...params })
+    const response = await getScoreDataApi({ path: 'getHighlights', query: params })
     if (response.status === 'error') {
       return rejectWithValue(response.data)
     }
+    // for (let item of response) {
+    //   item.venue = item.venue ? JSON.parse(item.venue) : {}
+    //   item.score = item.score ? JSON.parse(item.score) : {}
+    // }
     return response
   }
 )
@@ -78,58 +147,120 @@ export const counterSlice = createSlice({
     },
   },
   extraReducers: {
-    // Tournaments
-    [getTournaments.pending]: (state, action) => {
+    // series
+    [getHomeSliders.pending]: (state, action) => {
       state.isFetching = true
       state.error = null
+      state.homeslider = []
     },
-    [getTournaments.rejected]: (state, action) => {
-      state.isFetching = false
-      state.error = action.payload.message
-    },
-    [getTournaments.fulfilled]: (state, action) => {
-      state.isFetching = false
-      state.error = null
-      state.tournaments = action.payload
-    },
-    // Seasons
-    [getSeasons.pending]: (state, action) => {
-      state.isFetching = true
-      state.error = null
-    },
-    [getSeasons.rejected]: (state, action) => {
-      state.isFetching = false
-      state.error = action.payload.message
-    },
-    [getSeasons.fulfilled]: (state, action) => {
-      state.isFetching = false
-      state.error = null
-      state.seasons = action.payload
-    },
-    // Fixtures
-    [getHomeFixtures.pending]: (state, action) => {
-      state.isFetching = true
-      state.error = null
-      state.fixtures = []
-    },
-    [getHomeFixtures.rejected]: (state, action) => {
+    [getHomeSliders.rejected]: (state, action) => {
       state.isFetching = false
       state.error = action.payload
     },
-    [getHomeFixtures.fulfilled]: (state, action) => {
+    [getHomeSliders.fulfilled]: (state, action) => {
       state.isFetching = false
       state.error = null
-      state.fixtures = action.payload
+      state.homeslider = action.payload
     },
-    // Highlights
+    // series
+    [getAllSeries.pending]: (state, action) => {
+      state.isFetching = true
+      state.error = null
+      state.series = []
+    },
+    [getAllSeries.rejected]: (state, action) => {
+      state.isFetching = false
+      state.error = action.payload
+    },
+    [getAllSeries.fulfilled]: (state, action) => {
+      state.isFetching = false
+      state.error = null
+      state.series = action.payload
+    },
+    // archives series
+    [getArchivesSeries.pending]: (state, action) => {
+      state.isFetching = true
+      state.error = null
+      state.archivesSeries = []
+    },
+    [getArchivesSeries.rejected]: (state, action) => {
+      state.isFetching = false
+      state.error = action.payload
+    },
+    [getArchivesSeries.fulfilled]: (state, action) => {
+      state.isFetching = false
+      state.error = null
+      state.archivesSeries = action.payload
+    },
+    // teams
+    [getAllTeam.pending]: (state, action) => {
+      state.isFetching = true
+      state.error = null
+      state.teams = []
+    },
+    [getAllTeam.rejected]: (state, action) => {
+      state.isFetching = false
+      state.error = action.payload
+    },
+    [getAllTeam.fulfilled]: (state, action) => {
+      state.isFetching = false
+      state.error = null
+      state.teams = action.payload
+    },
+    // Matches By Day
+    [getMatchesByDay.pending]: (state, action) => {
+      state.isFetching = true
+      state.error = null
+      state.matcheslistByDay = []
+    },
+    [getMatchesByDay.rejected]: (state, action) => {
+      state.isFetching = false
+      state.error = action.payload
+    },
+    [getMatchesByDay.fulfilled]: (state, action) => {
+      state.isFetching = false
+      state.error = null
+      state.matcheslistByDay = action.payload
+    },
+    // Matches By Filter
+    [getMatchesByFilter.pending]: (state, action) => {
+      state.isFetching = true
+      state.error = null
+      state.matcheslistByFilter = []
+    },
+    [getMatchesByFilter.rejected]: (state, action) => {
+      state.isFetching = false
+      state.error = action.payload
+    },
+    [getMatchesByFilter.fulfilled]: (state, action) => {
+      state.isFetching = false
+      state.error = null
+      state.matcheslistByFilter = action.payload
+    },
+    // Matches By Series
+    [getMatchesBySeries.pending]: (state, action) => {
+      state.isFetching = true
+      state.error = null
+      state.matcheslistBySerie = []
+    },
+    [getMatchesBySeries.rejected]: (state, action) => {
+      state.isFetching = false
+      state.error = action.payload
+    },
+    [getMatchesBySeries.fulfilled]: (state, action) => {
+      state.isFetching = false
+      state.error = null
+      state.matcheslistBySerie = action.payload
+    },
+    // Matches By Series
     [getHighlights.pending]: (state, action) => {
       state.isFetching = true
       state.error = null
-      state.fixtures = []
+      state.highlights = {}
     },
     [getHighlights.rejected]: (state, action) => {
       state.isFetching = false
-      state.error = action.payload.message
+      state.error = action.payload
     },
     [getHighlights.fulfilled]: (state, action) => {
       state.isFetching = false
