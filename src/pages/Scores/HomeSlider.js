@@ -6,7 +6,7 @@ import Flags from "../../common/Flags";
 import { Col, Row } from 'antd';
 import { useSelector, useDispatch } from 'react-redux'
 import SocketApis from '../../utility/socket-apis'
-import { getHomeSliders } from "../../store/ScoreRedux";
+import { getMatchesByFilter } from "../../store/ScoreRedux";
 
 const responsive = {
     0: {
@@ -23,18 +23,20 @@ const responsive = {
 function HomeSlider(props) {
     const { navigate } = props
     const dispatch = useDispatch()
-    const homeslider = useSelector((state) => state.score.homeslider)
+    const matcheslistByFilter = useSelector((state) => state.score.matcheslistByFilter)
+    // const homeslider = useSelector((state) => state.score.homeslider)
 
     useEffect(() => {
-        let date = new Date()
-        let month = Number(date.getMonth()) + 1
-        let toDate = `${date.getFullYear()}-${month < 9 ? "0" + month : month}-${date.getDate() < 9 ? "0" + date.getDate() : date.getDate()}`
-        date.setDate(date.getDate() - 1);
-        let frommonth = Number(date.getMonth()) + 1
-        let fromDate = `${date.getFullYear()}-${frommonth < 9 ? "0" + frommonth : frommonth}-${date.getDate() < 9 ? "0" + date.getDate() : date.getDate()}`
-        dispatch(getHomeSliders({ start: fromDate, end: toDate }))
+        // let date = new Date()
+        // let month = Number(date.getMonth()) + 1
+        // let toDate = `${date.getFullYear()}-${month < 9 ? "0" + month : month}-${date.getDate() < 9 ? "0" + date.getDate() : date.getDate()}`
+        // date.setDate(date.getDate() - 1);
+        // let frommonth = Number(date.getMonth()) + 1
+        // let fromDate = `${date.getFullYear()}-${frommonth < 9 ? "0" + frommonth : frommonth}-${date.getDate() < 9 ? "0" + date.getDate() : date.getDate()}`
+        // dispatch(getHomeSliders({ start: fromDate, end: toDate }))
+        dispatch(getMatchesByFilter('live'))
         return () => {
-            for (let item of homeslider) {
+            for (let item of matcheslistByFilter) {
                 if (item.sub_satus === 'live') {
                     SocketApis.unSubscribe(item.name)
                 }
@@ -44,24 +46,24 @@ function HomeSlider(props) {
 
 
     useEffect(() => {
-        for (let item of homeslider) {
-            if (item.sub_satus === 'live' && Config.checkTime(item.datetime)) {
+        for (let item of matcheslistByFilter) {
+            if (item.sub_satus === 'live') {
                 SocketApis.subscribe(item.name)
             }
         }
-    }, [homeslider]);
+    }, [matcheslistByFilter]);
 
 
     const checkImg = (name) => {
         return <img src={name ? (Config.frappe_url + name) : Flags['NoImg']} className="flagimg" />
     }
 
-    if (homeslider.length == 0) {
+    if (matcheslistByFilter.length == 0) {
         return null
     }
 
     return (<OwlCarousel className='owl-theme' responsive={responsive} margin={9} autoplay={true} nav={false}>
-        {homeslider.map((item, key) => {
+        {matcheslistByFilter.map((item, key) => {
             let team1Score = item?.score?.team1Score?.inngs2 ? item?.score?.team1Score?.inngs2 : item?.score?.team1Score?.inngs1
             let team2Score = item?.score?.team2Score?.inngs2 ? item?.score?.team2Score?.inngs2 : item?.score?.team2Score?.inngs1
             return <div key={key} id={`live_home_${item.name}`} className='item'>

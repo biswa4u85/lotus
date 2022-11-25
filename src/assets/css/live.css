@@ -377,7 +377,7 @@
     text-overflow: ellipsis;
 }
 
-/* papu */
+
 .seriesBox h1 {
     font-size: 20px;
 }
@@ -633,6 +633,8 @@
 .centuries a{
     color: #000000 !important;
 }
+
+
 
 /* demo */
 
@@ -1090,7 +1092,7 @@
 }
 
 .wickets {
-    padding: 0 25px;
+    padding: 10px 25px;
 }
 
 .vl {
@@ -1118,10 +1120,17 @@
 }
 
 .scorecard-tab h5 {
-    background-color: rgba(135, 229, 255, 0.681);
+    background-color: rgb(0 0 0 / 77%);
     padding: 10px;
     border-radius: 7px 7px 0 0;
+    color: #FFFFFF;
 }
+
+
+.scorecard-tab h5 span{
+    float: right;
+    color: #FFFFFF;
+ }
 
 
 

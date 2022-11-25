@@ -21,23 +21,30 @@ function Headers() {
     useEffect(() => {
         dispatch(getHomeSettings({ token }))
         SocketApis.getSocketData('message', (data) => {
-            dispatch(getScorecard(data))
-            for (let key in data) {
-                let score = data[key] ? data[key][0] : null
-                if (score) {
-                    $(`#live_home_${key} #live_home`).text(`${score?.HOME_RUNS_FIRST_INNING}/${score?.HOME_WICKETS_FIRST_INNING}`);
-                    $(`#live_inner_${key} #live_home`).text(`${score?.HOME_RUNS_FIRST_INNING}/${score?.HOME_WICKETS_FIRST_INNING}`);
-                    $(`#live_home_${key} #live_away`).text(`${score?.AWAY_RUNS_FIRST_INNING}/${score?.AWAY_WICKETS_FIRST_INNING}`);
-                    $(`#live_inner_${key} #live_away`).text(`${score?.AWAY_RUNS_FIRST_INNING}/${score?.AWAY_WICKETS_FIRST_INNING}`);
-                    // $(`#live_home_${key} #live_result`).text(score?.match_summary?.status);
-                    // $(`#live_inner_${key} #live_result`).text(score?.match_summary?.status);
-                    $(`#live_home_${key} #live_home`).attr("class", 'red');
-                    $(`#live_home_${key} #live_away`).attr("class", 'red');
-                    $(`#live_home_${key} #live_result`).attr("class", 'red');
+            if (data) {
+                dispatch(getScorecard(data))
+                for (let key in data) {
+                    let score = (data[key] && data[key]?.matchScore) ? data[key].matchScore : null
+                    if (score) {
+                        let team1Score = score?.team1Score?.inngs2 ? score?.team1Score?.inngs2 : score?.team1Score?.inngs1
+                        let team2Score = score?.team2Score?.inngs2 ? score?.team2Score?.inngs2 : score?.team2Score?.inngs1
 
-                    $(`#live_inner_${key} #live_home`).attr("class", 'red');
-                    $(`#live_inner_${key} #live_away`).attr("class", 'red');
-                    $(`#live_inner_${key} #live_result`).attr("class", 'red');
+                        $(`#live_home_${key} #live_home`).text(team1Score && (`${team1Score?.runs ? team1Score?.runs : 0}/${team1Score?.wickets ? team1Score?.wickets : 0} - ${team1Score?.overs ? team1Score?.overs : 0}`));
+                        $(`#live_inner_${key} #live_home`).text(team1Score && (`${team1Score?.runs ? team1Score?.runs : 0}/${team1Score?.wickets ? team1Score?.wickets : 0} - ${team1Score?.overs ? team1Score?.overs : 0}`));
+
+                        $(`#live_home_${key} #live_away`).text(team2Score && (`${team2Score?.runs ? team2Score?.runs : 0}/${team2Score?.wickets ? team2Score?.wickets : 0} - ${team2Score?.overs ? team2Score?.overs : 0}`));
+                        $(`#live_inner_${key} #live_away`).text(team2Score && (`${team2Score?.runs ? team2Score?.runs : 0}/${team2Score?.wickets ? team2Score?.wickets : 0} - ${team2Score?.overs ? team2Score?.overs : 0}`));
+
+                        // $(`#live_home_${key} #live_result`).text(score?.match_summary?.status);
+                        // $(`#live_inner_${key} #live_result`).text(score?.match_summary?.status);
+
+                        $(`#live_home_${key} #live_home`).attr("class", 'red');
+                        $(`#live_home_${key} #live_away`).attr("class", 'red');
+                        $(`#live_home_${key} #live_result`).attr("class", 'red');
+                        $(`#live_inner_${key} #live_home`).attr("class", 'red');
+                        // $(`#live_inner_${key} #live_away`).attr("class", 'red');
+                        // $(`#live_inner_${key} #live_result`).attr("class", 'red');
+                    }
                 }
             }
         });

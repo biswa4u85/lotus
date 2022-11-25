@@ -1587,6 +1587,10 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
 .mainImage:hover .mainTitle{
     display: block;
 }
+.owl-carousel.owl-loading{
+    height: 160px;
+    overflow: hidden;
+}
 @media screen and (max-width: 767px) {
     .header-top-area {
         padding: 15px 0px
